@@ -1,0 +1,94 @@
+openapi: 3.0.0
+info: 
+  title: eCommerce App
+  version: 1.0.0
+  description: MERN stack ecommerce app
+
+paths:
+  /api/product:
+    get:
+      tags:
+        - product
+      summary: returns a list of product documents
+      description: API for returning a list of product from MongoDB Atlas
+      responses:
+        '200':
+          description: Product documnets
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
+    post:
+      summary: Creates a new product
+      tags:
+        - product
+      summary: Creates a new product object
+      description: API for adding new product object
+      requestBody:
+        description: The product to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductRequest'
+      responses:
+        '200':
+          description: User added
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
+
+  /api/product/{id}:
+    get:
+      summary: Returns a product by ID
+      tags:
+        - product
+      summary: returns a product document
+      description: API for returning a single product object 
+      parameters:
+        - in: path
+          name: id
+          description: The productId requestred by the user.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Product document in JSON format
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: '6110a07ebfab6e2e6d25ad16'
+        firstName:
+          type: string
+          example: 'Karen'
+        lastName:
+          type: string
+          example: 'Cmaro'
+      required:
+        - _id
+        - firstName
+        - lastName
+
+    ProductRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: 'Jone'
+        lastName:
+          type: string
+          example: 'Doe'
+      required:
+        - firstName
+        - lastName
