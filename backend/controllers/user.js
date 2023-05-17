@@ -131,7 +131,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
       subject: "Forgot Password Link",
       html: resetURL,
     };
-    // sendEmail(msg);
+    sendEmail(msg);
     res.status(201).json(token);
   } catch (error) {
     throw new Error(error);
