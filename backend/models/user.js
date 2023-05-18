@@ -42,7 +42,7 @@ const userSchema = new mongoose.Schema(
     address: {
       type: String,
     },
-    whishlist: [
+    wishlist: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Product",

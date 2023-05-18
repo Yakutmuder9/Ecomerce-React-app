@@ -126,11 +126,13 @@ const forgotPassword = asyncHandler(async (req, res) => {
     const resetURL = `Hi, Please follow this link to reset Your Password. This link is valid till 10 minutes from now. <a href='http://localhost:5000/api/auth/reset-password/${token}'>Click Here</>`;
 
     const msg = {
-      to: email,
+      to: "yakutmuder9@gmail.com",
+      from: "yakutmuder9@gmail.com",
       text: "Hey User",
       subject: "Forgot Password Link",
       html: resetURL,
     };
+
     sendEmail(msg);
     res.status(201).json(token);
   } catch (error) {
@@ -272,6 +274,7 @@ const getWishlist = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
 const saveAddress = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   validateMongoDbId(_id);
@@ -291,6 +294,9 @@ const saveAddress = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
+
+
 const userCart = asyncHandler(async (req, res) => {
   const { cart } = req.body;
   const { _id } = req.user;
@@ -349,6 +355,7 @@ const clearCart = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
 const applyCoupon = asyncHandler(async (req, res) => {
   const { coupon } = req.body;
   const { _id } = req.user;

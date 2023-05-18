@@ -36,17 +36,19 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRouter);
 app.use("/api/private", privateRoutes);
-
 // Serve API documentation
 const swaggerDocs = YAML.load("./docs/eCommerce.yaml");
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-// Serve API documentation
-app.listen(port, () => {
-  console.log(`Application started and listening on port ${port}!`);
+// Define your server
+const server = app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
 
-process.on("unhandledRejection", (err, promise) => {
-  console.log(`Logged Error: ${err.message}`);
-  server.close(() => process.exit(1));
+// Handle server shutdown on error
+process.on("unhandledRejection", (err) => {
+  console.log("Error: ", err);
+  server.close(() => {
+    process.exit(1);
+  });
 });

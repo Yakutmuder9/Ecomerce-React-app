@@ -3,7 +3,6 @@ import User from "../models/user.js";
 import asyncHandler from "express-async-handler";
 import slugify from "slugify";
 import validateMongoDbId from "../utils/validateDBId.js";
-import { query } from "express";
 
 const createProduct = asyncHandler(async (req, res) => {
   try {

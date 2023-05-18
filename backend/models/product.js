@@ -31,7 +31,7 @@ const productSchema = new mongoose.Schema(
     },
     quantity: {
       type: Number,
-      requried: true,
+      required: true,
     },
     sold: {
       type: Number,

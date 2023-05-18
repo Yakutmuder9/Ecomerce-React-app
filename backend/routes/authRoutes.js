@@ -33,6 +33,7 @@ router.post("/register", createUser);
 router.post("/login", loginUser);
 router.post("/forgot-password", forgotPassword);
 router.post("/admin-login", loginAdmin);
+
 router.post("/cart", authMiddleware, userCart);
 router.post("/cart/applycoupon", authMiddleware, applyCoupon);
 router.post("/cart/create-order", authMiddleware, createOrder);

@@ -70,66 +70,71 @@ import {
 const router = express.Router();
 
 // Product Routes
-router.post("/", authMiddleware, isAdmin, createProduct);
-router.get("/:id", getaProduct);
-router.get("/", getAllProduct);
-router.put("/:id", authMiddleware, isAdmin, updateProduct);
-router.put("/wishlist", authMiddleware, addToWishlist);
-router.delete("/:id", authMiddleware, isAdmin, deleteProduct);
-router.put("/rating", authMiddleware, rating);
+router.post("/product", authMiddleware, isAdmin, createProduct);
+router.get("/product/:id", getaProduct);
+router.get("/product", getAllProduct);
+router.put("/product/:id", authMiddleware, isAdmin, updateProduct);
+router.put("/product/wishlist", authMiddleware, addToWishlist);
+router.delete("/product/:id", authMiddleware, isAdmin, deleteProduct);
+router.put("/product/rating", authMiddleware, rating);
 
 // Product Category Routes
-router.post("/", authMiddleware, isAdmin, createCategory);
-router.put("/:id", authMiddleware, isAdmin, updateCategory);
-router.delete("/:id", authMiddleware, isAdmin, deleteCategory);
-router.get("/:id", getCategory);
-router.get("/", getallCategory);
+router.post("/product-cat", authMiddleware, isAdmin, createCategory);
+router.put("/product-cat/:id", authMiddleware, isAdmin, updateCategory);
+router.delete("/product-cat/:id", authMiddleware, isAdmin, deleteCategory);
+router.get("/product-cat/:id", getCategory);
+router.get("/product-cat", getallCategory);
 
 // Inquiry Inq Route
-router.post("/", createInquiry);
-router.put("/:id", authMiddleware, isAdmin, updateInquiry);
-router.delete("/:id", authMiddleware, isAdmin, deleteInquiry);
-router.get("/:id", getInquiry);
-router.get("/", getallInquiry);
+router.post("/inquiry", createInquiry);
+router.put("/inquiry/:id", authMiddleware, isAdmin, updateInquiry);
+router.delete("/inquiry/:id", authMiddleware, isAdmin, deleteInquiry);
+router.get("/inquiry/:id", getInquiry);
+router.get("/inquiry", getallInquiry);
 
 // Coupon Route
-router.post("/", authMiddleware, isAdmin, createCoupon);
-router.get("/", authMiddleware, isAdmin, getAllCoupons);
-router.get("/:id", authMiddleware, isAdmin, getAllCoupons);
-router.put("/:id", authMiddleware, isAdmin, updateCoupon);
-router.delete("/:id", authMiddleware, isAdmin, deleteCoupon);
+router.post("/coupon", authMiddleware, isAdmin, createCoupon);
+router.get("/coupon", authMiddleware, isAdmin, getAllCoupons);
+router.get("/coupon/:id", authMiddleware, isAdmin, getAllCoupons);
+router.put("/coupon/:id", authMiddleware, isAdmin, updateCoupon);
+router.delete("/coupon/:id", authMiddleware, isAdmin, deleteCoupon);
 
 // Color Route
-router.post("/", authMiddleware, isAdmin, createColor);
-router.put("/:id", authMiddleware, isAdmin, updateColor);
-router.delete("/:id", authMiddleware, isAdmin, deleteColor);
-router.get("/:id", getColor);
-router.get("/", getallColor);
+router.post("/color", authMiddleware, isAdmin, createColor);
+router.put("/color/:id", authMiddleware, isAdmin, updateColor);
+router.delete("/color/:id", authMiddleware, isAdmin, deleteColor);
+router.get("/color/:id", getColor);
+router.get("/color/", getallColor);
 
 // Brand Routes
-router.post("/", authMiddleware, isAdmin, createBrand);
-router.put("/:id", authMiddleware, isAdmin, updateBrand);
-router.delete("/:id", authMiddleware, isAdmin, deleteBrand);
-router.get("/:id", getBrand);
-router.get("/", getallBrand);
+router.post("/brand", authMiddleware, isAdmin, createBrand);
+router.put("/brand/:id", authMiddleware, isAdmin, updateBrand);
+router.delete("/brand/:id", authMiddleware, isAdmin, deleteBrand);
+router.get("/brand/:id", getBrand);
+router.get("/brand", getallBrand);
 
 // Blog Category Routes
-router.post("/", authMiddleware, isAdmin, createBlogCategory);
-router.put("/:id", authMiddleware, isAdmin, updateBlogCategory);
-router.delete("/:id", authMiddleware, isAdmin, deleteBlogCategory);
-router.get("/:id", getBlogCategory);
-router.get("/", getAllBlogCategory);
+router.post("/blog-category", authMiddleware, isAdmin, createBlogCategory);
+router.put("/blog-category/:id", authMiddleware, isAdmin, updateBlogCategory);
+router.delete(
+  "/blog-category/:id",
+  authMiddleware,
+  isAdmin,
+  deleteBlogCategory
+);
+router.get("/blog-category/:id", getBlogCategory);
+router.get("/blog-category", getAllBlogCategory);
 
 // Blog Routes
-router.post("/", authMiddleware, isAdmin, createBlog);
-router.put("/likes", authMiddleware, liketheBlog);
-router.put("/dislikes", authMiddleware, disliketheBlog);
-router.put("/:id", authMiddleware, isAdmin, updateBlog);
-router.delete("/:id", authMiddleware, isAdmin, deleteBlog);
-router.get("/:id", getBlog);
-router.get("/", getAllBlogs);
+router.post("/blog", authMiddleware, isAdmin, createBlog);
+router.put("/blog/likes", authMiddleware, liketheBlog);
+router.put("/blog/dislikes", authMiddleware, disliketheBlog);
+router.put("/blog/:id", authMiddleware, isAdmin, updateBlog);
+router.delete("/blog/:id", authMiddleware, isAdmin, deleteBlog);
+router.get("/blog/:id", getBlog);
+router.get("/blog", getAllBlogs);
 router.put(
-  "/upload/:id",
+  "/upload-img/:id",
   authMiddleware,
   isAdmin,
   uploadPhoto.array("images", 2),
@@ -139,7 +144,7 @@ router.put(
 
 // Upload Routes
 router.post(
-  "/",
+  "/upload-img",
   authMiddleware,
   isAdmin,
   uploadPhoto.array("images", 10),
