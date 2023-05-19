@@ -33,11 +33,14 @@ footer {
             justify-content: space-between;
             .logo-social-links {
                 max-width: 30%;
-                h3 {
+
+                a {
+                    display: flex;
+                    color: $primary;
+                    font-size: 24px;
                     margin-bottom: 15px;
-                    font-size: 22px;
-                    span{
-                        color: $primary;
+                    img {
+                        height: 50px;
                     }
                 }
             }
@@ -45,7 +48,7 @@ footer {
                 font-size: 18px;
                 margin-bottom: 15px;
             }
-            li{
+            li {
                 font-size: 14px;
                 margin-bottom: 5px;
             }
@@ -57,7 +60,7 @@ footer {
         font-size: 16px;
         background: #e6e6e6;
         padding: 20px;
-        .container{
+        .container {
             display: flex;
             justify-content: space-between;
         }

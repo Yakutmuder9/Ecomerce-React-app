@@ -1,5 +1,18 @@
 .landing-page {
     width: 100%;
     // height: auto;
-    height: 150vh;
+    min-height: 23vh;
+
+    .mySwiper {
+        height: auto;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background: #acb6ea;
+        z-index: 1;
+        .slide-card {
+            img{
+                height: 120px;
+            }
+        }
+    }
 }

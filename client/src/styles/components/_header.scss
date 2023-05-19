@@ -1,7 +1,8 @@
 .top-notice {
     width: 100vw;
     height: 30px;
-    background: $light-blue;
+    // background: $light-blue;
+    background: linear-gradient(144.43deg, #216cee 8.83%, #1b69ec 79.03%);
 
     .container {
         @extend .place-items-center;
@@ -12,10 +13,10 @@
         gap: 20px;
         font-size: 13px;
         a {
-            color: #5d5d5d;
+            color: #c6c6c6;
         }
     }
-    @media(max-width: 768px) {
+    @media (max-width: 768px) {
         display: none;
     }
 }
@@ -30,8 +31,8 @@ header {
     position: sticky;
     top: 0;
     left: 0;
-    @media(max-width: 768px) {
-
+    z-index: 99;
+    @media (max-width: 768px) {
         height: 60px;
     }
     .main-nav {
@@ -42,29 +43,42 @@ header {
 
         .logo-container {
             @extend .place-items-center;
-            .filter-menu{        
-                svg{
+            .filter-menu {
+                svg {
                     display: none;
                     font-size: 24px;
                     cursor: pointer;
-                    @media(max-width: 768px) {
+                    @media (max-width: 768px) {
                         height: 30px;
                         display: block;
                         margin-right: 10px;
                     }
                 }
             }
+            a {
+                display: flex;
+                img {
+                    height: 50px;
+                }
+            }
+
             h3 {
                 font-size: 28px;
                 margin-right: 30px;
                 cursor: pointer;
+                color: $black;
+                font-weight: 900;
+                font-family: "Courier New", Courier, monospace;
+
                 span {
-                    color: $primary;
+                    background: linear-gradient(90deg, #003CA4 15.71%, #003CA4 101.92%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    font-weight: 800;
+                    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
                 }
-                
             }
-
-
         }
         .search-input {
             @extend .place-items-center;
@@ -80,10 +94,11 @@ header {
                 color: $primary;
                 width: 100px;
                 margin-left: 5px;
+                box-shadow: 2px 4px 6px #609efc4e;
+                border-color: $primary;
 
                 &:focus {
                     outline: none;
-                    border-color: $primary;
                 }
 
                 &::-ms-expand {
@@ -96,21 +111,21 @@ header {
                 }
             }
             input {
-                padding: 10px 15px;
-                padding-left: 110px;
+                padding: 13px 15px;
+                padding-left: 120px;
                 display: block;
                 width: 100%;
                 border: 1px solid #ccc;
                 border-radius: 4px;
-                font-size: 14px;
-            
-                &:focus{
+                font-size: 15px;
+
+                &:focus {
                     background: #edecec;
                     border: none;
                     outline: #d5e6fa;
                 }
             }
-            @media(max-width: 768px) {
+            @media (max-width: 768px) {
                 display: none;
             }
         }
@@ -118,7 +133,7 @@ header {
             @extend .place-items-center;
             gap: 16px;
 
-            @media(max-width: 562px) {
+            @media (max-width: 562px) {
                 gap: 5px;
                 flex-direction: row-reverse;
             }
@@ -131,7 +146,7 @@ header {
                     height: 30px;
                     padding: 5px;
                 }
-                @media(max-width: 562px) {
+                @media (max-width: 562px) {
                     display: none;
                 }
             }
@@ -198,13 +213,12 @@ header {
                     }
                 }
             }
-          
         }
         .location {
             @extend .place-items-center;
             font-size: 13px;
         }
-        @media(max-width: 768px) {
+        @media (max-width: 768px) {
             display: none;
         }
     }

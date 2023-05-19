@@ -1,4 +1,5 @@
 import { BsChevronUp } from "react-icons/bs";
+import { logo } from "../assets";
 
 const Footer = () => {
   return (
@@ -20,9 +21,13 @@ const Footer = () => {
       <div className="foot-link-cont">
         <div className="container">
           <div className="logo-social-links">
-            <h3>
-              E<span>Commerce</span>
-            </h3>
+          
+            <a href="/">
+              <img src={logo} alt="" />
+              <h3>
+                <span>ShopZilla</span>
+              </h3>
+            </a>
             <p>
               Best information about the company gies here but now lorem ipsum
               is

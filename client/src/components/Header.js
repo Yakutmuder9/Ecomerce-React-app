@@ -1,15 +1,14 @@
 import { BsCart2, BsChevronDown } from "react-icons/bs";
 import { MdMenuOpen, MdLocationOn, MdNotificationsNone } from "react-icons/md";
+import { logo } from "../assets";
+import { useState } from "react";
 
 const Header = () => {
-  const items = document.querySelectorAll(".sign-btn");
+  const [isActive, setIsActive] = useState(true);
 
-  items.forEach((item) => {
-    item.addEventListener("click", () => {
-      items.forEach((item) => item.classList.remove("active"));
-      item.classList.add("active");
-    });
-  });
+  const handleClick = () => {
+    setIsActive(!isActive);
+  };
   return (
     <>
       <div className="top-notice ">
@@ -50,13 +49,17 @@ const Header = () => {
             <div className="filter-menu">
               <MdMenuOpen />
             </div>
-            
-             <a href="/"><h3>E<span>Shopping</span></h3></a> 
-            
+
+            <a href="/">
+              <img src={logo} alt="" />
+              <h3>
+                <span>ShopZilla</span>
+              </h3>
+            </a>
           </div>
 
           <div className="search-input">
-            <select class="custom-select">
+            <select className="custom-select">
               <option value="All">All </option>
               <option value="Option 1">Option 1</option>
               <option value="Option 2">Option 2</option>
@@ -67,14 +70,28 @@ const Header = () => {
 
           <div className="right-side-navs-list">
             <div className="notification-icon">
-              <MdNotificationsNone />
+              <a href="/">
+                <MdNotificationsNone />
+              </a>
             </div>
             <div className="sign-btns">
-              <button className="sign-btn active">SignUp</button>
-              <button className="sign-btn ">SignIn</button>
+              <button
+                className={`sign-btn  ${isActive ? "active" : ""}`}
+                onClick={handleClick}
+              >
+                SignUp
+              </button>
+              <button
+                className={`sign-btn ${!isActive ? "active" : ""}`}
+                onClick={handleClick}
+              >
+                SignIn
+              </button>
             </div>
             <div className="cart-icon">
-              <BsCart2 />
+              <a href="/cart">
+                <BsCart2 />
+              </a>
             </div>
           </div>
         </div>
