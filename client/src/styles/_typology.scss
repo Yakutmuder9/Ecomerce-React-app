@@ -1,0 +1,213 @@
+// Container Typology----------------
+.place-items-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+// Container Typology----------------
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 1300px;
+
+    &.fluid {
+        max-width: none;
+    }
+}
+
+// Card Typology
+.card {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+
+    &.highlighted {
+        border: 2px solid #ff9800;
+    }
+
+    &.compact {
+        padding: 8px;
+    }
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-description {
+    font-size: 14px;
+    color: #888;
+}
+
+// Button Typology
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: $primary;
+    border: none;
+    color: $white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #3a80d0;
+    }
+
+    &.primary {
+        background-color: #6cb3f9;
+        color: #fff;
+
+        &:hover {
+            background-color: #1565c0;
+        }
+    }
+
+    &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+// Grid Typology----------------------
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 16px;
+}
+
+.grid-item {
+    background-color: #f2f2f2;
+    padding: 16px;
+}
+
+// Typography Typology-----------------
+.heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.paragraph {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+// Form Typology------------------------
+.form {
+    margin-bottom: 16px;
+
+    &.centered {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.input {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+
+    &:focus{
+        background: #edecec;
+        border: none;
+        outline: #d5e6fa;
+    }
+}
+
+.select {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+// Alert Typology----------------------
+.alert {
+    padding: 16px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+// Product Typology-----------------
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    text-align: center;
+
+    .product-image {
+        width: 100%;
+        max-width: 200px;
+        margin-bottom: 16px;
+    }
+
+    .product-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .product-price {
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 8px;
+    }
+
+    .product-description {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .product-button {
+        margin-top: 8px;
+    }
+}
+
+// Responsive Typology 992px
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+// Responsive Typology 768px-------------------
+@media (max-width: 768px) {
+    .container {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

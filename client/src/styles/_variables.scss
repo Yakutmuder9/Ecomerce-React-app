@@ -1,0 +1,24 @@
+// colors
+$balck: #000000;
+$white: #ffffff;
+$gray: #f8fafc;
+$light-blue: #82a5f15a;
+$primary: #1b69ec;
+
+//  Linear gradient color
+$light-blue-gradinet: linear-gradient(180deg, #fbfdff 0%, #dae9f6 100%);
+$primary-blue-gradient: linear-gradient(144.43deg, #6da2ff 8.83%, #1b69ec 79.03%);
+
+$background: linear-gradient(138.41deg, #ffffff66 73.94%, #ffffff1a 140.45%);
+$box-shadow: 0px 10px 36px #00000029, 0px 0px 0px 1px #0000000f;
+$backdrop-filter: blur(20px);
+
+// Breakpoints
+$brk-xs: 0;
+$brk-sm: 576px;
+$brk-md: 768px;
+$brk-lg: 992px;
+$brk-xl: 1200px;
+
+/** Default max width vtex checkout */
+$maxWidth: 1200px;
