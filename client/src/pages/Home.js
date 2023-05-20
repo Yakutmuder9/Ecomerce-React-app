@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import "swiper/css";
 import { Autoplay, Pagination, Navigation } from "swiper";
+import { BsPlayCircleFill } from "react-icons/bs";
+import { addImg, tshirt, mobi, cam, grind, homeElec, bag } from "../assets";
 
 const HomeSildeCont = [
   {
@@ -12,11 +14,10 @@ const HomeSildeCont = [
     title: "My previous portfolio v.1",
     header: "Let’s Create your Own Style",
     disc: "Lease make sure you have the necessary dependencies and models imported for this code to work correctly.",
-    imgUrl1:
-      "https://e7.pngegg.com/pngimages/327/609/png-clipart-canon-eos-7d-camera-designer-banner-digital-data-jd-com-creative-digital-camera-ad-element-electronics-lens.png",
+    imgUrl1: addImg,
     imgUrl2:
       "https://i0.wp.com/www.snowdropsolution.com/wp-content/uploads/2022/05/Creative-Advertisement-Which-Product-Categories-Are-Best-Suited-To-Creative-Advertising-And-Which-Type-Of-Creativity-Have-The-Most-Influence.jpg?fit=1920%2C1080&ssl=1",
-    productsImg: ["", "", "", "", ""],
+      productsImg: [tshirt, mobi, cam, grind, bag],
   },
   {
     id: 2,
@@ -25,11 +26,10 @@ const HomeSildeCont = [
     title: "My previous portfolio v.1",
     header: "Let’s Create your Own Style",
     disc: "Lease make sure you have the necessary dependencies and models imported for this code to work correctly.",
-    imgUrl1:
-      "https://w7.pngwing.com/pngs/185/815/png-transparent-assorted-fruits-illustration-orange-juice-apple-juice-fruit-free-of-juice-icon-natural-foods-food-orange.png",
+    imgUrl1: homeElec,
     imgUrl2:
       "https://i0.wp.com/www.snowdropsolution.com/wp-content/uploads/2022/05/Creative-Advertisement-Which-Product-Categories-Are-Best-Suited-To-Creative-Advertising-And-Which-Type-Of-Creativity-Have-The-Most-Influence.jpg?fit=1920%2C1080&ssl=1",
-    productsImg: ["", "", "", "", ""],
+    productsImg: [tshirt, mobi, cam, grind, bag],
   },
   {
     id: 3,
@@ -38,8 +38,7 @@ const HomeSildeCont = [
     title: "My previous portfolio v.1",
     header: "Let’s Create your Own Style",
     disc: "Lease make sure you have the necessary dependencies and models imported for this code to work correctly.",
-    imgUrl1:
-      "https://www.searchenginejournal.com/wp-content/uploads/2022/08/google-shopping-ads-6304dccb7a49e-sej-400x210.png",
+    imgUrl1: homeElec,
     imgUrl2:
       "https://i0.wp.com/www.snowdropsolution.com/wp-content/uploads/2022/05/Creative-Advertisement-Which-Product-Categories-Are-Best-Suited-To-Creative-Advertising-And-Which-Type-Of-Creativity-Have-The-Most-Influence.jpg?fit=1920%2C1080&ssl=1",
     productsImg: ["", "", "", "", ""],
@@ -51,8 +50,7 @@ const HomeSildeCont = [
     title: "My previous portfolio v.1",
     header: "Let’s Create your Own Style",
     disc: "Lease make sure you have the necessary dependencies and models imported for this code to work correctly.",
-    imgUrl1:
-      "https://w7.pngwing.com/pngs/815/461/png-transparent-technology-toy-technology-electronics-sale-banner-brand.png",
+    imgUrl1:homeElec,
     imgUrl2: "",
     productsImg: ["", "", "", "", ""],
   },
@@ -63,8 +61,7 @@ const HomeSildeCont = [
     title: "My previous portfolio v.1",
     header: "Let’s Create your Own Style",
     disc: "Lease make sure you have the necessary dependencies and models imported for this code to work correctly.",
-    imgUrl1:
-      "https://w7.pngwing.com/pngs/538/884/png-transparent-advertising-poster-cosmetic-packs-glass-other-chemistry.png",
+    imgUrl1:homeElec,
     imgUrl2:
       "https://i0.wp.com/www.snowdropsolution.com/wp-content/uploads/2022/05/Creative-Advertisement-Which-Product-Categories-Are-Best-Suited-To-Creative-Advertising-And-Which-Type-Of-Creativity-Have-The-Most-Influence.jpg?fit=1920%2C1080&ssl=1",
     productsImg: [
@@ -83,48 +80,76 @@ const Home = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex(((prevIndex) => prevIndex + 1) % items.length);
-    }, 1000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [items]);
 
   return (
     <div className="landing-page">
-      <Swiper
-        slidesPerView={1}
-        spaceBetween={30}
-        freeMode={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Autoplay, Pagination]}
-        className="mySwiper container"
-        autoplay={{
-          delay: 1000,
-          disableOnInteraction: false,
-        }}
-      >
-        {items.map((item, index) => {
-          const isActive = index === currentIndex;
+      <div className="swipper-container">
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={30}
+          freeMode={true}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Autoplay, Pagination]}
+          className="mySwiper"
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+        >
+          {items.map((item, index) => {
+            const isActive = index === currentIndex;
 
-          return (
-            <SwiperSlide
-              className={`swiper-slide ${isActive ? "active" : ""}`}
-              key={item.id}
-            >
-              <a href="#">
-                <motion.div className="slide-card">
-                  <img src={item.imgUrl1} alt="" />
-                  <div className="work-card-text-cont">
-                    <h4>{item.title}</h4>
-                    <p>{item.disc}</p>
+            return (
+              <SwiperSlide
+                className={`swiper-slide ${isActive ? "active" : ""}`}
+                key={item.id}
+              >
+                <motion.div className="slide-card-cont">
+                  <div className="left-slide-cont">
+                    <h6>That lease make sure you!</h6>
+                    <h2>Let’s Create your Own Style</h2>
+                    <p>
+                      Lease make sure you have the necessary dependencies and
+                      models imported for this code to work correctly.
+                    </p>
+                    <div className="start-btns">
+                      <button className="first-btn btn">Start Shopping</button>
+                      <button className="play-btn ">
+                        {" "}
+                        <BsPlayCircleFill />
+                        Play Video
+                      </button>
+                    </div>
+
+                    <div className="slide-product-img">
+                      {item?.productsImg.map((imgUrl, index) => {
+                        return (
+                          <div className="pro-img">
+                            <img src={imgUrl} alt="" />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div className="right-side-img">
+                    <img src={item.imgUrl1} alt="" />
+                    {/* <div className="work-card-text-cont">
+                      <h4>{item.title}</h4>
+                      <p>{item.disc}</p>
+                    </div> */}
                   </div>
                 </motion.div>
-              </a>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
     </div>
   );
 };

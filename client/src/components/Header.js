@@ -1,5 +1,5 @@
 import { BsCart2, BsChevronDown } from "react-icons/bs";
-import { MdMenuOpen, MdLocationOn, MdNotificationsNone } from "react-icons/md";
+import { MdMenuOpen, MdLocationOn, MdNotificationsNone, MdSearch } from "react-icons/md";
 import { logo } from "../assets";
 import { useState } from "react";
 
@@ -59,13 +59,16 @@ const Header = () => {
           </div>
 
           <div className="search-input">
+            
             <select className="custom-select">
               <option value="All">All </option>
               <option value="Option 1">Option 1</option>
               <option value="Option 2">Option 2</option>
               <option value="Option 3">Option 3</option>
             </select>
+
             <input type="text" className="" placeholder="Search" />
+            <button className="search-icon"><MdSearch /></button>
           </div>
 
           <div className="right-side-navs-list">

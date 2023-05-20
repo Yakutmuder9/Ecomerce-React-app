@@ -2,8 +2,8 @@
     width: 100vw;
     height: 30px;
     // background: $light-blue;
-    background: linear-gradient(144.43deg, #216cee 8.83%, #1b69ec 79.03%);
-
+    // background: linear-gradient(144.43deg, #216cee 8.83%, #1b69ec 79.03%);
+    background: linear-gradient(45deg, #435bd4, #026264);
     .container {
         @extend .place-items-center;
         height: 100%;
@@ -39,8 +39,16 @@ header {
         @extend .place-items-center;
         width: 100%;
         height: 60px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 18px;
+        padding-right: 18px;
+        max-width: 1300px;
         border-bottom: 1.2px solid #82a5f15a;
 
+        &.fluid {
+            max-width: none;
+        }
         .logo-container {
             @extend .place-items-center;
             .filter-menu {
@@ -58,7 +66,7 @@ header {
             a {
                 display: flex;
                 img {
-                    height: 50px;
+                    height: 40px;
                 }
             }
 
@@ -71,7 +79,7 @@ header {
                 font-family: "Courier New", Courier, monospace;
 
                 span {
-                    background: linear-gradient(90deg, #003CA4 15.71%, #003CA4 101.92%);
+                    background: linear-gradient(90deg, #003ca4 15.71%, #003ca4 101.92%);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     background-clip: text;
@@ -111,12 +119,12 @@ header {
                 }
             }
             input {
-                padding: 13px 15px;
+                padding: 13px 40px;
                 padding-left: 120px;
                 display: block;
                 width: 100%;
                 border: 1px solid #ccc;
-                border-radius: 4px;
+                border-radius: 6px;
                 font-size: 15px;
 
                 &:focus {
@@ -127,6 +135,18 @@ header {
             }
             @media (max-width: 768px) {
                 display: none;
+            }
+
+            .search-icon {
+                padding-left: 10px;
+                padding-top: 6px;
+                padding-right: 10px;
+                border: none;
+                background: none;
+                font-size: 20px;
+                border-left: 1px solid rgb(115, 115, 115);
+                transform: translatex(-100%);
+                cursor: pointer;
             }
         }
         .right-side-navs-list {
