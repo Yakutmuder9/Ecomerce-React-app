@@ -184,54 +184,107 @@
 
             .phone-card-carousel {
                 position: relative;
-              
-                .carousel-wrapper {
-                  overflow: hidden;
-                  background: #c79d9d;
-                  width: auto - 400px;
-                  .cards-container {
-                    display: flex;
-                    gap: 20px;
-                    transition: transform 0.3s ease;
-                    padding: 20px 0px;
-                    transform: translateX(calc(-100% * var(--current-index)));
-              
-                    .card {
-                      flex: 0 0 calc(100% / var(--card-count));
+                .swiper-container {
+                    width: 100%;
+                    height: auto;
+
+                    .swiper-slide {
+                        text-align: center;
+                        font-size: 18px;
+                        background: #fff;
+                        justify-content: center;
+                        align-items: center;
+                        margin: 50px 0px;
+                        height: 350px;
                     }
-                  }
+
+                    .swiper-button-next,
+                    .swiper-button-prev {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 40px;
+                        height: 40px;
+                        background-color: transparent;
+                        border: none;
+                        font-size: 24px;
+                        color: #000;
+                        cursor: pointer;
+                        cursor: pointer;
+                        z-index: 2;
+                        border-radius: 50px;
+                        box-shadow: 0px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
+                        background: $white;
+                        padding: 5px 10px;
+
+                        &::before {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                    }
+
+                    .swiper-button-next {
+                        right: -5px;
+                        &::before {
+                            content: ">";
+                        }
+                    }
+
+                    .swiper-button-prev {
+                        left: -5px;
+                        &::before {
+                            content: "<";
+                        }
+                    }
                 }
-              
-                .prev-btn,
-                .next-btn {
-                  position: absolute;
-                  top: 50%;
-                  transform: translateY(-50%);
-                  background-color: transparent;
-                  border: none;
-                  font-size: 24px;
-                  cursor: pointer;
-                  z-index: 2;
-                  border-radius: 50px;
-                  box-shadow: 0px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
-                  background: $white;
-                  padding: 6px 12px;
-                  animation-duration: 2s;
-                  animation-timing-function: cubic-bezier(0.83, 0, 0.17, 1);
-                }
-              
-                .prev-btn {
-                  left: -10px;
-                  animation-name: prev;
-                }
-              
-                .next-btn {
-                  right: -10px;
-                  animation-name: next;
-                }
-              }
- 
-              
+    
+            }
+            // .phone-card-carousel {
+            //     position: relative;
+
+            //     .carousel-wrapper {
+            //         overflow: hidden;
+            //         .cards-container {
+            //             display: flex;
+            //             gap: 20px;
+            //             transition: transform 0.3s ease;
+            //             padding: 20px 0px;
+            //             // transform: translateX(calc(-100% * var(--current-index)));
+            //             // .card {
+            //             //     flex: 0 0 calc(100% / var(--card-count));
+            //             // }
+            //         }
+            //     }
+
+            //     .prev-btn,
+            //     .next-btn {
+            //         position: absolute;
+            //         top: 50%;
+            //         transform: translateY(-50%);
+            //         background-color: transparent;
+            //         border: none;
+            //         font-size: 24px;
+            //         cursor: pointer;
+            //         z-index: 2;
+            //         border-radius: 50px;
+            //         box-shadow: 0px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
+            //         background: $white;
+            //         padding: 6px 12px;
+            //         animation-duration: 2s;
+            //         animation-timing-function: cubic-bezier(0.83, 0, 0.17, 1);
+            //     }
+
+            //     .prev-btn {
+            //         left: -10px;
+            //         animation-name: prev;
+            //     }
+
+            //     .next-btn {
+            //         right: -10px;
+            //         animation-name: next;
+            //     }
+            // }
         }
     }
 }

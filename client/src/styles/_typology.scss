@@ -28,7 +28,8 @@
     flex: 1 0 auto;
     box-shadow: 0px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
     position: relative;
-    // width: 250px;
+    max-width: 250px;
+    
     &:hover {
         transition: 0.3s ease-out;
         box-shadow: 2px 10px 20px #1f35f941;
@@ -308,21 +309,3 @@
         background-position: right;
     }
 }
-             
-@keyframes next {
-    from {
-      transform: translateX(calc(-100% * var(--current-index)));
-    }
-    to {
-      transform: translateX(calc(-100% * var(--current-index + 1)));
-    }
-  }
-  
-  @keyframes prev {
-    from {
-      transform: translateX(calc(-100% * var(--current-index)));
-    }
-    to {
-      transform: translateX(calc(-100% * var(--current-index - 1)));
-    }
-  }

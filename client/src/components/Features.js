@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import "swiper/css";
 import { Autoplay, Pagination, EffectFade } from "swiper";
 import { BsPlayCircleFill } from "react-icons/bs";
+import { GrFormNext, GrFormPrevious } from "react-icons/gr";
+import SwiperCore, { Navigation } from "swiper";
 
 export const MySwipperComponent = () => {
   const [items, setItems] = useState(HomeSildeCont);
@@ -73,10 +75,6 @@ export const MySwipperComponent = () => {
                 </div>
                 <div className="right-side-img">
                   <img src={item.imgUrl1} alt="" />
-                  {/* <div className="work-card-text-cont">
-              <h4>{item.title}</h4>
-              <p>{item.disc}</p>
-            </div> */}
                 </div>
               </motion.div>
             </SwiperSlide>
@@ -131,109 +129,62 @@ export const MyRatingComponent = ({ value }) => {
 };
 
 export const MyMobileCarousel = () => {
+  const [cardCount, setCardCount] = useState(5);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [cardCount, setCardCount] = useState(getCardCount());
   const [isAnimated, setIsAnimated] = useState(false);
+
+  const handleSlideChange = (swiper) => {
+    setCurrentIndex(swiper.realIndex);
+  };
 
   const handleClick = () => {
     setIsAnimated(!isAnimated);
   };
 
-  useEffect(() => {
-    function handleResize() {
-      setCardCount(getCardCount());
-      const maxIndex = Math.max(0, mobileCont.length - cardCount);
-      setCurrentIndex((prevIndex) => Math.min(prevIndex, maxIndex));
-    }
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [cardCount, mobileCont.length]);
-
-  function getCardCount() {
-    const breakpoints = [
-      { width: 0, cards: 1 },
-      { width: 600, cards: 2 },
-      { width: 900, cards: 3 },
-      { width: 1200, cards: 4 },
-      { width: 1500, cards: 5 },
-    ];
-
-    const breakpoint = breakpoints.find(
-      ({ width }) => window.innerWidth < width
-    );
-    return breakpoint ? breakpoint.cards : 1;
-  }
-
-  function handlePrevClick() {
-    setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
-    console.log("pre", cardCount, currentIndex);
-  }
-
-  function handleNextClick() {
-    const maxIndex = Math.max(0, mobileCont.length - cardCount);
-    setCurrentIndex((prevIndex) =>
-      prevIndex < maxIndex ? prevIndex + 1 : maxIndex
-    );
-    console.log("nex", cardCount, currentIndex);
-  }
-
+  SwiperCore.use([Navigation]);
   return (
-    <>
-      <div className="carousel-wrapper">
-        <div
-          className={`cards-container ${currentIndex === 0 ? "start" : ""} ${
-            currentIndex === mobileCont.length - cardCount ? "end" : ""
-          }`}
-          style={{ "--current-index": currentIndex, "--card-count": cardCount }}
-        >
-          {mobileCont.map((item, index) => {
-            return (
-              <div className="card" key={index}>
-                <div className="img-cont">
-                  <img src={item.imgUrl} alt="" />
-                </div>
-
-                <div className="off-sale">
-                  50% <br /> Off
-                </div>
-                <div className="card-body">
-                  <div className="price">
-                    <div className="price-num">
-                      <p>${item.newPrice}</p>
-                      <p>${item.oldPrice}</p>
-                    </div>
-
-                    <div
-                      className={`HeartAnimation ${
-                        isAnimated ? "animate" : ""
-                      }`}
-                      onClick={handleClick}
-                    ></div>
-                  </div>
-
-                  <div className="rate">
-                    <MyRatingComponent value={item.rate} />
-                  </div>
-
-                  <h5>{item.title}</h5>
-                </div>
+    <div className="swiper-container">
+      <Swiper
+        slidesPerView={cardCount}
+        spaceBetween={20}
+        navigation
+        onSlideChange={handleSlideChange}
+        className="mySwipper"
+      >
+        {mobileCont.map((item, index) => {
+          return (
+            <SwiperSlide className="card" key={index}>
+              <div className="img-cont">
+                <img src={item.imgUrl} alt="" />
               </div>
-            );
-          })}
-        </div>
-      </div>
-      {currentIndex !== 0 && (
-        <button className="prev-btn" onClick={handlePrevClick}>
-          &lt;
-        </button>
-      )}
-      {currentIndex !== mobileCont.length - cardCount && (
-        <button className="next-btn" onClick={handleNextClick}>
-          &gt;
-        </button>
-      )}
-    </>
+
+              <div className="off-sale">
+                {item.id} 50% <br /> Off
+              </div>
+              <div className="card-body">
+                <div className="price">
+                  <div className="price-num">
+                    <p>${item.newPrice}</p>
+                    <p>${item.oldPrice}</p>
+                  </div>
+
+                  <div
+                    className={`HeartAnimation ${isAnimated ? "animate" : ""}`}
+                    onClick={handleClick}
+                  ></div>
+                </div>
+
+                <div className="rate">
+                  <MyRatingComponent value={item.rate} />
+                </div>
+
+                <h5>{item.title}</h5>
+              </div>
+            </SwiperSlide>
+          );
+        })}
+       
+      </Swiper>
+    </div>
   );
 };
-

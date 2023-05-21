@@ -173,7 +173,7 @@ export const mobileCont = [
     oldPrice: 1128.0,
     rate: 4.5,
     imgUrl: mobi,
-    title: "Canon Cmera EOS 2000, Black 10x zoom",
+    title: "Last Canon Cmera EOS 2000, Black 10x zoom",
     wished: false,
   },
 ];
