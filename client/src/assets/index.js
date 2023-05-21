@@ -14,6 +14,12 @@ import mob4 from "./mob4.png";
 import mob5 from "./mob5.png";
 import mob6 from "./mob6.png";
 
+import f1 from "./f1.png";
+import f2 from "./f2.png";
+import f3 from "./f3.png";
+import f4 from "./f4.png";
+import f5 from "./f5.png";
+import f6 from "./f6.png";
 export {
   logo,
   addImg,
@@ -30,4 +36,10 @@ export {
   homeElec,
   goPlay,
   AppStore,
+  f1,
+  f2,
+  f3,
+  f4,
+  f5,
+  f6,
 };

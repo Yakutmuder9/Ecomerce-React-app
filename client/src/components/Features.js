@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Rating from "react-rating-stars-component";
-import { HomeSildeCont, mobileCont } from "../data/data";
+import { HomeSildeCont, dailyCont, mobileCont } from "../data/data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { motion } from "framer-motion";
 import "swiper/css";
@@ -63,7 +63,7 @@ export const MySwipperComponent = () => {
                     </button>
                   </div>
 
-                  <div className="slide-product-img">
+                  {/* <div className="slide-product-img">
                     {item?.productsImg.map((imgUrl, index) => {
                       return (
                         <div className="pro-img" key={index}>
@@ -71,7 +71,7 @@ export const MySwipperComponent = () => {
                         </div>
                       );
                     })}
-                  </div>
+                  </div> */}
                 </div>
                 <div className="right-side-img">
                   <img src={item.imgUrl1} alt="" />
@@ -129,37 +129,64 @@ export const MyRatingComponent = ({ value }) => {
 };
 
 export const MyMobileCarousel = () => {
-  const [cardCount, setCardCount] = useState(5);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimated, setIsAnimated] = useState(false);
+  const [slidesPerView, setSlidesPerView] = useState(3);
 
-  const handleSlideChange = (swiper) => {
-    setCurrentIndex(swiper.realIndex);
-  };
+  useEffect(() => {
+    function handleResize() {
+      const windowWidth = window.innerWidth;
+      let newSlidesPerView = 3;
+
+      if (windowWidth >= 1200) {
+        newSlidesPerView = 5;
+      } else if (windowWidth >= 992) {
+        newSlidesPerView = 4;
+      } else if (windowWidth >= 768) {
+        newSlidesPerView = 3;
+      } else if (windowWidth >= 562) {
+        newSlidesPerView = 2;
+      } else {
+        newSlidesPerView = 1;
+      }
+
+      setSlidesPerView(newSlidesPerView);
+    }
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleClick = () => {
     setIsAnimated(!isAnimated);
   };
 
   SwiperCore.use([Navigation]);
+
   return (
     <div className="swiper-container">
       <Swiper
-        slidesPerView={cardCount}
+        slidesPerView={slidesPerView}
         spaceBetween={20}
-        navigation
-        onSlideChange={handleSlideChange}
+        slidesPerGroup={slidesPerView}
+        slidesPerColumnFill="row"
+        navigation={{
+          prevEl: ".swiper-button-prev",
+          nextEl: ".swiper-button-next",
+          disabledClass: "swiper-button-disabled",
+        }}
         className="mySwipper"
       >
         {mobileCont.map((item, index) => {
           return (
-            <SwiperSlide className="card" key={index}>
+            <SwiperSlide className="product-card" key={index}>
               <div className="img-cont">
                 <img src={item.imgUrl} alt="" />
               </div>
 
               <div className="off-sale">
-                {item.id} 50% <br /> Off
+                50% <br /> Off
               </div>
               <div className="card-body">
                 <div className="price">
@@ -183,7 +210,198 @@ export const MyMobileCarousel = () => {
             </SwiperSlide>
           );
         })}
-       
+        <div className="swiper-button-prev">
+          <GrFormPrevious />
+        </div>
+        <div className="swiper-button-next">
+          <GrFormNext />
+        </div>
+      </Swiper>
+    </div>
+  );
+};
+export const MyFurnitureCarousel = () => {
+  const [isAnimated, setIsAnimated] = useState(false);
+  const [slidesPerView, setSlidesPerView] = useState(1);
+
+  useEffect(() => {
+    function handleResize() {
+      const windowWidth = window.innerWidth;
+      let newSlidesPerView = 1;
+
+      if (windowWidth >= 1200) {
+        newSlidesPerView = 3;
+      } else if (windowWidth >= 768) {
+        newSlidesPerView = 2;
+      } else {
+        newSlidesPerView = 1;
+      }
+
+      setSlidesPerView(newSlidesPerView);
+    }
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleClick = () => {
+    setIsAnimated(!isAnimated);
+  };
+
+  SwiperCore.use([Navigation]);
+
+  return (
+    <div className="swiper-container">
+      <Swiper
+        slidesPerView={slidesPerView}
+        spaceBetween={20}
+        slidesPerGroup={slidesPerView}
+        slidesPerColumnFill="row"
+        navigation={{
+          prevEl: ".swiper-button-prev",
+          nextEl: ".swiper-button-next",
+          disabledClass: "swiper-button-disabled",
+        }}
+        className="mySwipper"
+      >
+        {mobileCont.map((item, index) => {
+          return (
+            <SwiperSlide className="product-card" key={index}>
+              <div className="img-cont">
+                <img src={item.imgUrl} alt="" />
+              </div>
+
+              <div className="off-sale">
+                50% <br /> Off
+              </div>
+              <div className="card-body">
+                <div className="price">
+                  <div className="price-num">
+                    <p>${item.newPrice}</p>
+                    <p>${item.oldPrice}</p>
+                  </div>
+
+                  <div
+                    className={`HeartAnimation ${isAnimated ? "animate" : ""}`}
+                    onClick={handleClick}
+                  ></div>
+                </div>
+
+                <div className="rate">
+                  <MyRatingComponent value={item.rate} />
+                </div>
+
+                <h5>{item.title}</h5>
+              </div>
+            </SwiperSlide>
+          );
+        })}
+        <div className="swiper-button-prev">
+          <GrFormPrevious />
+        </div>
+        <div className="swiper-button-next">
+          <GrFormNext />
+        </div>
+      </Swiper>
+    </div>
+  );
+};
+
+export const MyDailyCarousel = () => {
+  const [isAnimated, setIsAnimated] = useState(false);
+  const [slidesPerView, setSlidesPerView] = useState(3);
+
+  useEffect(() => {
+    function handleResize() {
+      const windowWidth = window.innerWidth;
+      let newSlidesPerView = 3;
+
+      if (windowWidth >= 1200) {
+        newSlidesPerView = 5;
+      } else if (windowWidth >= 992) {
+        newSlidesPerView = 4;
+      } else if (windowWidth >= 768) {
+        newSlidesPerView = 3;
+      } else if (windowWidth >= 562) {
+        newSlidesPerView = 2;
+      } else {
+        newSlidesPerView = 1;
+      }
+
+      setSlidesPerView(newSlidesPerView);
+    }
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleSlideChange = (swiper) => {
+    console.log("Current Index:", swiper.realIndex);
+  };
+
+  const handleClick = () => {
+    setIsAnimated(!isAnimated);
+  };
+
+  SwiperCore.use([Navigation]);
+
+  return (
+    <div className="swiper-container">
+      <Swiper
+        slidesPerView={slidesPerView}
+        spaceBetween={20}
+        slidesPerGroup={slidesPerView}
+        slidesPerColumnFill="row"
+        navigation={{
+          prevEl: ".swiper-button-prev",
+          nextEl: ".swiper-button-next",
+          disabledClass: "swiper-button-disabled",
+        }}
+        onSlideChange={handleSlideChange}
+        className="mySwipper"
+      >
+        {dailyCont.map((item, index) => {
+          return (
+            <SwiperSlide className="product-card" key={index}>
+              <div className="img-cont">
+                <img src={item.imgUrl} alt="" />
+              </div>
+
+              <div className="off-sale">
+                50% <br /> Off
+              </div>
+              <div className="card-body">
+                <div className="price">
+                  <div className="price-num">
+                    <p>${item.newPrice}</p>
+                    <p>${item.oldPrice}</p>
+                  </div>
+
+                  <div
+                    className={`HeartAnimation ${isAnimated ? "animate" : ""}`}
+                    onClick={handleClick}
+                  ></div>
+                </div>
+
+                <div className="rate">
+                  <MyRatingComponent value={item.rate} />
+                </div>
+
+                <h5>{item.title}</h5>
+              </div>
+            </SwiperSlide>
+          );
+        })}
+        <div className="swiper-button-prev">
+          <GrFormPrevious />
+        </div>
+        <div className="swiper-button-next">
+          <GrFormNext />
+        </div>
       </Swiper>
     </div>
   );

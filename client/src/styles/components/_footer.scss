@@ -10,66 +10,78 @@ footer {
         height: 220px;
         background: #c5d8fc;
         text-align: center;
-        h4 {
-            font-size: 24px;
+        padding: 20px 5px;
+        h2 {
+            // font-size: 24px;
         }
         p {
             margin: 30px 0px;
         }
         .send-email-cont {
             display: flex;
+            padding: 5px;
             input {
-                height: 50px;
+                // height: 50px;
             }
         }
     }
     .foot-link-cont {
         width: 100%;
         height: auto;
-        padding: 20px;
+        padding: 20px 10px;
+
         .container {
             width: 100%;
-            display: flex;
-            gap: 5%;
-            justify-content: space-between;
-            @media (max-width: 768px) {
-                display: block;
-                &:first-child{
-                    // margin-bottom: 100px;
-                }
-            }
-            .foot-left-link-btk,
-            .foot-right-link-btk {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-                @media (max-width: 768px) {
-                    &:first-child{
-                        margin-bottom: 30px;
-                    }
-                }
-                
-            }
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-gap: 10px;
+            // grid-auto-flow: dense;
+
+            // .grid-card:first-child {
+            //     grid-column: span 2;
+            // }
+
             .logo-social-links {
-                max-width: 30%;
+                grid-column: span 2;
+                @media (max-width: 768px) {
+                    grid-column: span 3;
+                }
 
                 a {
                     display: flex;
                     color: $primary;
-                    font-size: 24px;
                     margin-bottom: 15px;
+                    width: 100%;
                     img {
-                        height: 50px;
+                        height: 40px;
+                        padding-right: 2px;
                     }
                 }
             }
             h6 {
                 font-size: 18px;
-                margin-bottom: 15px;
+                margin-bottom: 12px;
+            }
+            ul {
+                width: 100% !important;
+                margin-bottom: 10px;
             }
             li {
                 font-size: 14px;
                 margin-bottom: 5px;
+            }
+            .get-app {
+                img {
+                    width: 100%;
+                    max-width: 150px;
+                    padding-right: 5px;
+                }
+                ul {
+                    @media (max-width: 768px) {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                }
             }
         }
     }
@@ -82,6 +94,11 @@ footer {
         .container {
             display: flex;
             justify-content: space-between;
+
+            @media (max-width: 768px) {
+                // display: block;
+                font-size: small;
+            }
         }
     }
 }

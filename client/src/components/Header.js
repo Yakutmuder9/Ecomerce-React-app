@@ -53,7 +53,7 @@ const Header = () => {
             <a href="/">
               <img src={logo} alt="" />
               <h3>
-                <span>ShopZilla</span>
+                <span>Zilla</span>
               </h3>
             </a>
           </div>
@@ -109,10 +109,10 @@ const Header = () => {
                 Groceries <BsChevronDown />
               </li>
               <li>
-                Premium Fruits <BsChevronDown />
+                Fruits <BsChevronDown />
               </li>
               <li>
-                Home & Kitchen <BsChevronDown />{" "}
+                Home & Kitchen <BsChevronDown />
               </li>
               <li>
                 Fashion <BsChevronDown />
@@ -129,7 +129,7 @@ const Header = () => {
             </ul>
           </div>
           <div className="location ">
-            <MdLocationOn /> United state, Maryland <BsChevronDown />
+            <MdLocationOn /> US, MD <BsChevronDown />
           </div>
         </div>
       </header>

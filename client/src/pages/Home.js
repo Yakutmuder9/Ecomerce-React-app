@@ -2,15 +2,18 @@ import { BiChevronRight } from "react-icons/bi";
 import {
   MySwipperComponent,
   MyMobileCarousel,
+  MyFurnitureCarousel,
+  MyDailyCarousel,
 } from "../components/Features";
 
 const Home = () => {
+
   return (
     <div className="landing-page">
       <div className="swipper-container">
         <MySwipperComponent />
       </div>
-      <div className="smart-phones">
+      <div className="carousel-row" id="mobile-category">
         <div className="container">
           <div className="header">
             <h4>
@@ -23,13 +26,50 @@ const Home = () => {
             </a>
             <div className="header-txt-border"></div>
           </div>
-          <div className="phone-card-carousel">
+
+          <div className="card-carousel">
             <MyMobileCarousel />
           </div>
         </div>
       </div>
-      <div className="carosel-cotntainer">
+      <div className="carousel-row" id="furniture-category">
+        <div className="container">
+          <div className="header">
+            <h4>
+              Shop From <span>Top Categories</span>
+            </h4>
+            <a href="">
+              <button>
+                View All <BiChevronRight />
+              </button>
+            </a>
+            <div className="header-txt-border"></div>
+          </div>
+          <div className="card-carousel">
+            <MyFurnitureCarousel />
+          </div>
+        </div>
       </div>
+      <div className="carousel-row"  id="daily-category">
+        <div className="container">
+          <div className="header">
+            <h4>
+              Shop From <span>Top Categories</span>
+            </h4>
+            <a href="">
+              <button>
+                View All <BiChevronRight />
+              </button>
+            </a>
+            <div className="header-txt-border"></div>
+          </div>
+          <div className="card-carousel">
+            <MyDailyCarousel />
+          </div>
+        </div>
+      </div>
+
+     
     </div>
   );
 };
