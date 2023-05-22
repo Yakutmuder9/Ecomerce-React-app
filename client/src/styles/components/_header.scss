@@ -31,7 +31,7 @@ header {
         .container {
             @extend .place-items-center;
             height: 100%;
-            padding-right: 18px;
+            padding-right: 20px;
             .left-nav {
                 p {
                     font-size: 14px;
@@ -79,6 +79,9 @@ header {
                             transform: translateY(-8px) rotate(-45deg);
                         }
                     }
+                }
+                span {
+                    padding-top: 10px;
                 }
             }
             .md-logo-container {
@@ -189,43 +192,92 @@ header {
                 .nav-cart {
                     cursor: pointer;
                     font-size: 18px;
+                    a{
+                        color: $black;
+                    }
                 }
             }
         }
 
-        @media (max-width: 768px) {
-        }
+     
     }
 
     .navbar-drop-menu {
         width: 100%;
         height: 100vh;
         background: $white;
-        overflow: auto;
+        overflow-y: scroll;
         display: none;
-
-        .ul-item {
-            margin-left: 10px;
-            cursor: pointer;
-            transition: opacity 0.3s;
-
-            &:first-child {
-                margin-left: 0;
-            }
-        }
+        padding: 20px;
+        background: #e1e6f4;
 
         &.open {
-            display: block;
-            ul {
-                flex-direction: column;
-                align-items: flex-end;
-                margin-top: 10px;
-
+            display: none;
+            animation: navSlideIn 1s ease 0s 1 normal forwards;
+            border-bottom: 5px solid $primary;
+            @media (max-width: 768px) {
+                display: block;
             }
         }
         .container {
-            .navbar-menu {
-                display: none;
+            .navbar-srh-field {
+                display: flex;
+                height: 45px;
+                margin-bottom: 25px;
+                background: #00000011;
+                position: relative;
+                cursor: pointer;
+                input {
+                    width: 100%;
+                    border: 0.1px solid rgb(128, 128, 128);
+                    font-size: 14px;
+                    padding-left: 10px;
+                    border-radius: 6px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                    outline: none;
+                }
+                svg {
+                    position: absolute;
+                    right: 1px;
+                    height: 100%;
+                    width: 45px;
+                    padding: 5px 10px;
+                    border-top-right-radius: 6px;
+                    border-bottom-right-radius: 6px;
+                    background: #a7d2f350;
+                }
+            }
+            .accordion {
+                font-size: 18px;
+                font-weight: 400;
+                margin-bottom: 25px;
+                border-bottom: 1px solid rgba(192, 192, 192, 0.516);
+                .accordion-header {
+                    @extend .place-items-center;
+                }
+                .accordion-content {
+                    padding-left: 20px;
+                    border-bottom: 1px solid rgb(90, 90, 90);
+                    ul {
+                        flex-direction: column;
+                        align-items: flex-end;
+                        margin-top: 10px;
+
+                        li {
+                            @extend .place-items-center;
+                            margin-bottom: 5px;
+                            list-style: armenian;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+            .navbar-choose {
+                ul {
+                    li {
+                        margin-bottom: 15px;
+                    }
+                }
             }
         }
     }
@@ -244,6 +296,7 @@ header {
         @extend .place-items-center;
         height: 100%;
         padding-right: 18px;
+        border-top: 1px solid #0000001d;
         .logo-container {
             font-size: 24px;
             cursor: pointer;

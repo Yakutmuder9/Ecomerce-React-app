@@ -406,3 +406,30 @@ export const MyDailyCarousel = () => {
     </div>
   );
 };
+
+export const Breadcrumb = ({ items }) => {
+  return (
+    <nav aria-label="breadcrumb">
+      <ol className="breadcrumb">
+        {items.map((item, index) => (
+          <li key={index} className="breadcrumb-item">
+            {index === items.length - 1 ? (
+              <span className="breadcrumb-text">{item.text}</span>
+            ) : (
+              <a href={item.url} className="breadcrumb-link">
+                {item.text}
+              </a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+};
+{/* <Breadcrumb
+  items={[
+    { text: 'Home', url: '/' },
+    { text: 'Category', url: '/category' },
+    { text: 'Product' }
+  ]}
+/> */}

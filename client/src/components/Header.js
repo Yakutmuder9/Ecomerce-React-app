@@ -1,14 +1,35 @@
-import { BsCart2, BsChevronDown } from "react-icons/bs";
+import { BsCart2, BsChevronDown, BsChevronRight } from "react-icons/bs";
 import { MdMenu, MdLocationOn, MdSearch } from "react-icons/md";
-import { FaUserAlt } from "react-icons/fa";
+import {
+  FaAngleDown,
+  FaAngleLeft,
+  FaAngleRight,
+  FaAngleUp,
+  FaUserAlt,
+} from "react-icons/fa";
 import { HiShoppingCart } from "react-icons/hi";
 import { f1, f3, grind, logo, mobi, tshirt } from "../assets";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
+import { filterAccordItems } from "../data/data";
 
 const Header = () => {
-  const [isNavOpen, setIsNavOpen] = useState(true);
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [openItems, setOpenItems] = useState([]);
 
   const toggleMenu = () => setIsNavOpen(!isNavOpen);
+
+  const handleItemClick = (itemId) => {
+    if (openItems.includes(itemId)) {
+      setOpenItems(openItems.filter((id) => id !== itemId));
+    } else {
+      setOpenItems([...openItems, itemId]);
+    }
+  };
+
+  const toggleAccordion = (itemId) => {
+    handleItemClick(itemId);
+  };
   return (
     <>
       <div className="md-screen-notice">
@@ -31,7 +52,7 @@ const Header = () => {
                 <div className="bar"></div>
                 <div className="bar"></div>
               </div>
-              <span>
+              <span onClick={toggleMenu}>
                 <MdSearch />
               </span>
             </div>
@@ -66,10 +87,14 @@ const Header = () => {
                 <MdLocationOn /> US <BsChevronDown />
               </div>
               <div className="user-profile">
-                <FaUserAlt />
+                <a href="account">
+                  <FaUserAlt />
+                </a>
               </div>
               <div className="nav-cart">
-                <HiShoppingCart />
+                <a href="cart">
+                  <HiShoppingCart />
+                </a>
               </div>
             </div>
           </div>
@@ -77,15 +102,70 @@ const Header = () => {
 
         <div className={`navbar-drop-menu ${isNavOpen ? "open" : ""}`}>
           <div className="container">
-            <ul>
-              <li className="navbar-item">
-                <input type="text" placeholder="Search" id="" />
-                <MdSearch />
-              </li>
-              <li className="navbar-item">About</li>
-              <li className="navbar-item">Services</li>
-              <li className="navbar-item">Contact</li>
-            </ul>
+            <div className="navbar-srh-field">
+              <input type="text" placeholder="Search" id="" />
+              <MdSearch />
+            </div>
+            <div className="accordion-container">
+              {filterAccordItems.map((item) => {
+                const isOpen = openItems.includes(item.id);
+                return (
+                  <motion.div
+                    className="accordion"
+                    key={item.id}
+                    initial={{ opacity: 0, x: "-100vw" }}
+                    animate={{
+                      opacity: 1,
+                      x: 0,
+                    }}
+                    transition={{ type: "spring", duration: 3, bounce: 0.3 }}
+                  >
+                    <div
+                      className="accordion-header"
+                      onClick={() => toggleAccordion(item.id)}
+                    >
+                      <p>{item.title}</p>
+                      <span className="accordion-icon">
+                        {isOpen ? <FaAngleUp /> : <FaAngleRight />}
+                      </span>
+                    </div>
+                    <motion.div
+                      className="accordion-content"
+                      initial={isOpen ? "open" : "closed"}
+                      animate={isOpen ? "open" : "closed"}
+                      variants={{
+                        open: { opacity: 1, height: "auto" },
+                        closed: { opacity: 0, height: 0 },
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ul>
+                        {item?.filterList.map((list) => {
+                          return (
+                            <li>
+                              <a href=""> {list}</a>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </motion.div>
+                  </motion.div>
+                );
+              })}
+            </div>
+            <div className="navbar-choose">
+              <ul>
+                <li>
+                  <a href="signin">Sign In</a>
+                </li>
+                <li>
+                  <a href="contact">Contact</a>
+                </li>
+                <li>
+                  <a href="">Feeds</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </header>

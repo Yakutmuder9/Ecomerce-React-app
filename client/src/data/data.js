@@ -307,3 +307,38 @@ export const dailyCont = [
     wished: false,
   },
 ];
+
+export const filterAccordItems = [
+  {
+    id: 1,
+    title: "Groceries",
+    filterList: ["link", "second-link", "third-link"],
+  },
+  { id: 2, title: "Fruits", filterList: ["link", "second-link", "third-link"] },
+  {
+    id: 3,
+    title: "Home & Kitchen",
+    filterList: ["link", "second-link", "third-link"],
+  },
+  {
+    id: 4,
+    title: "Fashion",
+    filterList: ["link", "second-link", "third-link"],
+  },
+  {
+    id: 5,
+    title: "Elecrtonics",
+    filterList: ["link", "second-link", "third-link"],
+  },
+  { id: 6, title: "Beauty", filterList: ["link", "second-link", "third-link"] },
+  {
+    id: 7,
+    title: "Sport & Toys",
+    filterList: ["link", "second-link", "third-link"],
+  },
+  {
+    id: 8,
+    title: "Groceries",
+    filterList: ["link", "second-link", "third-link"],
+  },
+];

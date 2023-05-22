@@ -20,6 +20,12 @@ import f3 from "./f3.png";
 import f4 from "./f4.png";
 import f5 from "./f5.png";
 import f6 from "./f6.png";
+
+import pay1 from "./pay1.png";
+import pay2 from "./pay2.png";
+import pay3 from "./pay3.png";
+import pay4 from "./pay4.png";
+import pay5 from "./pay5.png";
 export {
   logo,
   addImg,
@@ -42,4 +48,9 @@ export {
   f4,
   f5,
   f6,
+  pay1,
+  pay2,
+  pay3,
+  pay4,
+  pay5,
 };
