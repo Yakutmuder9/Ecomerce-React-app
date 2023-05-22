@@ -56,23 +56,6 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="partner-links grid-card">
-            <h6>Partnership</h6>
-            <ul>
-              <li>
-                <a href="about">About Us</a>{" "}
-              </li>
-              <li>
-                <a href="#">Find Store</a>{" "}
-              </li>
-              <li>
-                <a href="products">Categories</a>{" "}
-              </li>
-              <li>
-                <a href="blogs">Blogs</a>{" "}
-              </li>
-            </ul>
-          </div>
 
           <div className="info-links grid-card">
             <h6>Information</h6>
