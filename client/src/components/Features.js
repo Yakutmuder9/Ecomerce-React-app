@@ -268,7 +268,7 @@ export const MyFurnitureCarousel = () => {
       <Swiper
         slidesPerView={slidesPerView}
         spaceBetween={20}
-        slidesPerGroup={slidesPerView}
+        // slidesPerGroup={slidesPerView}
         // slidesPerColumnFill="row"
         navigation={{
           prevEl: ".swiper-button-prev",
@@ -365,7 +365,7 @@ export const MyDailyCarousel = () => {
       <Swiper
         slidesPerView={slidesPerView}
         spaceBetween={20}
-        slidesPerGroup={slidesPerView}
+        // slidesPerGroup={slidesPerView}
         // slidesPerColumnFill="row"
         navigation={{
           prevEl: ".swiper-button-prev",
