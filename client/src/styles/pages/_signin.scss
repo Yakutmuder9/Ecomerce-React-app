@@ -1,0 +1,86 @@
+.sign-in {
+    width: 100%;
+    height: auto;
+
+    .sign-img {
+        @extend .place-items-center;
+        justify-content: center;
+        color: $white;
+        height: 35vh;
+        width: 100%;
+        background-image: linear-gradient(to left, #02146e8b, #010b2e80), url("../../assets/signin.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        padding: 70px 40px;
+
+        @media (max-width: 768px) {
+            display: block;
+        }
+        .form-field-card {
+            .password-txt {
+                margin-top: 25px;
+            }
+            span {
+                color: crimson;
+                padding-top: 5px;
+                font-size: small;
+            }
+            input {
+                padding: 15px;
+                margin-top: 10px;
+                width: 100%;
+                border-radius: 7px;
+                border: 1px solid rgb(137, 136, 136);
+                min-width: 400px;
+                font-size: medium;
+
+                &:focus {
+                    border: 1px solid $primary;
+                    outline: none;
+                }
+
+                @media (max-width: 768px) {
+                }
+            }
+            .sign-btn {
+                display: flex;
+                justify-content: center;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                button {
+                    padding: 15px 50px;
+                }
+            }
+        }
+        .forgot-password {
+            padding-top: 10px;
+            a {
+                color: $primary;
+            }
+        }
+        .signup-card {
+            background: $white;
+            border-radius: 12px;
+            padding: 25px 25px;
+            @extend .place-items-center;
+            flex-direction: column;
+            box-shadow: $box-shadow;
+            text-align: left;
+
+            ul {
+                padding: 20px;
+                padding-top: 0px;
+                li {
+                    list-style: circle;
+                    padding-bottom: 2px;
+                }
+            }
+        }
+    }
+}

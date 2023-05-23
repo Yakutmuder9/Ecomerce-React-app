@@ -2,6 +2,9 @@
     background: #eff2f4;
     .container {
         padding: 20px;
+        @media (max-width: 562px) {
+            padding: 10px;
+        }
         .header {
             padding: 10px 0px 15px 0px;
             font-size: x-large;
@@ -31,17 +34,28 @@
                         margin-bottom: 20px;
                         border-radius: 16px;
                         background: $white;
-
+                        cursor: pointer;
+                        @media (max-width: 562px) {
+                            display: block;
+                        }
                         .cart-content {
                             @extend .place-items-center;
                             padding: 5px 15px;
                             gap: 5px;
+
+                            @media (max-width: 562px) {
+                                padding: 5px 5px;
+                                gap: 1px;
+                            }
                             .cart-img {
                                 img {
                                     width: auto;
                                     height: 220px;
                                     @media (max-width: 768px) {
-                                        height: 150px;
+                                        height: 120px;
+                                    }
+                                    @media (max-width: 562px) {
+                                        height: 80px;
                                     }
                                 }
                             }
@@ -49,6 +63,23 @@
                                 flex-direction: column;
                                 display: flex;
                                 gap: 30px;
+                                @media (max-width: 768px) {
+                                    gap: 5px;
+
+                                    h4 {
+                                        font-size: 15px;
+                                    }
+                                    p {
+                                        font-size: 12px;
+                                    }
+                                    button {
+                                        width: 40%;
+                                        padding: 5px 12px !important;
+                                        &:last-child {
+                                            width: 50%;
+                                        }
+                                    }
+                                }
                             }
                             .cart-card-btns {
                                 display: flex;
@@ -68,11 +99,23 @@
                         }
                         .cart-price {
                             text-align: end;
+
+                            @media (max-width: 562px) {
+                                display: flex;
+                                align-items: center;
+                                width: 100%;
+                                gap: 30%;
+                                padding-top: 12px;
+                                flex-direction: row-reverse;
+                            }
                             select {
                                 margin-top: 20px;
                                 margin-left: 20px;
                                 width: 70px;
                                 padding: 3px 5px;
+                                @media (max-width: 562px) {
+                                    margin-top: 0px;
+                                }
                             }
                         }
                         &:hover {
@@ -171,8 +214,9 @@
                             &:last-child {
                                 margin-top: 15px;
                                 gap: 15px;
+                                padding-top: 12px;
                                 img {
-                                    height: 50px;
+                                    height: 40px;
                                 }
                             }
                             &.total {
@@ -180,6 +224,81 @@
                             }
                         }
                     }
+                }
+            }
+        }
+
+        .carousel-row {
+            .card-carousel{
+                .mySwipper{
+                    padding: 15px 0px;
+                    .product-card{
+                        height: 320px
+                    }
+                }
+            }
+            
+
+            .header {
+                @extend .place-items-center;
+                font-size: 24px;
+                font-weight: bolder;
+                padding: 15px 0px;
+                border-bottom: 1px solid rgb(222, 220, 220);
+                margin-bottom: 20px;
+                position: relative;
+                overflow: visible;
+
+                @media (max-width: 768px) {
+                    font-size: 18px;
+                }
+
+                .header-txt-border {
+                    position: absolute;
+                    width: 40%;
+                    border-bottom: 2px solid $primary;
+                    border-radius: 2px;
+                    transform: translateY(28px);
+
+                    @media (max-width: 768px) {
+                        transform: translateY(26px);
+                    }
+                }
+                span {
+                    color: $primary;
+                }
+                button {
+                    border: none;
+                    background: none;
+                    color: $primary;
+                }
+            }
+            .swiper-button-prev,
+            .swiper-button-next {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 40px;
+                height: 40px;
+                background-color: transparent;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                z-index: 16;
+                border-radius: 50%;
+                box-shadow: 0px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
+                background: $white;
+                padding: 6px;
+                transition: background-color 0.3;
+                &.swiper-button-prev {
+                    left: 1px;
+                }
+                &.swiper-button-next {
+                    right: 1px;
+                }
+                &.swiper-button-disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
                 }
             }
         }

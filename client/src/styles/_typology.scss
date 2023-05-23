@@ -153,6 +153,29 @@
         cursor: not-allowed;
     }
 }
+a {
+    color: $black;
+}
+// breadcrumb Typo
+.breadcrumb {
+    position: sticky;
+    top: 105px;
+    max-width: 1200px;
+    margin: auto;
+    font-size: 14px;
+    z-index: 99;
+    @media (max-width: 768px) {
+        top: 60px;
+        padding-top: 5px;
+        padding-left: 20px;
+        font-size: 12px;
+    }
+}
+
+
+
+
+
 
 // Grid Typology----------------------
 .grid {
@@ -250,6 +273,7 @@
         padding-top: 4px;
     }
 }
+
 // Responsive Typology 992px
 @media (max-width: 992px) {
     .grid {

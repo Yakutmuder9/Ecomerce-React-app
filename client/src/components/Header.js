@@ -5,6 +5,7 @@ import {
   FaAngleLeft,
   FaAngleRight,
   FaAngleUp,
+  FaHeart,
   FaUserAlt,
 } from "react-icons/fa";
 import { HiShoppingCart } from "react-icons/hi";
@@ -12,6 +13,7 @@ import { f1, f3, grind, logo, mobi, tshirt } from "../assets";
 import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { filterAccordItems } from "../data/data";
+import NavDropDown from "./NavbarDropdown";
 
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -86,8 +88,14 @@ const Header = () => {
               <div className="location">
                 <MdLocationOn /> US <BsChevronDown />
               </div>
+
+              <div className="whishlist">
+                <a href="wishlist">
+                  <FaHeart />
+                </a>
+              </div>
               <div className="user-profile">
-                <a href="account">
+                <a href="signin">
                   <FaUserAlt />
                 </a>
               </div>
@@ -182,6 +190,7 @@ const Header = () => {
           </div>
 
           <div className="filter-list">
+            <NavDropDown />
             <ul>
               <li>
                 <img src={f1} alt="" />

@@ -1,6 +1,7 @@
 import { pay1, pay2, pay3, pay4, pay5, tshirt } from "../assets";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
-import { MyRatingComponent } from "../components/Features";
+import { MyMobileCarousel, MyRatingComponent } from "../components/Features";
+import { BiChevronRight } from "react-icons/bi";
 
 const Cart = () => {
   return (
@@ -91,6 +92,26 @@ const Cart = () => {
                   <img src={pay5} alt="" />
                 </li>
               </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="carousel-row" id="mobile-category">
+          <div className="container">
+            <div className="header">
+              <h4>
+                Realated Producs <span>smart phones</span>
+              </h4>
+              <a href="">
+                <button>
+                  View All <BiChevronRight />
+                </button>
+              </a>
+              <div className="header-txt-border"></div>
+            </div>
+
+            <div className="card-carousel">
+              <MyMobileCarousel />
             </div>
           </div>
         </div>

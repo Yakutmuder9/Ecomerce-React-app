@@ -1,0 +1,103 @@
+.navbar-dropdown-container {
+    width: auto;
+    position: absolute;
+    transform: translateY(-12px);
+
+    .menu-container {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        .menu-item {
+            position: relative;
+            cursor: pointer;
+
+            .menu-item-text {
+                position: relative;
+                padding: 15px 10px;
+                white-space: nowrap;
+                font-size: 13px;
+                font-weight: 500;
+
+                .underline {
+                    position: absolute;
+                    bottom: -1px;
+                    left: 0;
+                    right: 0;
+                    height: 2px;
+                    background: $primary;
+                }
+            }
+
+            .sub-menu {
+                min-width: max-content;
+
+                .sub-menu-content {
+                    position: absolute;
+                    padding: 2.5rem;
+                    margin-top: 15px;
+                    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                    min-width: 400px;
+                    background-color: $white;
+                    left: -50%;
+                    border-width: 1px;
+                    border-radius: 0.375rem;
+
+                    .sub-item {
+                        margin-bottom: 10px;
+                        .sub-item-content {
+                            display: flex;
+                            justify-content: space-between;
+                            .hashicon {
+                                margin-right: 10px;
+                            }
+
+                            .sub-title {
+                                font-weight: bold;
+                                color: #333;
+                                font-size: 16px;
+                            }
+
+                            .sub-text {
+                                font-weight: bold;
+                                color: #999;
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // &:nth-child(4n + 3) {
+            //     .sub-menu-content {
+            //         transform: translateX(0%)!important;
+            //     }
+            // }
+            &:nth-child(4n + 4) {
+                .sub-menu-content {
+                    left: -250%!important;
+                }
+            }
+
+            &:nth-child(4n + 5) {
+                .sub-menu-content {
+                    left: -250%!important;
+                }
+            }
+            &:nth-child(4n + 6) {
+                .sub-menu-content {
+                    left: -380%!important;
+                }
+            }
+            &:nth-child(4n + 7) {
+                .sub-menu-content {
+                    left: -350%!important;
+                }
+            }
+        }
+    }
+}
+
+

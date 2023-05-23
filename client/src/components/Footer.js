@@ -13,7 +13,7 @@ const Footer = () => {
           </p>
           <div className="send-email-cont">
             <input type="text" placeholder="Email" className="input" />
-            <button className="btn">Subscribe</button>
+            <button >Subscribe</button>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@ const Footer = () => {
               <div className="youtube-link"></div>
             </div>
           </div>
-          <div className="about-links grid-card">
+           <div className="about-links grid-card">
             <h6>About</h6>
             <ul>
               <li>
@@ -77,7 +77,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="user-links grid-card">
+         {/* <div className="user-links grid-card">
             <h6>For User</h6>
             <ul>
               <li>
@@ -104,7 +104,7 @@ const Footer = () => {
                 <img src={AppStore} alt="" />
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
 

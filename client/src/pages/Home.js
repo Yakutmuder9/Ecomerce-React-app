@@ -7,12 +7,13 @@ import {
 } from "../components/Features";
 
 const Home = () => {
-
   return (
     <div className="landing-page">
       <div className="swipper-container">
         <MySwipperComponent />
       </div>
+      
+      <div className="breadcrumb">Home / </div>
       <div className="carousel-row" id="mobile-category">
         <div className="container">
           <div className="header">
@@ -50,7 +51,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="carousel-row"  id="daily-category">
+      <div className="carousel-row" id="daily-category">
         <div className="container">
           <div className="header">
             <h4>
@@ -68,8 +69,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-     
     </div>
   );
 };

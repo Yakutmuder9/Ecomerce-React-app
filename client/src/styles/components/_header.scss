@@ -20,7 +20,7 @@ header {
     z-index: 999;
 
     @media (max-width: 768px) {
-        // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        box-shadow:3px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
     }
 
     .main-nav-cont {
@@ -106,7 +106,7 @@ header {
             .right-nav {
                 @extend .place-items-center;
                 justify-content: flex-end;
-                width: 50%;
+                width: 55%;
                 height: 100%;
                 gap: 20px;
                 .location {
@@ -121,11 +121,11 @@ header {
                 .search-filed {
                     .search-input {
                         @extend .place-items-center;
-                        // width: 40%;
+                        position: relative;
                         .custom-select {
                             position: absolute;
                             appearance: none;
-                            background-color: $light-blue;
+                            // background-color: $light-blue;
                             border: 1px solid $gray;
                             border-radius: 5px;
                             padding: 8px;
@@ -133,7 +133,7 @@ header {
                             color: $primary;
                             width: 100px;
                             margin-left: 5px;
-                            box-shadow: 2px 4px 6px #609efc4e;
+                            box-shadow: 1px 2px 3px #609efc4e;
                             border-color: $primary;
 
                             &:focus {
@@ -169,6 +169,8 @@ header {
                         }
 
                         .search-icon {
+                            position: absolute;
+                            right: 0;
                             padding-left: 10px;
                             padding-top: 6px;
                             padding-right: 10px;
@@ -176,7 +178,6 @@ header {
                             background: none;
                             font-size: 20px;
                             border-left: 1px solid rgb(115, 115, 115);
-                            transform: translatex(-100%);
                             cursor: pointer;
                         }
                     }
@@ -188,18 +189,21 @@ header {
                     justify-content: flex-end;
                     width: auto;
                 }
+                .whishlist {
+                    @media (max-width: 768px) {
+                        display: none;
+                    }
+                }
                 .user-profile,
                 .nav-cart {
                     cursor: pointer;
                     font-size: 18px;
-                    a{
+                    a {
                         color: $black;
                     }
                 }
             }
         }
-
-     
     }
 
     .navbar-drop-menu {
@@ -287,11 +291,11 @@ header {
     width: 100%;
     height: 45px;
     background: $white;
-    box-shadow: 0px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
     position: sticky;
     top: 55px;
     z-index: 12;
-
+    box-shadow:3px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
+    
     .container {
         @extend .place-items-center;
         height: 100%;
@@ -318,9 +322,9 @@ header {
 
                 li {
                     @extend .place-items-center;
-                    font-size: 12px;
+                    font-size: 13px;
                     margin-left: 12px;
-                    font-weight: 600;
+                    font-weight: 500;
                     cursor: pointer;
                     img {
                         width: 25px;
@@ -349,6 +353,9 @@ header {
                         display: flex;
                         flex-direction: column;
                     }
+                }
+                @media (min-width: 768px) {
+                    display: none;
                 }
             }
             @media (max-width: 768px) {
