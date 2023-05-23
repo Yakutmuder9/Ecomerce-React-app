@@ -354,8 +354,15 @@ header {
                         flex-direction: column;
                     }
                 }
+              
                 @media (min-width: 768px) {
                     display: none;
+                }
+                .sport-toy{
+                    display: flex;
+                    @media(max-width: 562px){
+                        display: none;
+                    }
                 }
             }
             @media (max-width: 768px) {

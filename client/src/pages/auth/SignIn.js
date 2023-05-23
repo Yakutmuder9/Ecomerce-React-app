@@ -12,11 +12,11 @@ const SignIn = () => {
       <div className="container">
         <div className="form-field-card">
           <p>Email Address</p>
-          <input type="email" placeholder="" name="email" required />
+          <input type="email" placeholder="" name="email" required /><br />
           {error && <span>* Please Fill Your First Name</span>}
 
           <p className="password-txt">Password</p>
-          <input type="password" placeholder="" name="pasword" required />
+          <input type="password" placeholder="" name="pasword" required /><br />
           {error && <span>* Please Fill Your First Name</span>}
           <div className="forgot-password">
             <a href="forgot-password">

@@ -207,7 +207,7 @@ const Header = () => {
               <li>
                 <img src={grind} alt="" />
                 <span>
-                  Home & Kitchen <BsChevronDown />
+                  Home  <BsChevronDown />
                 </span>
               </li>
               <li>
@@ -228,7 +228,7 @@ const Header = () => {
                   Beauty <BsChevronDown />
                 </span>
               </li>
-              <li>
+              <li className="sport-toy">
                 <img src={logo} alt="" />
                 <span>
                   Sport & Toys <BsChevronDown />
