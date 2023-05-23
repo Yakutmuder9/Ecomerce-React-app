@@ -21,11 +21,24 @@
 
         @media (max-width: 768px) {
             display: block;
+            padding: 50px 100px;
+        }
+
+        @media (max-width: 768px) {
+            padding: 10px;
+            padding-top: 50px;
         }
         .form-field-card {
+            p {
+              
+                @media (max-width: 768px) {
+                    font-size: small;
+                }
+            }
             .password-txt {
                 margin-top: 25px;
             }
+
             span {
                 color: crimson;
                 padding-top: 5px;
@@ -38,6 +51,7 @@
                 border-radius: 7px;
                 border: 1px solid rgb(137, 136, 136);
                 font-size: medium;
+                min-width: 400px;
 
                 &:focus {
                     border: 1px solid $primary;
@@ -46,7 +60,7 @@
 
                 @media (max-width: 768px) {
                     padding: 10px;
-
+                    min-width: 100%;
                 }
             }
             .sign-btn {

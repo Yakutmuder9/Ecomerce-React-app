@@ -16,7 +16,7 @@ const MenuItemVariants = {
 };
 const SubItemVariants = {
   hidden: {
-    x: -10,
+    x: -50,
     opacity: 0,
   },
   visible: {
@@ -34,6 +34,7 @@ const NavDropDown = () => {
           <SubItem title="Blog" text="Latest posts" />
           <SubItem title="Contact" text="Get in touch" />
         </MenuItem>
+        
         <MenuItem text={"Fruits"}>
           <SubItem title="The Team" text="Get to know us better" />
           <SubItem title="The Company" text="Since 1998" />
@@ -42,7 +43,13 @@ const NavDropDown = () => {
             text="Increase the GDP of the internet"
           />
           <SubItem title="Investors" text="who's backing us" />
+          <SubItem
+            title="Our Mission"
+            text="Increase the GDP of the internet"
+          />
+          <SubItem title="Investors" text="who's backing us" />
         </MenuItem>
+
         <MenuItem text={"Home & Kitchen"}>
           <SubItem
             title="Ecommerce"
@@ -61,6 +68,7 @@ const NavDropDown = () => {
             text="Facilitate on-platform payments and pay creators globally"
           />
         </MenuItem>
+
         <MenuItem text={"Fashion"}>
           <SubItem
             title="Ecommerce"
@@ -78,7 +86,12 @@ const NavDropDown = () => {
             title="Creator Economy"
             text="Facilitate on-platform payments and pay creators globally"
           />
+          <SubItem
+            title="Creator Economy"
+            text="Facilitate on-platform payments and pay creators globally"
+          />
         </MenuItem>
+
         <MenuItem text={"Elecrtonics"}>
           <SubItem
             title="Ecommerce"
@@ -92,11 +105,9 @@ const NavDropDown = () => {
             title="Platforms"
             text="Let customers accept payments within your platform"
           />
-          <SubItem
-            title="Creator Economy"
-            text="Facilitate on-platform payments and pay creators globally"
-          />
+       
         </MenuItem>
+
         <MenuItem text={" Beauty"}>
           <SubItem
             title="Ecommerce"
@@ -115,6 +126,7 @@ const NavDropDown = () => {
             text="Facilitate on-platform payments and pay creators globally"
           />
         </MenuItem>
+       
         <MenuItem text={"Sport & Toys"}>
           <SubItem
             title="Ecommerce"
@@ -123,6 +135,14 @@ const NavDropDown = () => {
           <SubItem
             title="Marketplaces"
             text="Pay out globally and facilitate multiparty payments"
+          />
+          <SubItem
+            title="Platforms"
+            text="Let customers accept payments within your platform"
+          />
+          <SubItem
+            title="Creator Economy"
+            text="Facilitate on-platform payments and pay creators globally"
           />
           <SubItem
             title="Platforms"
@@ -157,14 +177,14 @@ const MenuItem = ({ text, children, ...props }) => {
           ></motion.div>
         )}
       </span>
-      
+
       {isBeingHovered && (
         <div className="sub-menu">
           <motion.div
             {...props}
             layoutId="menu"
             className="sub-menu-content"
-            variants={MenuItemVariants}
+            // variants={MenuItemVariants}
             initial="hidden"
             animate="visible"
           >
@@ -176,10 +196,12 @@ const MenuItem = ({ text, children, ...props }) => {
   );
 };
 
-
 const SubItem = ({ title, text }) => {
   return (
-    <motion.div className="sub-item" layout variants={SubItemVariants}>
+    <motion.div
+      className="sub-item"
+      // layout variants={SubItemVariants}
+    >
       <div className="sub-item-content">
         <Hashicon value={title} size={25} />
         <div className="sub-item-details">

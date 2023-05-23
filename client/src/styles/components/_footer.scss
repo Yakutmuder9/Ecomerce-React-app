@@ -3,6 +3,7 @@ footer {
     height: auto;
     background: $white;
     box-shadow: 0px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
+    overflow: hidden;
 
     .subscribe-cont {
         @extend .place-items-center;
@@ -11,10 +12,15 @@ footer {
         text-align: center;
         padding: 40px 5px;
         h2 {
-            // font-size: 24px;
+            @media (max-width: 768px) {
+                font-size: 18px;
+            }
         }
         p {
             margin: 30px 0px;
+            @media (max-width: 768px) {
+                font-size: medium;
+            }
         }
         .send-email-cont {
             display: flex;
@@ -104,6 +110,10 @@ footer {
             @media (max-width: 768px) {
                 // display: block;
                 font-size: small;
+            }
+            .go-top{
+                display: flex;
+                gap: 5px;
             }
         }
     }

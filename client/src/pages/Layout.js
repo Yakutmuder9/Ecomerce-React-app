@@ -4,13 +4,14 @@ import Header from "../components/Header";
 
 const Layout = () => {
   return (
-    
     <>
       <Header />
-      <Outlet />
-      <Footer />
+      {/* <div className="scroll-container"> */}
+        <Outlet />
+        <Footer />
+      {/* </div> */}
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
