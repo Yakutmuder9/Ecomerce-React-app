@@ -6,6 +6,7 @@ import grind from "./grind.png";
 import homeElec from "./home-elec.png";
 import cam from "./cam.png";
 import bag from "./bag.png";
+import us from "./us.png";
 import goPlay from "./google-play.png";
 import AppStore from "./app-store.png";
 import mob2 from "./mob2.png";
@@ -39,6 +40,7 @@ export {
   cam,
   grind,
   bag,
+  us,
   homeElec,
   goPlay,
   AppStore,

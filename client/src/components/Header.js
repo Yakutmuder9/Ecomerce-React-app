@@ -32,7 +32,7 @@ const Header = () => {
   const toggleAccordion = (itemId) => {
     handleItemClick(itemId);
   };
-  
+
   return (
     <>
       <div className="md-screen-notice">
@@ -91,17 +91,17 @@ const Header = () => {
               </div>
 
               <div className="whishlist">
-                <a href="wishlist">
+                <a href="/wishlist">
                   <FaHeart />
                 </a>
               </div>
               <div className="user-profile">
-                <a href="signin">
+                <a href="/signin">
                   <FaUserAlt />
                 </a>
               </div>
               <div className="nav-cart">
-                <a href="cart">
+                <a href="/cart">
                   <HiShoppingCart />
                 </a>
               </div>
@@ -165,6 +165,9 @@ const Header = () => {
             <div className="navbar-choose">
               <ul>
                 <li>
+                  <a href="wishlist">Wishlist</a>
+                </li>
+                <li>
                   <a href="signin">Sign In</a>
                 </li>
                 <li>
@@ -208,7 +211,7 @@ const Header = () => {
               <li>
                 <img src={grind} alt="" />
                 <span>
-                  Home  <BsChevronDown />
+                  Home <BsChevronDown />
                 </span>
               </li>
               <li>

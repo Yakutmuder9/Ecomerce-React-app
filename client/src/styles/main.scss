@@ -3,11 +3,12 @@
 @import "./typology.scss";
 @import "./components/header";
 @import "./components/footer";
+@import "./pages/signin";
+@import "./pages/signup";
 @import "./components/navbar-dropdown";
 @import "./pages/cart";
 @import "./pages/home";
-@import "./pages/signin";
-@import "./pages/signup";
+@import "./pages/single-product";
 
 *,
 ::before,

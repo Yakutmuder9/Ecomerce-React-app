@@ -111,9 +111,15 @@ footer {
                 // display: block;
                 font-size: small;
             }
-            .go-top{
+            .go-top {
                 display: flex;
                 gap: 5px;
+
+            }
+            span {
+                @media (max-width: 768px) {
+                    display: none;
+                }
             }
         }
     }

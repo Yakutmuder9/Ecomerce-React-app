@@ -1,5 +1,5 @@
 import { BsChevronUp } from "react-icons/bs";
-import { logo, goPlay, AppStore } from "../assets";
+import { logo, goPlay, AppStore, us } from "../assets";
 
 const Footer = () => {
   return (
@@ -111,9 +111,10 @@ const Footer = () => {
       <div className="made-cont">
         <div className="container">
           <div className="made-by">
-            <p>© 2023 Ecommerce. Made by Yakut Ahmedin</p>
+            <p>© 2023 Ecomm<span>erce</span>. Made by Yakut Ahmedin</p>
           </div>
           <div className="go-top">
+            <span><img src={us} alt="" /></span>
             English <BsChevronUp />
           </div>
         </div>

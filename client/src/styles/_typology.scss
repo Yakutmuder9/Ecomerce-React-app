@@ -119,7 +119,81 @@
         }
     }
 }
+// side prev and next btn
+.carousel-row {
+    .card-carousel {
+        .mySwipper {
+            padding: 15px 0px;
+            .product-card {
+                height: 320px;
+            }
+        }
+    }
 
+    .header {
+        @extend .place-items-center;
+        font-size: 24px;
+        font-weight: bolder;
+        padding: 15px 0px;
+        border-bottom: 1px solid rgb(222, 220, 220);
+        margin-bottom: 20px;
+        position: relative;
+        overflow: visible;
+
+        @media (max-width: 768px) {
+            font-size: 18px;
+        }
+
+        .header-txt-border {
+            position: absolute;
+            width: 40%;
+            border-bottom: 2px solid $primary;
+            border-radius: 2px;
+            transform: translateY(28px);
+
+            @media (max-width: 768px) {
+                transform: translateY(26px);
+            }
+        }
+        span {
+            color: $primary;
+        }
+        button {
+            border: none;
+            background: none;
+            color: $primary;
+        }
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background-color: transparent;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 16;
+        border-radius: 50%;
+        box-shadow: 0px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
+        background: $white;
+        padding: 6px;
+        transition: background-color 0.3;
+
+        &.swiper-button-prev {
+            left: 1px;
+        }
+        &.swiper-button-next {
+            right: 1px;
+        }
+        &.swiper-button-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+}
 // Button Typology
 .btn {
     display: inline-block;
@@ -171,11 +245,6 @@ a {
         font-size: 12px;
     }
 }
-
-
-
-
-
 
 // Grid Typology----------------------
 .grid {
