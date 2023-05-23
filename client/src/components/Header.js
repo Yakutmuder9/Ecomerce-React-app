@@ -161,17 +161,17 @@ const Header = () => {
                   </motion.div>
                 );
               })}
-            </div>
+            </div><br />
             <div className="navbar-choose">
               <ul>
                 <li>
-                  <a href="wishlist">Wishlist</a>
+                  <a href="/wishlist">Wishlist</a>
                 </li>
                 <li>
-                  <a href="signin">Sign In</a>
+                  <a href="/signin">Sign In</a>
                 </li>
                 <li>
-                  <a href="contact">Contact</a>
+                  <a href="/contact">Contact</a>
                 </li>
                 <li>
                   <a href="">Feeds</a>

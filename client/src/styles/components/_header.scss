@@ -21,7 +21,7 @@ header {
     z-index: 999;
 
     @media (max-width: 768px) {
-        box-shadow: 3px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
+        // box-shadow: 3px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
     }
 
     .main-nav-cont {
@@ -281,6 +281,9 @@ header {
                 ul {
                     li {
                         margin-bottom: 15px;
+                        a {
+                            color: $primary;
+                        }
                     }
                 }
             }

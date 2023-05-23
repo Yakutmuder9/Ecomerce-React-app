@@ -7,7 +7,7 @@ import "swiper/css";
 import { Autoplay, Pagination, EffectFade } from "swiper";
 import { BsPlayCircleFill } from "react-icons/bs";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
-import SwiperCore, { Navigation } from "swiper";
+import SwiperCore, { FreeMode, Navigation } from "swiper";
 
 export const MySwipperComponent = () => {
   const [items, setItems] = useState(HomeSildeCont);
@@ -30,7 +30,7 @@ export const MySwipperComponent = () => {
         pagination={{
           clickable: true,
         }}
-        modules={[Autoplay, Pagination, EffectFade]}
+        modules={[Autoplay, Pagination, FreeMode, EffectFade]}
         className="mySwiper"
         loop={true}
         autoplay={{
@@ -163,14 +163,13 @@ export const MyMobileCarousel = () => {
   };
 
   SwiperCore.use([Navigation]);
-
   return (
     <div className="swiper-container">
       <Swiper
         slidesPerView={slidesPerView}
         spaceBetween={20}
-        slidesPerGroup={slidesPerView}
-        // slidesPerColumnFill="row"
+        freeMode={true}
+        modules={[FreeMode, EffectFade]}
         navigation={{
           prevEl: ".swiper-button-prev",
           nextEl: ".swiper-button-next",
@@ -231,20 +230,15 @@ export const MyFurnitureCarousel = () => {
 
       if (windowWidth >= 1200) {
         newSlidesPerView = 3.5;
-      } 
-      else if (windowWidth >= 992) {
+      } else if (windowWidth >= 992) {
         newSlidesPerView = 3;
-      }
-      else if (windowWidth >= 768) {
+      } else if (windowWidth >= 768) {
         newSlidesPerView = 2.5;
-      }
-      else if (windowWidth >= 562) {
+      } else if (windowWidth >= 562) {
         newSlidesPerView = 2;
-      }
-      else if (windowWidth >= 350) {
+      } else if (windowWidth >= 350) {
         newSlidesPerView = 1.5;
-      }
-       else {
+      } else {
         newSlidesPerView = 1;
       }
 
@@ -262,19 +256,18 @@ export const MyFurnitureCarousel = () => {
   };
 
   SwiperCore.use([Navigation]);
-
   return (
     <div className="swiper-container">
       <Swiper
         slidesPerView={slidesPerView}
         spaceBetween={20}
-        // slidesPerGroup={slidesPerView}
-        // slidesPerColumnFill="row"
         navigation={{
           prevEl: ".swiper-button-prev",
           nextEl: ".swiper-button-next",
           disabledClass: "swiper-button-disabled",
         }}
+        freeMode={true}
+        modules={[FreeMode, EffectFade]}
         className="mySwipper"
       >
         {mobileCont.map((item, index) => {
@@ -350,29 +343,23 @@ export const MyDailyCarousel = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleSlideChange = (swiper) => {
-    console.log("Current Index:", swiper.realIndex);
-  };
-
   const handleClick = () => {
     setIsAnimated(!isAnimated);
   };
 
   SwiperCore.use([Navigation]);
-
   return (
     <div className="swiper-container">
       <Swiper
         slidesPerView={slidesPerView}
         spaceBetween={20}
-        // slidesPerGroup={slidesPerView}
-        // slidesPerColumnFill="row"
         navigation={{
           prevEl: ".swiper-button-prev",
           nextEl: ".swiper-button-next",
           disabledClass: "swiper-button-disabled",
         }}
-        onSlideChange={handleSlideChange}
+        freeMode={true}
+        modules={[FreeMode, EffectFade]}
         className="mySwipper"
       >
         {dailyCont.map((item, index) => {
@@ -417,24 +404,4 @@ export const MyDailyCarousel = () => {
     </div>
   );
 };
-
-// export const Breadcrumb = ({ items }) => {
-//   return (
-//     <nav aria-label="breadcrumb">
-//       <ol className="breadcrumb">
-//         {items.map((item, index) => (
-//           <li key={index} className="breadcrumb-item">
-//             {index === items.length - 1 ? (
-//               <span className="breadcrumb-text">{item.text}</span>
-//             ) : (
-//               <a href={item.url} className="breadcrumb-link">
-//                 {item.text}
-//               </a>
-//             )}
-//           </li>
-//         ))}
-//       </ol>
-//     </nav>
-//   );
-// };
 
