@@ -11,6 +11,7 @@
         display: block;
     }
 }
+
 // Header
 header {
     width: 100%;
@@ -20,7 +21,7 @@ header {
     z-index: 999;
 
     @media (max-width: 768px) {
-        box-shadow:3px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
+        box-shadow: 3px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
     }
 
     .main-nav-cont {
@@ -294,8 +295,8 @@ header {
     position: sticky;
     top: 55px;
     z-index: 12;
-    box-shadow:3px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
-    
+    box-shadow: 3px 2px 4px #00000029, 0px 0px 0px 1px #0000000f;
+
     .container {
         @extend .place-items-center;
         height: 100%;
@@ -354,13 +355,13 @@ header {
                         flex-direction: column;
                     }
                 }
-              
+
                 @media (min-width: 768px) {
                     display: none;
                 }
-                .sport-toy{
+                .sport-toy {
                     display: flex;
-                    @media(max-width: 562px){
+                    @media (max-width: 562px) {
                         display: none;
                     }
                 }

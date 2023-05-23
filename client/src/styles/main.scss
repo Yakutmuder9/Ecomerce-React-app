@@ -47,6 +47,13 @@ body {
     overflow-y: auto;
     overscroll-behavior: contain;
 }
+.Layout {
+    .scrolled {
+        .main-nav-cont {
+            background: #000!important;
+        }
+    }
+}
 
 // body {
 //     // width: ;

@@ -18,7 +18,7 @@ const Home = () => {
         <div className="container">
           <div className="header">
             <h4>
-              Grab the best deal on <span>smart phones</span>
+              Best deal on <span>smart phones</span>
             </h4>
             <a href="">
               <button>
@@ -37,7 +37,7 @@ const Home = () => {
         <div className="container">
           <div className="header">
             <h4>
-              Shop From <span>Top Categories</span>
+              Top <span>Electronics Brands</span>
             </h4>
             <a href="">
               <button>
@@ -55,7 +55,7 @@ const Home = () => {
         <div className="container">
           <div className="header">
             <h4>
-              Shop From <span>Top Categories</span>
+              Daily <span>Essentials</span>
             </h4>
             <a href="">
               <button>

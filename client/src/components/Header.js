@@ -32,6 +32,7 @@ const Header = () => {
   const toggleAccordion = (itemId) => {
     handleItemClick(itemId);
   };
+  
   return (
     <>
       <div className="md-screen-notice">
@@ -148,9 +149,9 @@ const Header = () => {
                       transition={{ duration: 0.3 }}
                     >
                       <ul>
-                        {item?.filterList.map((list) => {
+                        {item?.filterList.map((list, i) => {
                           return (
-                            <li>
+                            <li key={i}>
                               <a href=""> {list}</a>
                             </li>
                           );

@@ -135,7 +135,7 @@ export const MyMobileCarousel = () => {
   useEffect(() => {
     function handleResize() {
       const windowWidth = window.innerWidth;
-      let newSlidesPerView = 3;
+      let newSlidesPerView = 1.5;
 
       if (windowWidth >= 1200) {
         newSlidesPerView = 5;
@@ -144,9 +144,9 @@ export const MyMobileCarousel = () => {
       } else if (windowWidth >= 768) {
         newSlidesPerView = 3;
       } else if (windowWidth >= 562) {
-        newSlidesPerView = 2;
-      } else {
-        newSlidesPerView = 1;
+        newSlidesPerView = 2.5;
+      } else if (windowWidth >= 350) {
+        newSlidesPerView = 1.5;
       }
 
       setSlidesPerView(newSlidesPerView);
@@ -170,7 +170,7 @@ export const MyMobileCarousel = () => {
         slidesPerView={slidesPerView}
         spaceBetween={20}
         slidesPerGroup={slidesPerView}
-        slidesPerColumnFill="row"
+        // slidesPerColumnFill="row"
         navigation={{
           prevEl: ".swiper-button-prev",
           nextEl: ".swiper-button-next",
@@ -230,10 +230,21 @@ export const MyFurnitureCarousel = () => {
       let newSlidesPerView = 1;
 
       if (windowWidth >= 1200) {
+        newSlidesPerView = 3.5;
+      } 
+      else if (windowWidth >= 992) {
         newSlidesPerView = 3;
-      } else if (windowWidth >= 768) {
+      }
+      else if (windowWidth >= 768) {
+        newSlidesPerView = 2.5;
+      }
+      else if (windowWidth >= 562) {
         newSlidesPerView = 2;
-      } else {
+      }
+      else if (windowWidth >= 350) {
+        newSlidesPerView = 1.5;
+      }
+       else {
         newSlidesPerView = 1;
       }
 
@@ -258,7 +269,7 @@ export const MyFurnitureCarousel = () => {
         slidesPerView={slidesPerView}
         spaceBetween={20}
         slidesPerGroup={slidesPerView}
-        slidesPerColumnFill="row"
+        // slidesPerColumnFill="row"
         navigation={{
           prevEl: ".swiper-button-prev",
           nextEl: ".swiper-button-next",
@@ -316,7 +327,7 @@ export const MyDailyCarousel = () => {
   useEffect(() => {
     function handleResize() {
       const windowWidth = window.innerWidth;
-      let newSlidesPerView = 3;
+      let newSlidesPerView = 1.5;
 
       if (windowWidth >= 1200) {
         newSlidesPerView = 5;
@@ -325,9 +336,9 @@ export const MyDailyCarousel = () => {
       } else if (windowWidth >= 768) {
         newSlidesPerView = 3;
       } else if (windowWidth >= 562) {
+        newSlidesPerView = 2.5;
+      } else if (windowWidth >= 350) {
         newSlidesPerView = 2;
-      } else {
-        newSlidesPerView = 1;
       }
 
       setSlidesPerView(newSlidesPerView);
@@ -355,7 +366,7 @@ export const MyDailyCarousel = () => {
         slidesPerView={slidesPerView}
         spaceBetween={20}
         slidesPerGroup={slidesPerView}
-        slidesPerColumnFill="row"
+        // slidesPerColumnFill="row"
         navigation={{
           prevEl: ".swiper-button-prev",
           nextEl: ".swiper-button-next",
@@ -426,10 +437,12 @@ export const Breadcrumb = ({ items }) => {
     </nav>
   );
 };
-{/* <Breadcrumb
+{
+  /* <Breadcrumb
   items={[
     { text: 'Home', url: '/' },
     { text: 'Category', url: '/category' },
     { text: 'Product' }
   ]}
-/> */}
+/> */
+}
