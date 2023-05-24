@@ -218,7 +218,17 @@ const SingleProduct = () => {
           </div>
 
           <div className="you-may-like">
+
             <h4 className="releted-title">You may like</h4>
+            
+            <div className="may-like-card">
+              <img src={tshirt} alt="" />
+              <div className="detail">
+                <p className="detail-title">Apple Watch Series Space Gray</p>
+                <MyRatingComponent />
+                <div className="price">$7.00 - $99.50</div>
+              </div>
+            </div>
             <div className="may-like-card">
               <img src={tshirt} alt="" />
               <div className="detail">
@@ -236,14 +246,6 @@ const SingleProduct = () => {
               </div>
             </div>
 
-            <div className="may-like-card">
-              <img src={tshirt} alt="" />
-              <div className="detail">
-                <p className="detail-title">Apple Watch Series Space Gray</p>
-                <MyRatingComponent />
-                <div className="price">$7.00 - $99.50</div>
-              </div>
-            </div>
           </div>
         </div>
 

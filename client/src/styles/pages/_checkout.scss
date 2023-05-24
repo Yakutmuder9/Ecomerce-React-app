@@ -1,0 +1,349 @@
+.cheackout {
+    .container {
+        padding: 20px;
+        @media (max-width: 562px) {
+            padding: 10px;
+        }
+        .header {
+            padding: 10px 0px 15px 0px;
+            font-size: large;
+            @media (max-width: 768px) {
+                font-size: medium;
+            }
+        }
+
+        .checkout-detail-container {
+            display: flex;
+            width: 100%;
+            gap: 20px;
+            padding-bottom: 40px;
+
+            @media (max-width: 768px) {
+                display: block;
+            }
+
+            .shopping-container {
+                width: 100%;
+                margin-bottom: 20px;
+                .address {
+                    @extend .place-items-center;
+                    width: 100%;
+                    border-radius: 10px;
+                    padding: 20px 20px;
+                    margin-bottom: 20px;
+                    background: $white;
+                    border: 1px solid #3e73e5;
+                    &:hover {
+                        transition: 0.3s ease-out;
+                        box-shadow: 2px 10px 20px #1f35f941;
+                        border: 0.2px solid #1f35f9a3;
+                    }
+                    &:first-child {
+                        box-shadow: 2px 10px 20px #1f35f941;
+                        border: 0.2px solid #1f35f9a3;
+                    }
+                    .head {
+                        font-weight: 600;
+                        padding-bottom: 10px;
+
+                        small {
+                            font-size: 8px;
+                            color: $white;
+                            padding: 5px;
+                            background: #000;
+                            border-radius: 8px;
+                            margin-left: 12px;
+                        }
+                    }
+                    .address-edit {
+                        button {
+                            cursor: pointer;
+                            padding: 12px 16px;
+                            color: $primary;
+                            background: none;
+                            border: none;
+                            font-weight: 600;
+                        }
+                    }
+                }
+                .new-address {
+                    padding: 12px 16px;
+                    color: $primary;
+                    background: none;
+                    border: none;
+                    font-weight: 600;
+                    cursor: pointer;
+                    span {
+                        background: $primary;
+                        color: $white;
+                        padding: 3px 6px;
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 50%;
+                    }
+                }
+                .payment-detail {
+                    margin-top: 20px;
+                    .bank-type {
+                        margin-top: 20px;
+                        @extend .place-items-center;
+                        gap: 10px;
+                        padding: 20px 0px;
+                        button {
+                            width: 100%;
+                            padding: 16px 15px;
+                            white-space: nowrap;
+                            margin-right: 10px;
+                            background: none;
+                            border-radius: 8px;
+                            border: 1px solid #6b6b6b;
+                            cursor: not-allowed;
+                            color: #6b6b6b;
+                            font-weight: 700;
+
+                            &:last-child {
+                                border: 1px solid $primary;
+                                background: $white;
+                                color: $primary;
+                                cursor: pointer;
+                                // &:hover {
+                                transition: 0.3s ease-out;
+                                box-shadow: 2px 10px 20px #1f35f941;
+                                border: 0.2px solid #1f35f9a3;
+                                // }
+                            }
+                        }
+                    }
+                    .card-num-filed {
+                        @extend .place-items-center;
+                        padding-top: 20px;
+                        margin-bottom: 20px;
+                        gap: 15px;
+                        @media (max-width: 768px) {
+                            display: block;
+                        }
+                        input {
+                            width: 100%;
+                            padding: 16px 15px;
+                            white-space: nowrap;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                            margin-top: 5px;
+                            background: none;
+                            border-radius: 8px;
+                            border: 1px solid #6b6b6b;
+                            color: #1831ed;
+                            font-size: 14px;
+                            outline: none;
+                            &:focus {
+                                border: 1px solid #3e73e5;
+                            }
+                        }
+                        .card-num-input {
+                            width: 100%;
+                        }
+                    }
+                    .secured {
+                        color: #007a04;
+                        font-weight: 600;
+                    }
+                }
+            }
+            .checkout-item-list {
+                width: 50%;
+                background: $white;
+                margin-bottom: 20px;
+                padding:20px 15px;
+                box-shadow: $box-shadow;
+                border-radius: 15px;
+                @media (max-width: 768px) {
+                    width: 100%;
+                }
+
+                .chekout-item {
+                    @extend .place-items-center;
+                    gap: 15px;
+                    margin-bottom: 5px;
+                    padding: 12px;
+                    border: 1px solid #3e73e5;
+                    img {
+                        width: 50px;
+                    }
+                    .content {
+                        width: 100%;
+                        .price-count {
+                            padding-top: 8px;
+                            @extend .place-items-center;
+                            .count-control {
+                                input {
+                                    padding: 3px;
+                                    width: 40px;
+                                }
+                                button {
+                                    padding: 3px 6px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .coupon {
+                    @extend .place-items-center;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    // background: #000;
+                    input {
+                        width: 100%;
+                        padding: 16px 15px;
+                        white-space: nowrap;
+                        margin-right: 10px;
+                        // margin-bottom: 10px;
+                        // margin-top: 5px;
+                        background: none;
+                        border-radius: 8px;
+                        border: 1px solid #6b6b6b;
+                        color: #1831ed;
+                        font-size: 14px;
+                        &:focus {
+                            border: 1px solid #3e73e5;
+                        }
+                      
+                    }
+                    button {
+                        cursor: pointer;
+                        padding: 16px 25px;
+                        color: $primary;
+                        background: none;
+                        border: none;
+                        border: 1px solid #1831ed;
+                        &:hover {
+                            transition: 0.3s ease-out;
+                            background: $primary;
+                            color: $white;
+                        }
+                    }
+                }
+                .gift-card {
+                    background: #1ce60241;
+                    padding: 15px;
+                    border-radius: 10px;
+                    p {
+                        margin: 15px 0px;
+                    }
+                    button {
+                        padding: 10px 15px;
+                        white-space: nowrap;
+                        margin-right: 10px;
+                        background: none;
+                        border-radius: 8px;
+                        border: 1px solid $primary;
+                        cursor: pointer;
+
+                        &:hover {
+                            background: $primary;
+                            color: $white;
+                        }
+                    }
+                }
+                .total-price {
+                    margin-top: 20px;
+                    ul {
+                        li {
+                            @extend .place-items-center;
+                            padding: 10px;
+
+                            span {
+                                font-weight: 500;
+                                &.sp-red {
+                                    color: rgb(255, 81, 0);
+                                }
+                                &.sp-green {
+                                    color: #1b9e01;
+                                }
+                            }
+                            &:last-child {
+                                margin-top: 20px;
+                                font-size: larger;
+                                font-weight: 800;
+                                span {
+                                    font-weight: 800;
+                                }
+                            }
+                        }
+                    }
+                    button {
+                        padding: 15px 20px;
+                        white-space: nowrap;
+                        margin: 15px 0px;
+                        background: none;
+                        border-radius: 10px;
+                        cursor: pointer;
+                        width: 100%;
+                        background: $primary;
+                        color: $white;
+                        border: 1px solid $primary;
+                        font-weight: 700;
+                        &:hover {
+                            background-color: #1565c0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.checkout-tracker {
+    @extend .place-items-center;
+    position: relative;
+    margin: 20px 0;
+
+    .step {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+
+        .step-number {
+            font-size: 12px;
+            font-weight: bold;
+            color: #333;
+
+            .step-label {
+                margin-top: 4px;
+                font-size: 12px;
+                color: #888;
+            }
+        }
+        &.active {
+            .step-number {
+                @extend .place-items-center;
+                justify-content: center;
+                color: $white;
+                background-color: $primary;
+                border-radius: 20px;
+                width: 25px;
+                height: 25px;
+                padding: 5px;
+            }
+            .step-label {
+                color: $primary;
+            }
+        }
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
+    }
+    .line {
+        position: absolute;
+        top: 50%;
+        // left: calc(50% + 48px);
+        transform: translateY(-50%);
+        width: 100%;
+        height: 2px;
+        background-color: $primary;
+        transform-origin: left center;
+        &.active {
+            opacity: 1;
+        }
+    }
+}

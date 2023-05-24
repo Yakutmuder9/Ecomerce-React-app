@@ -1,14 +1,16 @@
 import logo from "./logo.png";
 import addImg from "./addImg.svg";
 import tshirt from "./t-shirt.png";
-import mobi from "./09.png";
 import grind from "./grind.png";
 import homeElec from "./home-elec.png";
 import cam from "./cam.png";
 import bag from "./bag.png";
+import watch from "./watch.png";
 import us from "./us.png";
 import goPlay from "./google-play.png";
 import AppStore from "./app-store.png";
+
+import mobi from "./09.png";
 import mob2 from "./mob2.png";
 import mob3 from "./mob3.png";
 import mob4 from "./mob4.png";
@@ -40,6 +42,7 @@ export {
   cam,
   grind,
   bag,
+  watch,
   us,
   homeElec,
   goPlay,

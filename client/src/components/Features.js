@@ -26,11 +26,10 @@ export const MySwipperComponent = () => {
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
-        freeMode={true}
         pagination={{
           clickable: true,
         }}
-        modules={[Autoplay, Pagination, FreeMode, EffectFade]}
+        modules={[Autoplay, Pagination, EffectFade]}
         className="mySwiper"
         loop={true}
         autoplay={{

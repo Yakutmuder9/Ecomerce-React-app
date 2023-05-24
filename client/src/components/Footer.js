@@ -77,7 +77,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-         {/* <div className="user-links grid-card">
+          <div className="user-links grid-card">
             <h6>For User</h6>
             <ul>
               <li>
@@ -94,7 +94,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="get-app grid-card">
+         {/* <div className="get-app grid-card">
             <h6>Get app</h6>
             <ul>
               <li>

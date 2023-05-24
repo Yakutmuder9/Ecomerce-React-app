@@ -118,7 +118,7 @@
                 border-radius: 20px;
                 box-shadow: $box-shadow;
                 padding: 40px 20px;
-                width: 180%;
+                // width: 180%;
                 @media (max-width: 768px) {
                     padding: 15px;
                 }
@@ -141,7 +141,11 @@
                 }
                 .tab-content {
                     p {
-                        padding: 20px 0px;
+                        border: 1px solid $primary;
+                        padding: 20px 10px;
+                        font-size: 12px;
+                        border-radius: 5px;
+                        margin-bottom: 12px;
                     }
                     li {
                         list-style: circle;

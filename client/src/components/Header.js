@@ -39,7 +39,11 @@ const Header = () => {
         <p>Every Day Deal FREE SHIPPING on orders $50+</p>
       </div>
 
-      <header>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 1 }}
+      >
         <div className="main-nav-cont">
           <div className="container">
             <div className="left-nav">
@@ -161,7 +165,8 @@ const Header = () => {
                   </motion.div>
                 );
               })}
-            </div><br />
+            </div>
+            <br />
             <div className="navbar-choose">
               <ul>
                 <li>
@@ -180,11 +185,13 @@ const Header = () => {
             </div>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       <div className="filter-nav">
         <div className="container">
-          <div className="logo-container ">
+          <div
+            className="logo-container"
+          >
             <a href="/">
               <img src={logo} alt="" />
               <h3>
@@ -193,7 +200,9 @@ const Header = () => {
             </a>
           </div>
 
-          <div className="filter-list">
+          <div
+            className="filter-list"
+          >
             <NavDropDown />
             <ul>
               <li>

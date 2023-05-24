@@ -11,6 +11,8 @@
 @import "./pages/single-product";
 @import "./pages/wishlist";
 @import "./pages/blogs";
+@import "./pages/account";
+@import "./pages/checkout";
 
 *,
 ::before,
@@ -53,7 +55,7 @@ body {
 .Layout {
     .scrolled {
         .main-nav-cont {
-            background: #000!important;
+            background: #000 !important;
         }
     }
 }

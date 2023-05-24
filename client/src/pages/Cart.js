@@ -3,16 +3,23 @@ import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { MyMobileCarousel, MyRatingComponent } from "../components/Features";
 import { BiChevronRight } from "react-icons/bi";
 
+import { motion } from "framer-motion";
+
 const Cart = () => {
   return (
     <div className="cart-container">
       <div className="container">
-      <div className="breadcrumb">Home / My cart</div>
+        <div className="breadcrumb">Home / My cart</div>
         <h3 className="header">My Cart (2)</h3>
 
         <div className="cart-product-container">
           <div className="cart-item-cont">
-            <div className="cart-items">
+            <motion.div
+              className="cart-items"
+              initial={{ x: "-50vw" }}
+              animate={{ x: "0%" }}
+              transition={{ type: "spring", duration: 2.5, bounce: 0.2 }}
+            >
               <div className="cart-card">
                 <div className="cart-content">
                   <div className="cart-img">
@@ -45,26 +52,41 @@ const Cart = () => {
                   </select>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="return-rm-cont">
+            <motion.div
+              className="return-rm-cont"
+              initial={{ y: "50vw" }}
+              animate={{ y: "0%" }}
+              transition={{ type: "spring", duration: 3, bounce: 0.2 }}
+            >
               <button>
                 <HiOutlineArrowNarrowLeft /> Back to shop
               </button>
               <button>Remove all</button>
-            </div>
+            </motion.div>
           </div>
 
           <div className="cart-checkout">
-            <div className="checkout-coupon-form">
+            <motion.div
+              className="checkout-coupon-form"
+              initial={{ y: "-50vw" }}
+              animate={{ y: "0%" }}
+              transition={{ type: "spring", duration: 3, bounce: 0.2 }}
+            >
               <p className="coupon-title">Have a coupon?</p>
               <div className="coupon-filed">
                 <input type="text" placeholder="Add coupon" />
                 <button>Apply</button>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="checkout-payment-form">
+            <motion.div
+              className="checkout-payment-form"
+              initial={{ x: "50vw" }}
+              animate={{ x: "0%" }}
+              transition={{ type: "spring", duration: 2.8, bounce: 0.2 }}
+            >
               <ul>
                 <li>
                   <p>Subtotal:</p>
@@ -93,7 +115,7 @@ const Cart = () => {
                   <img src={pay5} alt="" />
                 </li>
               </ul>
-            </div>
+            </motion.div>
           </div>
         </div>
 

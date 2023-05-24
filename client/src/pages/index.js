@@ -4,7 +4,7 @@ import About from "./About";
 import Contact from "./Contact";
 import Wishlist from "./Wishlist";
 import Cart from "./Cart";
-import Profile from "./Profile";
+import Account from "./Account";
 import Checkout from "./Checkout";
 import Product from "./Product";
 import SingleProduct from "./SingleProduct";
@@ -33,7 +33,7 @@ export {
   Contact,
   Wishlist,
   Cart,
-  Profile,
+  Account,
   Checkout,
   Product,
   SingleProduct,

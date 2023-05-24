@@ -239,10 +239,7 @@ a {
     font-size: 14px;
     z-index: 99;
     @media (max-width: 768px) {
-        top: 60px;
-        padding-top: 5px;
-        padding-left: 20px;
-        font-size: 12px;
+       display: none;
     }
 }
 

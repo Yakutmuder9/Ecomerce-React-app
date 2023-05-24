@@ -4,7 +4,7 @@ import { Hashicon } from "@emeraldpay/hashicon-react";
 
 const MenuItemVariants = {
   hidden: {
-    opacity: 0,
+    opacity: 0.8,
   },
   visible: {
     x: 0,
@@ -16,7 +16,7 @@ const MenuItemVariants = {
 };
 const SubItemVariants = {
   hidden: {
-    x: -50,
+    x: -20,
     opacity: 0,
   },
   visible: {

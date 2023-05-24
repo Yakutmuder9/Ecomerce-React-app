@@ -1,5 +1,5 @@
 import "./styles/main.scss";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import {
   SignUp,
   SignIn,
@@ -11,7 +11,7 @@ import {
   Contact,
   Wishlist,
   Cart,
-  Profile,
+  Account,
   Checkout,
   Product,
   SingleProduct,
@@ -39,12 +39,15 @@ const App = () => {
 
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/profile" element={<Account />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/orders" element={<Checkout />} />
           <Route path="/payment" element={<Checkout />} />
+          <Route path="/message" element={<Checkout />} />
 
           <Route path="/products" element={<Product />} />
           <Route path="/product/:id" element={<SingleProduct />} />
