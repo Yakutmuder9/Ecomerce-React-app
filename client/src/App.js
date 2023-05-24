@@ -16,7 +16,6 @@ import {
   Product,
   SingleProduct,
   Blog,
-  SignleBlog,
   CompareProduct,
   TearmCondition,
   PrivacyPolicy,
@@ -50,7 +49,6 @@ const App = () => {
           <Route path="/products" element={<Product />} />
           <Route path="/product/:id" element={<SingleProduct />} />
           <Route path="/blogs" element={<Blog />} />
-          <Route path="/blogs/:id" element={<SignleBlog />} />
           <Route path="/compare-prodcut" element={<CompareProduct />} />
 
           <Route path="/term-conditions" element={<TearmCondition />} />

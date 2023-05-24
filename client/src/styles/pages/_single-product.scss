@@ -31,7 +31,7 @@
                     img {
                         height: 100px;
                         width: auto;
-                        border: 1px solid springgreen;
+                        border: 1px solid rgb(0, 68, 255);
                         border-radius: 12px;
                         padding: auto;
                         margin-top: 5px;
@@ -66,7 +66,7 @@
                         border-radius: 8px;
                         border: 1px solid $primary;
                         cursor: pointer;
-                        transition: .3s ease-in-out;
+                        transition: 0.3s ease-in-out;
 
                         &:hover {
                             background: $primary;
@@ -97,6 +97,84 @@
                             font-size: 20px;
                             margin-right: 10px;
                         }
+                    }
+                }
+            }
+        }
+        .product-detail-container {
+            // @extend .place-items-center;
+            display: flex;
+            height: auto;
+            margin-top: 20px;
+            gap: 20px;
+
+            padding: 20px 0px;
+            @media (max-width: 768px) {
+                display: block;
+            }
+
+            .product-detail-tab {
+                background: $white;
+                border-radius: 20px;
+                box-shadow: $box-shadow;
+                padding: 40px 20px;
+                width: 180%;
+                @media (max-width: 768px) {
+                    padding: 15px;
+                }
+                .tab-buttons {
+                    display: flex;
+
+                    button {
+                        padding: 10px;
+                        border: none;
+                        background: none;
+                        cursor: pointer;
+                        outline: none;
+                        font-size: 16px;
+                        transition: border-bottom 0.3s ease;
+
+                        &.active {
+                            border-bottom: 2px solid $primary;
+                        }
+                    }
+                }
+                .tab-content {
+                    p {
+                        padding: 20px 0px;
+                    }
+                    li {
+                        list-style: circle;
+                        margin-left: 15px;
+                        padding-bottom: 10px;
+                    }
+                }
+            }
+
+            .you-may-like {
+                background: $white;
+                border-radius: 20px;
+                box-shadow: $box-shadow;
+                padding: 40px 10px;
+                width: 120%;
+                @media (max-width: 768px) {
+                    display: none;
+                }
+                .may-like-card {
+                    display: flex;
+                    border: 1px solid $primary;
+                    margin: 10px 5px;
+                    padding: 5px;
+                    border-radius: 12px;
+                    h4{
+                        font-size: 18px;
+                    }
+                    img {
+                        width: auto;
+                        height: 70px;
+                    }
+                    .detail {
+                        font-size: 14px;
                     }
                 }
             }

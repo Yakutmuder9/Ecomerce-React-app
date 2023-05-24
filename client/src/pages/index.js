@@ -9,7 +9,6 @@ import Checkout from "./Checkout";
 import Product from "./Product";
 import SingleProduct from "./SingleProduct";
 import Blog from "./Blog";
-import SignleBlog from "./SignleBlog";
 
 import CompareProduct from "./CompareProduct";
 import TearmCondition from "./TearmCondition";
@@ -39,7 +38,6 @@ export {
   Product,
   SingleProduct,
   Blog,
-  SignleBlog,
   CompareProduct,
   TearmCondition,
   PrivacyPolicy,
