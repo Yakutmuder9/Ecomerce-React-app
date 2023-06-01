@@ -1,7 +1,23 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useFormik } from "formik";
+import { loginSchema } from "../../utiles/validation";
+import { loginUser } from "./../../redux/features/auth/authSlice";
 
 const SignIn = () => {
-  const [error, setError] = useState(true);
+  const dispatch = useDispatch();
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: loginSchema,
+    onSubmit: (values) => {
+      dispatch(loginUser(values));
+    },
+  });
+
+
   return (
     <div className="sign-in">
       <div className="sign-img">
@@ -10,23 +26,48 @@ const SignIn = () => {
 
       <div className="breadcrumb">Home / Sing In</div>
       <div className="container">
-        <div className="form-field-card">
-          <p>Email Address</p>
-          <input type="email" placeholder="" name="email" required /><br />
-          {error && <span>* Please Fill Your First Name</span>}
+        <form onSubmit={formik.handleSubmit} className="form-field-card">
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              autoComplete="off"
+            />
+            {formik.touched.email && formik.errors.email && (
+              <span>{formik.errors.email}</span>
+            )}
+          </div>
+          <br />
+          <div>
+            <label htmlFor="password" className="password-txt">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              autoComplete="off"
+            />
+            {formik.touched.password && formik.errors.password && (
+              <span>{formik.errors.password}</span>
+            )}
 
-          <p className="password-txt">Password</p>
-          <input type="password" placeholder="" name="pasword" required /><br />
-          {error && <span>* Please Fill Your First Name</span>}
-          <div className="forgot-password">
-            <a href="forgot-password">
-              <i>Forgot Pasowrd?</i>
-            </a>
+            <br />
           </div>
-          <div className="sign-btn">
-            <button className="btn">Login</button>
-          </div>
-        </div>
+          <button type="submit" className="sign-btn btn">
+            Login
+          </button>
+        </form>
+        <br />
+
         <div className="signup-card">
           <h4>New Customer?</h4>
           <p>Create an account with us to:</p>
