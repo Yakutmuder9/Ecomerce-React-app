@@ -6,6 +6,8 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { LayoutGroup, AnimatePresence } from "framer-motion";
 import { PersistGate } from "redux-persist/integration/react";
+import { ChakraProvider } from "@chakra-ui/react";
+import theme from "./theme/theme.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,11 +15,13 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <LayoutGroup>
-            <AnimatePresence>
-              <App />
-            </AnimatePresence>
-          </LayoutGroup>
+          <ChakraProvider theme={theme} resetCss={false} position="relative">
+            <LayoutGroup>
+              <AnimatePresence>
+                <App />
+              </AnimatePresence>
+            </LayoutGroup>
+          </ChakraProvider>
         </BrowserRouter>
       </PersistGate>
     </Provider>

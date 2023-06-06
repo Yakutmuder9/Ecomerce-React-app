@@ -9,7 +9,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 // import PropTypes from "prop-types";
-// import AdminNavbarLinks from "./AdminNavbarLinks";
+import AdminNavbarLinks from "./AdminNavbarLinks";
 
 let navVariants = {
   mainText: "white",
@@ -70,18 +70,18 @@ const AdminHeader = (props) => {
       mx="auto"
       mt={secondaryMargin}
       pb="8px"
-      left={document.documentElement.dir === "rtl" ? "30px" : ""}
-      right={document.documentElement.dir === "rtl" ? "" : "30px"}
-      px={{
-        sm: paddingX,
-        md: "30px",
-      }}
-      ps={{
-        xl: "12px",
-      }}
+      left={""}
+      right={"30px"}
+      // px={{
+      //   sm: paddingX,
+      //   md: "30px",
+      // }}
+      // ps={{
+      //   xl: "12px",
+      // }}
       pt="8px"
       top="18px"
-      w={{ sm: "calc(100vw - 60px)", xl: "calc(100vw - 75px - 275px)" }}
+      w={{ sm: "calc(100vw - 60px)", xl: "calc(100vw - 60px - 340px)" }}
     >
       <Flex
         w="100%"
@@ -126,12 +126,12 @@ const AdminHeader = (props) => {
           </Link>
         </Box>
         <Box ms="auto" w={{ sm: "100%", md: "unset" }}>
-          {/* <AdminNavbarLinks
+          <AdminNavbarLinks
             onOpen={props.onOpen}
             logoText={props.logoText}
             secondary={props.secondary}
             fixed={props.fixed}
-          /> */}
+          />
         </Box>
       </Flex>
     </Flex>

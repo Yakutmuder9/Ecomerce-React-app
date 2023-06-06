@@ -13,7 +13,7 @@ export const SearchBar= (props) => {
   const inputBg = "gray.800";
 
   return (
-    <InputGroup bg={inputBg} borderRadius='15px' w='200px'>
+    <InputGroup bg={"white"} borderRadius='15px' w='200px'>
       <InputLeftElement
         children={
           <IconButton

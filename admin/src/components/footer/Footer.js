@@ -17,7 +17,7 @@ const Footer = () => {
     >
       <Text
         fontSize="sm"
-        color="white"
+        color="gray.500"
         textAlign={{
           base: "center",
           xl: "start",
@@ -25,7 +25,7 @@ const Footer = () => {
         mb={{ base: "20px", xl: "0px" }}
       >
         &copy; {1900 + new Date().getYear()},{" "}
-        <Text as="span">Made with ❤️ by</Text>
+        <Text as="span">Made with by </Text>
         <Link href="#" target="_blank">
           Yakut Ahmedin
         </Link>
@@ -38,7 +38,7 @@ const Footer = () => {
             md: "44px",
           }}
         >
-          <Link color="white" fontSize="sm" href="#">
+          <Link color="gray.500" fontSize="sm" href="#">
             Simmmple
           </Link>
         </ListItem>
@@ -48,7 +48,7 @@ const Footer = () => {
             md: "44px",
           }}
         >
-          <Link color="white" fontSize="sm" href="#">
+          <Link color="gray.500" fontSize="sm" href="#">
             Creative Tim
           </Link>
         </ListItem>
@@ -58,12 +58,12 @@ const Footer = () => {
             md: "44px",
           }}
         >
-          <Link color="white" fontSize="sm" href="#">
+          <Link color="gray.500" fontSize="sm" href="#">
             Blog
           </Link>
         </ListItem>
         <ListItem>
-          <Link color="white" fontSize="sm" href="#">
+          <Link color="gray.500" fontSize="sm" href="#">
             License
           </Link>
         </ListItem>

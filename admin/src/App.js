@@ -7,7 +7,7 @@ import {
   PageNotFound,
 } from "./pages/index";
 import Layout from "./components/layout/Layout";
-import ProtectedRoutes from "./components/privateRoutes/ProtectedRoutes";
+import ProtectedRoutes from "./routes/ProtectedRoutes";
 
 const App = () => {
   return (
