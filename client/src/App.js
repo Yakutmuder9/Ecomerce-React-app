@@ -22,10 +22,11 @@ import {
   ShippingPolicy,
   RefundPolicy,
   PageNotFound,
+  PrivateRoutes,
 } from "./pages/index";
-import PrivateRoute from "./components/PrivateRoute";
 
 const App = () => {
+  
   return (
     <div className="App">
       <Routes>
@@ -39,15 +40,17 @@ const App = () => {
 
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/profile" element={<Account />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/orders" element={<Checkout />} />
-          <Route path="/payment" element={<Checkout />} />
-          <Route path="/message" element={<Checkout />} />
+
+          <Route element={<PrivateRoutes />}>
+            <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/profile" element={<Account />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/orders" element={<Checkout />} />
+            <Route path="/payment" element={<Checkout />} />
+            <Route path="/message" element={<Checkout />} />
+          </Route>
 
           <Route path="/products" element={<Product />} />
           <Route path="/product/:id" element={<SingleProduct />} />

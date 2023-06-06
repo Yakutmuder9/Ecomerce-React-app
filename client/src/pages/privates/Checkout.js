@@ -1,5 +1,5 @@
-import { bag, cam, watch } from "../assets";
-import CheckoutTracker from "../components/StatusTracker";
+import { bag, cam, watch } from "../../assets";
+import CheckoutTracker from "../../components/StatusTracker";
 import { BsShieldLockFill } from "react-icons/bs";
 
 const Checkout = () => {

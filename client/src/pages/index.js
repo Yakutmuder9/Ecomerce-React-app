@@ -2,13 +2,14 @@ import Layout from "./Layout";
 import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
-import Wishlist from "./Wishlist";
-import Cart from "./Cart";
-import Account from "./Account";
-import Checkout from "./Checkout";
+import Wishlist from "./privates/Wishlist";
+import Cart from "./privates/Cart";
+import Account from "./privates/Account";
+import Checkout from "./privates/Checkout";
 import Product from "./Product";
 import SingleProduct from "./SingleProduct";
 import Blog from "./Blog";
+import PrivateRoutes from "../components/PrivateRoutes";
 
 import CompareProduct from "./CompareProduct";
 import TearmCondition from "./TearmCondition";
@@ -28,6 +29,7 @@ export {
   ForgotPassword,
   ResetPassword,
   Layout,
+  PrivateRoutes,
   Home,
   About,
   Contact,

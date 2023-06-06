@@ -1,6 +1,6 @@
-import { pay1, pay2, pay3, pay4, pay5, tshirt } from "../assets";
+import { pay1, pay2, pay3, pay4, pay5, tshirt } from "../../assets";
 import { HiShoppingCart } from "react-icons/hi";
-import { MyMobileCarousel, MyRatingComponent } from "../components/Features";
+import { MyMobileCarousel, MyRatingComponent } from "../../components/Features";
 import { BiChevronRight, BiHeart } from "react-icons/bi";
 import { motion } from "framer-motion";
 const Wishlist = () => {

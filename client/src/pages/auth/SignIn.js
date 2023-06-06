@@ -2,24 +2,42 @@ import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { loginSchema } from "../../utiles/validation";
 import { loginUser } from "./../../redux/features/auth/authSlice";
+import { useNavigate } from "react-router";
+import Loader from "../../components/loader/Loader";
+import { useEffect, useState } from "react";
 
 const SignIn = () => {
+  // const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const authState = useSelector((state) => state);
+  const { user, isError, isSuccess, isLoading, message } = authState.auth;
+
+  
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     validationSchema: loginSchema,
-    onSubmit: (values) => {
-      dispatch(loginUser(values));
+    onSubmit: async (values) => {
+      try {
+        dispatch(loginUser(values));
+      } catch (error) {
+        console.log("Login failed:", error);
+      }
     },
   });
 
-
+  useEffect(() => {
+    if (isSuccess) {
+      navigate('/account');
+    }
+  }, [isSuccess]);
   return (
     <div className="sign-in">
+      {isLoading && <Loader />}
       <div className="sign-img">
         <h1>Sign In</h1>
       </div>
