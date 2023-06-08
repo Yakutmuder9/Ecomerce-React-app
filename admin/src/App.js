@@ -74,13 +74,13 @@ const App = () => {
           </Route>
 
           <Route path="sales">
-            <Route index element={<Pages.Analytics />} />
+            <Route path="analytics" element={<Pages.Analytics />} />
             <Route
               path="average-order-value"
               element={<Pages.AverageOrderValue />}
             />
-            <Route path="Conversion" element={<Pages.Conversion />} />
-            <Route path="Overview" element={<Pages.Overview />} />
+            <Route path="conversion" element={<Pages.Conversion />} />
+            <Route path="overview" element={<Pages.Overview />} />
             <Route path="revenue" element={<Pages.Revenue />} />
           </Route>
 

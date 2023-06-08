@@ -29,6 +29,7 @@ import {
   List,
   ListItem,
   background,
+  Spacer,
 } from "@chakra-ui/react";
 import IconBox from "../Icons/IconBox";
 import {
@@ -37,7 +38,7 @@ import {
   renderTrack,
   renderView,
 } from "../Scrollbar/Scrollbar";
-import { HSeparator } from "../Separator/Separator";
+import { HSeparator, VSeparator } from "../Separator/Separator";
 import React from "react";
 import { Scrollbars } from "react-custom-scrollbars";
 import { NavLink, useLocation } from "react-router-dom";
@@ -52,22 +53,22 @@ import {
   FiDollarSign,
   FiBriefcase,
   FiSettings,
+  FiLogOut,
 } from "react-icons/fi";
 import { IoPawOutline } from "react-icons/io5";
 import { MdCheckCircle } from "react-icons/md";
-import dashRoutes from "../../routes";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
-import sideNavitems from "../../routes";
+import sideNavitems from "../../routes/routes";
 
 const Sidebar = (props) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [activeCategory, setActiveCategory] = useState("");
-  const [activeDetailLink, setActiveDetailLink] = useState("");
+  const [activeCategory, setActiveCategory] = useState(false);
   let greenGradient =
     "linear-gradient(91.3deg, #03312E 0.94%, #0A5447 102.84%)";
 
   const mainPanel = React.useRef();
   const location = useLocation();
+  const path = location.pathname;
 
   // console.log(location.pathname);
   let variantChange = "0.2s linear";
@@ -86,14 +87,11 @@ const Sidebar = (props) => {
   const sidebarWidth = isHovered ? "275px" : "75px";
   const borderRadius = isHovered ? "0px 20px 20px 0px" : "0px";
 
-  const handleCategoryClick = (category) => {
-    setActiveCategory(activeCategory === category ? "" : category);
-    console.log(activeCategory);
-  };
-
-  const activeRoute = (routeName) => {
-    return location.pathname === routeName ? "active" : "";
-  };
+  function checkPath(listPath) {
+    const segments = path.split("/").filter((segment) => segment !== "");
+    const firstTwoSegments = segments.slice(0, 2).join("/");
+    return `/${firstTwoSegments}` === listPath ? true : false;
+  }
 
   return (
     <Box ref={mainPanel}>
@@ -135,51 +133,102 @@ const Sidebar = (props) => {
               {sideNavitems.map((item, key) => {
                 return (
                   <AccordionItem m={1} border={0}>
+                    {item.name == "Sales" && (
+                      <Box fontWeight={"bolder"}>
+                        {isHovered ? (
+                          <>
+                            <HSeparator my="20px" />
+                            <Text pl={12}>Account Activity</Text>
+                            <HSeparator my="20px" />
+                          </>
+                        ) : (
+                          <>
+                            <HSeparator my="20px" />
+                            <Text textAlign={"center"}>Acc </Text>
+                            <HSeparator my="20px" />
+                          </>
+                        )}
+                      </Box>
+                    )}
                     <AccordionButton
                       px={0}
                       _hover={{ boxShadow: "0px 7px 11px #0000001a" }}
                       borderRadius={8}
-                      onClick={() => handleCategoryClick(item.category)}
+                      boxShadow={
+                        path == item.layout ? "0px 7px 11px #0000001a" : ""
+                      }
                     >
                       <Flex w={"100%"} fontSize="4xl">
                         <AccordionButton
                           w={"100%"}
                           _hover={{ background: "none" }}
                         >
-                          <Box
-                            as="span"
-                            flex="1"
-                            textAlign="left"
-                            display={"flex"}
-                            alignItems={"center"}
-                          >
-                            {item.icon && (
-                              <Icon
-                                as={item.icon}
-                                fontSize={"4xl"}
-                                me={2}
-                                bg={activeBg}
-                                color={"white"}
-                                p={2}
-                                boxShadow={"0px 7px 11px #0000001a"}
-                                borderRadius={8}
-                              />
-                            )}{" "}
-                            <Text
-                              fontSize={"18px"}
-                              // fontWeight={"bold"}
-                              whiteSpace={"nowrap"}
+                          {item.name == "Dashboard" ? (
+                            <NavLink to={"/admin/dashboard"}>
+                              <Box
+                                as="span"
+                                flex="1"
+                                textAlign="left"
+                                display={"flex"}
+                                alignItems={"center"}
+                              >
+                                {item.icon && (
+                                  <Icon
+                                    as={item.icon}
+                                    fontSize={"4xl"}
+                                    me={2}
+                                    bg={checkPath(item.layout) && activeBg}
+                                    color={checkPath(item.layout) && "white"}
+                                    p={2}
+                                    boxShadow={"0px 7px 11px #0000001a"}
+                                    borderRadius={8}
+                                  />
+                                )}{" "}
+                                <Text
+                                  fontSize={"18px"}
+                                  fontWeight={checkPath(item.layout) && "bold"}
+                                  whiteSpace={"nowrap"}
+                                >
+                                  {isHovered && item.name}
+                                </Text>
+                              </Box>
+                            </NavLink>
+                          ) : (
+                            <Box
+                              as="span"
+                              flex="1"
+                              textAlign="left"
+                              display={"flex"}
+                              alignItems={"center"}
                             >
-                              {/* {item.layout + item.path}  */}
-                              {isHovered && item.name}
-                            </Text>
-                          </Box>
+                              {item.icon && (
+                                <Icon
+                                  as={item.icon}
+                                  fontSize={"4xl"}
+                                  me={2}
+                                  bg={checkPath(item.layout) && activeBg}
+                                  color={checkPath(item.layout) && "white"}
+                                  p={2}
+                                  boxShadow={"0px 7px 11px #0000001a"}
+                                  borderRadius={8}
+                                />
+                              )}{" "}
+                              <Text
+                                fontSize={"18px"}
+                                fontWeight={checkPath(item.layout) && "bold"}
+                                whiteSpace={"nowrap"}
+                              >
+                                {isHovered && item.name}
+                              </Text>
+                            </Box>
+                          )}
+
                           {isHovered && item.views ? <AccordionIcon /> : null}
                         </AccordionButton>
                       </Flex>
                     </AccordionButton>
 
-                    {item.views && (
+                    {item.views && isHovered && (
                       <AccordionPanel pb={2}>
                         <List spacing={2}>
                           {item.views?.map((list, key) => {
@@ -187,18 +236,26 @@ const Sidebar = (props) => {
                               <NavLink to={item.layout + list.path}>
                                 <ListItem
                                   py={3}
-                                  px={4}
+                                  px={2}
                                   borderRadius={8}
                                   _hover={{
                                     boxShadow: "0px 7px 11px #01311d18",
                                   }}
                                   fontSize={"1xl"}
+                                  boxShadow={
+                                    path == item.layout + list.path
+                                      ? "0px 7px 11px #01311d18"
+                                      : ""
+                                  }
                                 >
                                   <ListIcon
                                     as={MdCheckCircle}
-                                    color="green.500"
+                                    color={
+                                      path == item.layout + list.path
+                                        ? "green.500"
+                                        : ""
+                                    }
                                   />
-                                  {/* {item.layout + list.path} */}
                                   {isHovered && list.name}
                                 </ListItem>
                               </NavLink>
@@ -212,7 +269,8 @@ const Sidebar = (props) => {
               })}
             </Accordion>
 
-            {/* <Stack
+            <Box
+              // position={"absolute"}
               justify="center"
               direction="column"
               align="center"
@@ -220,13 +278,31 @@ const Sidebar = (props) => {
               mb="22px"
               mt="20px"
               mx="10px"
+              bottom={1}
             >
               <Link href="/login" minW="100%">
-                <Button bg={"silver"} color={"white"} minW="100%">
-                  <HomeIcon fontSize={"xl"} />
+                <Button
+                  bg={"rgba(255, 255, 255, 0.16)"}
+                  backdropFilter={"blur(28.6667px)"}
+                  boxShadow={"0px 14.3333px 28.6667px rgba(27, 27, 27, 0.16)"}
+                  color={"black"}
+                  _hover={"red"}
+                  border={"1px solid green"}
+                >
+                  {isHovered ? (
+                    <Flex
+                      w={205}
+                      alignItems={"Center"}
+                      justifyContent={"center"}
+                    >
+                      <FiLogOut fontSize={"xl"} fontWeight={"bolder"} /> Log Out
+                    </Flex>
+                  ) : (
+                    <FiLogOut fontSize={"xl"} />
+                  )}
                 </Button>
               </Link>
-            </Stack> */}
+            </Box>
           </Scrollbars>
         </Box>
       </Box>

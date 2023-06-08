@@ -1,5 +1,5 @@
 import axios from "axios";
-import { baseUrl } from "../../../app/baseUrl";
+import { baseUrl } from "../assets/baseUrl";
 
 export const login = async (userData) => {
   try {

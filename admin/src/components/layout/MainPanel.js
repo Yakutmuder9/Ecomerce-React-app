@@ -1,5 +1,4 @@
 import { Box, useStyleConfig } from "@chakra-ui/react";
-import React, { Component } from "react";
 
 function MainPanel(props) {
   const { variant, children, ...rest } = props;

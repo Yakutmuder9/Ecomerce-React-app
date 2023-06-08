@@ -1,4 +1,3 @@
-// chakra imports
 import { Avatar, Flex, Text, useColorModeValue } from "@chakra-ui/react";
 import { ClockIcon } from "../Icons/Icons";
 import React from "react";

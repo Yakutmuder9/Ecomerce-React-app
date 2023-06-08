@@ -1,4 +1,4 @@
-import * as Pages from "./pages";
+import * as Pages from "../pages";
 
 import {
   HomeIcon,
@@ -8,12 +8,16 @@ import {
   DocumentIcon,
   RocketIcon,
   SupportIcon,
-} from "./components/Icons/Icons";
+} from "../components/Icons/Icons";
 import { FaClipboardList, FaHandPaper, FaUsers } from "react-icons/fa";
 import { GrCompliance } from "react-icons/gr";
-import { FcCancel, FcCustomerSupport } from "react-icons/fc";
+import {
+  FcCancel,
+  FcCustomerSupport,
+  FcSalesPerformance,
+} from "react-icons/fc";
 import { FiUserPlus } from "react-icons/fi";
-import { BsCart2, BsSegmentedNav } from "react-icons/bs";
+import { BsBarChartFill, BsCart2, BsSegmentedNav } from "react-icons/bs";
 import { SiMarketo } from "react-icons/si";
 
 let sideNavitems = [
@@ -22,7 +26,7 @@ let sideNavitems = [
     name: "Dashboard",
     icon: HomeIcon,
     component: Pages.Dashboard,
-    layout: "/admin",
+    layout: "/admin/dashboard",
   },
   {
     name: "Orders",
@@ -166,28 +170,63 @@ let sideNavitems = [
         name: "All Coupons",
         icon: PersonIcon,
         component: Pages.AllCoupons,
-        layout: "/admin",
       },
       {
         path: "/add-coupons",
         name: "Add Coupon",
         icon: DocumentIcon,
         component: Pages.AddCoupon,
-        layout: "/admin",
       },
       {
         path: "/promotions",
         name: "Promotions",
         icon: DocumentIcon,
         component: Pages.Promotions,
-        layout: "/admin",
       },
       {
         path: "/discount",
         name: "Discounts",
         icon: DocumentIcon,
         component: Pages.Discounts,
-        layout: "/admin",
+      },
+    ],
+  },
+
+  {
+    name: "Sales",
+    category: "sales",
+    icon: BsBarChartFill,
+    layout: "/admin/sales",
+    views: [
+      {
+        path: "/analytics",
+        name: "Analytics",
+        icon: PersonIcon,
+        component: Pages.Analytics,
+      },
+      {
+        path: "/average-order-value",
+        name: "Average Order Value",
+        icon: DocumentIcon,
+        component: Pages.AverageOrderValue,
+      },
+      {
+        path: "/conversion",
+        name: "Conversion",
+        icon: DocumentIcon,
+        component: Pages.Conversion,
+      },
+      {
+        path: "/overview",
+        name: "Overview",
+        icon: DocumentIcon,
+        component: Pages.Overview,
+      },
+      {
+        path: "/revenue",
+        name: "Revenue",
+        icon: DocumentIcon,
+        component: Pages.Revenue,
       },
     ],
   },

@@ -8,7 +8,6 @@ import {
   Link,
   useColorModeValue,
 } from "@chakra-ui/react";
-// import PropTypes from "prop-types";
 import AdminNavbarLinks from "./AdminNavbarLinks";
 
 let navVariants = {
@@ -27,7 +26,6 @@ const AdminHeader = (props) => {
   const { variant, children, fixed, secondary, brandText, onOpen, ...rest } =
     props;
 
-  // Variant States
   let mainText = "white";
   let navbarPosition = "absolute";
   let navbarFilter = "none";
@@ -72,13 +70,6 @@ const AdminHeader = (props) => {
       pb="8px"
       left={""}
       right={"30px"}
-      // px={{
-      //   sm: paddingX,
-      //   md: "30px",
-      // }}
-      // ps={{
-      //   xl: "12px",
-      // }}
       pt="8px"
       top="18px"
       w={{ sm: "calc(100vw - 60px)", xl: "calc(100vw - 60px - 340px)" }}
@@ -105,7 +96,6 @@ const AdminHeader = (props) => {
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
-          {/* Here we create navbar brand, based on route name */}
           <Link
             color={mainText}
             href="#"

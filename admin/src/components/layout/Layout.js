@@ -1,5 +1,5 @@
 import Footer from "../footer/Footer.js";
-import { Outlet, Route, Navigate } from "react-router-dom";
+import { Outlet, Route } from "react-router-dom";
 import Sidebar from "../sidebar/Sidebar.js";
 import {
   Portal,
@@ -10,9 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { ArgonLogoDark, ArgonLogoLight } from "../Icons/Icons";
 import MainPanel from "./MainPanel";
-import routes from "../../routes.js";
+import routes from "../../routes/routes.js";
 import { useState } from "react";
-import plane from "../../assets/img/plane.png";
 import AdminHeader from "../header/AdminHeader.js";
 import PanelContent from "./PanelContent";
 import PanelContainer from "./PanelContainer";
@@ -24,8 +23,6 @@ const Layout = (props) => {
   const [fixed, setFixed] = useState(false);
   const { colorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
-
- 
 
   const getActiveRoute = (routes) => {
     let activeRoute = "Default Brand Text";
@@ -132,13 +129,13 @@ const Layout = (props) => {
         }}
       >
         <Portal>
-              <AdminHeader
-                onOpen={onOpen}
-                brandText={getActiveRoute(routes)}
-                secondary={getActiveNavbar(routes)}
-                fixed={fixed}
-                {...rest}
-              />
+          <AdminHeader
+            onOpen={onOpen}
+            brandText={getActiveRoute(routes)}
+            secondary={getActiveNavbar(routes)}
+            fixed={fixed}
+            {...rest}
+          />
         </Portal>
 
         <PanelContent>
@@ -149,14 +146,14 @@ const Layout = (props) => {
 
         <Footer />
 
-         <Portal>
+        <Portal>
           <FixedPlugin
             secondary={getActiveNavbar(routes)}
             fixed={fixed}
             onOpen={onOpen}
           />
-       </Portal> 
-         <Configurator
+        </Portal>
+        <Configurator
           secondary={getActiveNavbar(routes)}
           isOpen={isOpen}
           onClose={onClose}

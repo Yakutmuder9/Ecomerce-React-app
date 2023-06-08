@@ -28,10 +28,11 @@ import { SearchBar } from "./SearchBar";
 import { SidebarResponsive } from "../sidebar/Sidebar";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import routes from "../../routes.js";
+import routes from "../../routes/routes";
 
 export default function HeaderLinks(props) {
-  const { variant, children, fixed, scrolled, secondary, onOpen, ...rest } = props;
+  const { variant, children, fixed, scrolled, secondary, onOpen, ...rest } =
+    props;
   const { colorMode } = useColorMode();
   let navbarIcon = useColorModeValue("white", "gray.200");
   let menuBg = useColorModeValue("white", "navy.800");

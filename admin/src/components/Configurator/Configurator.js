@@ -1,4 +1,3 @@
-// Chakra Imports
 import {
   Box,
   Button,
@@ -102,7 +101,7 @@ export default function Configurator(props) {
               <Box mt="24px">
                 <Box>
                   <Link
-                    href="https://www.creative-tim.com/product/argon-dashboard-chakra?ref=creativetim-pud"
+                    href="#"
                     w="100%"
                     mb="16px"
                   >
@@ -119,7 +118,7 @@ export default function Configurator(props) {
                     </Button>
                   </Link>
                   <Link
-                    href="https://demos.creative-tim.com/docs-argon-dashboard-chakra/?ref=creativetim-pud"
+                    href="#"
                     w="100%"
                   >
                     <Button
@@ -144,7 +143,7 @@ export default function Configurator(props) {
                   mb="16px"
                 >
                   <GitHubButton
-                    href="https://github.com/creativetimofficial/argon-dashboard-chakra"
+                    href="#"
                     data-icon="octicon-star"
                     data-show-count="true"
                     aria-label="Star creativetimofficial/argon-dashboard-chakra on GitHub"
@@ -159,7 +158,7 @@ export default function Configurator(props) {
                   <Flex justifyContent="center" alignContent="center">
                     <Link
                       isExternal="true"
-                      href="https://twitter.com/intent/tweet?url=https://www.creative-tim.com/product/argon-dashboard-chakra/&text=Check%20Argon%20Dashboard%20Chakra%20made%20by%20@simmmple_web%20and%20@CreativeTim"
+                      href="#"
                     >
                       <Button
                         colorScheme="twitter"
@@ -171,7 +170,7 @@ export default function Configurator(props) {
                     </Link>
                     <Link
                       isExternal="true"
-                      href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard-chakra/"
+                      href="#"
                     >
                       <Button colorScheme="facebook" leftIcon={<FaFacebook />}>
                         <Text>Share</Text>
