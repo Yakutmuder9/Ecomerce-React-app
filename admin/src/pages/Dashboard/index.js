@@ -18,16 +18,16 @@ import {
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
-import Card from "../components/card/Card.js";
-import BarChart from "../components/charts/BarChart";
-import LineChart from "../components/charts/LineChart";
-import IconBox from "../components/Icons/IconBox";
+import Card from "../../components/card/Card.js";
+import BarChart from "../../components/charts/BarChart";
+import LineChart from "../../components/charts/LineChart";
+import IconBox from "../../components/Icons/IconBox";
 import {
   CartIcon,
   DocumentIcon,
   GlobeIcon,
   WalletIcon,
-} from "../components/Icons/Icons.js";
+} from "../../components/Icons/Icons.js";
 import React from "react";
 // Variables
 import {
@@ -35,8 +35,8 @@ import {
   barChartOptions,
   lineChartData,
   lineChartOptions,
-} from "../assets/data/charts";
-import { pageVisits, socialTraffic } from "../assets/data/general";
+} from "../../assets/data/charts";
+import { pageVisits, socialTraffic } from "../../assets/data/general";
 
 const Dashboard = () => {
   let greenGradient =
@@ -103,7 +103,7 @@ const Dashboard = () => {
                 </Stat>
                 <IconBox
                   borderRadius="50%"
-                  as="box"
+                  // as="box"
                   h={"45px"}
                   w={"45px"}
                   bg={iconBlue}
@@ -150,7 +150,7 @@ const Dashboard = () => {
                 </Stat>
                 <IconBox
                   borderRadius="50%"
-                  as="box"
+                  // as="box"
                   h={"45px"}
                   w={"45px"}
                   bg={iconBlue}
@@ -196,7 +196,7 @@ const Dashboard = () => {
                 </Stat>
                 <IconBox
                   borderRadius="50%"
-                  as="box"
+                  // as="box"
                   h={"45px"}
                   w={"45px"}
                   bg={iconBlue}
@@ -242,7 +242,7 @@ const Dashboard = () => {
                 </Stat>
                 <IconBox
                   borderRadius="50%"
-                  as="box"
+                  // as="box"
                   h={"45px"}
                   w={"45px"}
                   bg={iconBlue}
@@ -282,7 +282,7 @@ const Dashboard = () => {
               in 2022
             </Text>
           </Flex>
-          <Box minH="300px"  p="10px 0px 15px 0px">
+          <Box minH="300px" p="10px 0px 15px 0px">
             <LineChart
               chartData={lineChartData}
               chartOptions={lineChartOptions}
@@ -295,7 +295,7 @@ const Dashboard = () => {
           maxW={{ sm: "320px", md: "100%" }}
           bg={colorMode === "dark" ? "navy.800" : "white"}
         >
-          <Flex direction="column"  p="28px 0px 0px 22px">
+          <Flex direction="column" p="28px 0px 0px 22px">
             <Text color="gray.400" fontSize="sm" fontWeight="bold" mb="6px">
               PERFORMANCE
             </Text>
@@ -303,11 +303,11 @@ const Dashboard = () => {
               Total orders
             </Text>
           </Flex>
-          <Box minH="300px"  p="0px 10px 0px 10px">
+          <Box minH="300px" p="0px 10px 0px 10px">
             <BarChart chartData={barChartData} chartOptions={barChartOptions} />
           </Box>
         </Card>
-        
+
         <Card
           p="0px"
           maxW={{ sm: "320px", md: "100%" }}
@@ -391,7 +391,7 @@ const Dashboard = () => {
           maxW={{ sm: "320px", md: "100%" }}
           bg={colorMode === "dark" ? "navy.800" : "white"}
         >
-          <Flex direction="column"  p={"5px"}>
+          <Flex direction="column" p={"5px"}>
             <Flex align="center" justify="space-between" p="22px">
               <Text fontSize="lg" color={textColor} fontWeight="bold">
                 Social traffic
@@ -402,7 +402,7 @@ const Dashboard = () => {
             </Flex>
           </Flex>
 
-          <Box overflow={{ sm: "scroll", lg: "hidden" }} >
+          <Box overflow={{ sm: "scroll", lg: "hidden" }} m={"10px"}>
             <Table>
               <Thead>
                 <Tr bg={tableRowColor}>

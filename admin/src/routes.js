@@ -1,10 +1,4 @@
-import Dashboard from "./pages/Dashboard";
-// import Tables from "views/Dashboard/Tables.js";
-// import Billing from "views/Dashboard/Billing.js";
-// import RTLPage from "views/RTL/RTLPage.js";
-// import Profile from "views/Dashboard/Profile.js";
-// import SignIn from "views/Pages/SignIn.js";
-import Login from "./pages/auth/Login.js";
+import * as Pages from "./pages";
 
 import {
   HomeIcon,
@@ -15,65 +9,187 @@ import {
   RocketIcon,
   SupportIcon,
 } from "./components/Icons/Icons";
+import { FaClipboardList, FaHandPaper, FaUsers } from "react-icons/fa";
+import { GrCompliance } from "react-icons/gr";
+import { FcCancel, FcCustomerSupport } from "react-icons/fc";
+import { FiUserPlus } from "react-icons/fi";
+import { BsCart2, BsSegmentedNav } from "react-icons/bs";
+import { SiMarketo } from "react-icons/si";
 
-var dashRoutes = [
+let sideNavitems = [
   {
     path: "/dashboard",
     name: "Dashboard",
-    icon: <HomeIcon color="inherit" />,
-    component: Dashboard,
+    icon: HomeIcon,
+    component: Pages.Dashboard,
     layout: "/admin",
   },
   {
-    path: "/Products",
-    name: "Products",
-    icon: <StatsIcon color="inherit" />,
-    component: Dashboard,
-    layout: "/admin",
-  },
-  {
-    path: "/users",
-    name: "Users",
-    icon: <CreditIcon color="inherit" />,
-    component: Dashboard,
-    layout: "/admin",
-  },
-  {
-    path: "/dashboard",
     name: "Orders",
-    icon: <SupportIcon color="inherit" />,
-    component: Dashboard,
-    layout: "/admin",
-  },
-  {
-    name: "ACCOUNT PAGES",
-    category: "account",
-    state: "pageCollapse",
+    category: "orders",
+    icon: FaClipboardList,
+    layout: "/admin/orders",
     views: [
       {
-        path: "/users",
-        name: "Profile",
-        icon: <PersonIcon color="inherit" />,
-        secondaryNavbar: true,
-        component: Dashboard,
+        path: "/all-orders",
+        name: "All Orders",
+        icon: FaClipboardList,
+        component: Pages.AllOrders,
+      },
+      {
+        path: "/cancelled-orders",
+        name: "Cancelled Orders",
+        icon: FcCancel,
+        component: Pages.CancelledOrders,
+      },
+      {
+        path: "/completed-orders",
+        name: "Completed Orders",
+        icon: GrCompliance,
+        component: Pages.CompletedOrders,
+      },
+      {
+        path: "/on-hold-orders",
+        name: "On Hold Orders",
+        icon: FaHandPaper,
+        component: Pages.OnHoldOrders,
+      },
+    ],
+  },
+
+  {
+    name: "Customers",
+    category: "customers",
+    icon: PersonIcon,
+    layout: "/admin/customers",
+    views: [
+      {
+        path: "/all-cusomers",
+        name: "All Customers",
+        icon: FaUsers,
+        component: Pages.AllCustomers,
+      },
+      {
+        path: "/add-customer",
+        name: "Add Customer",
+        icon: FiUserPlus,
+        component: Pages.AddCustomer,
+      },
+      {
+        path: "/customer-segmentation",
+        name: "Customer Segmentation",
+        icon: BsSegmentedNav,
+        component: Pages.CustomerSegmentation,
+      },
+      {
+        path: "/customer-support",
+        name: "Customer Support",
+        icon: FcCustomerSupport,
+        component: Pages.CustomerSupport,
+      },
+    ],
+  },
+
+  {
+    name: "Products",
+    category: "products",
+    icon: BsCart2,
+    layout: "/admin/products",
+    views: [
+      {
+        path: "/all-products",
+        name: "All Products",
+        icon: PersonIcon,
+        component: Pages.AllProducts,
         layout: "/admin",
       },
       {
-        path: "/dashboard",
-        name: "Sign Out",
-        icon: <DocumentIcon color="inherit" />,
-        component: Login,
+        path: "/add-product",
+        name: "Add Product",
+        icon: DocumentIcon,
+        component: Pages.AddProduct,
         layout: "/admin",
       },
       {
-        path: "/users",
-        name: "Sign Up",
-        icon: <RocketIcon color="inherit" />,
-        secondaryNavbar: true,
-        component: Dashboard,
+        path: "/brands",
+        name: "Brands",
+        icon: DocumentIcon,
+        component: Pages.Brands,
+        layout: "/admin",
+      },
+      {
+        path: "/categories",
+        name: "Categories",
+        icon: DocumentIcon,
+        component: Pages.Categories,
+        layout: "/admin",
+      },
+      {
+        path: "/inventory-management",
+        name: "Inventory Management",
+        icon: PersonIcon,
+        component: Pages.InventoryManagement,
+        layout: "/admin",
+      },
+      {
+        path: "/product-attributes",
+        name: "Product Attributes",
+        icon: DocumentIcon,
+        component: Pages.ProductAttributes,
+        layout: "/admin",
+      },
+      {
+        path: "/product-reviews",
+        name: "Product Reviews",
+        icon: DocumentIcon,
+        component: Pages.ProductReviews,
+        layout: "/admin",
+      },
+      {
+        path: "/product-variationst",
+        name: "Product Variations",
+        icon: DocumentIcon,
+        component: Pages.ProductVariations,
+        layout: "/admin",
+      },
+    ],
+  },
+
+  {
+    name: "Marketing",
+    category: "marketing",
+    icon: SiMarketo,
+    layout: "/admin/marketing",
+    views: [
+      {
+        path: "/all-coupons",
+        name: "All Coupons",
+        icon: PersonIcon,
+        component: Pages.AllCoupons,
+        layout: "/admin",
+      },
+      {
+        path: "/add-coupons",
+        name: "Add Coupon",
+        icon: DocumentIcon,
+        component: Pages.AddCoupon,
+        layout: "/admin",
+      },
+      {
+        path: "/promotions",
+        name: "Promotions",
+        icon: DocumentIcon,
+        component: Pages.Promotions,
+        layout: "/admin",
+      },
+      {
+        path: "/discount",
+        name: "Discounts",
+        icon: DocumentIcon,
+        component: Pages.Discounts,
         layout: "/admin",
       },
     ],
   },
 ];
-export default dashRoutes;
+export default sideNavitems;

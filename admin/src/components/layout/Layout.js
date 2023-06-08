@@ -23,13 +23,9 @@ const Layout = (props) => {
   const { ...rest } = props;
   const [fixed, setFixed] = useState(false);
   const { colorMode } = useColorMode();
-
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // functions for changing the states from components
-  const getRoute = () => {
-    return window.location.pathname !== "/admin/full-screen-maps";
-  };
+ 
 
   const getActiveRoute = (routes) => {
     let activeRoute = "Default Brand Text";

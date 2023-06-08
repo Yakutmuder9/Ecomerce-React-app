@@ -17,7 +17,6 @@ const store = configureStore({
     auth: persistedReducer,
     product: productReducer,
   },
-  
 });
 
 const persistor = persistStore(store);
