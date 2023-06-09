@@ -6,13 +6,14 @@ import {
   DrawerCloseButton,
   DrawerContent,
   DrawerHeader,
-  Flex, Link,
+  Flex,
+  Link,
   Switch,
   Text,
   useColorMode,
-  useColorModeValue
+  useColorModeValue,
 } from "@chakra-ui/react";
-import { HSeparator } from "../Separator/Separator";
+import { HSeparator } from "../Separator";
 import React, { useState } from "react";
 import GitHubButton from "react-github-btn";
 import { FaFacebook, FaTwitter } from "react-icons/fa";
@@ -100,11 +101,7 @@ export default function Configurator(props) {
               <HSeparator />
               <Box mt="24px">
                 <Box>
-                  <Link
-                    href="#"
-                    w="100%"
-                    mb="16px"
-                  >
+                  <Link href="#" w="100%" mb="16px">
                     <Button
                       w="100%"
                       mb="16px"
@@ -117,10 +114,7 @@ export default function Configurator(props) {
                       Free Download
                     </Button>
                   </Link>
-                  <Link
-                    href="#"
-                    w="100%"
-                  >
+                  <Link href="#" w="100%">
                     <Button
                       w="100%"
                       bg={secondaryButtonBg}
@@ -156,10 +150,7 @@ export default function Configurator(props) {
                     Thank you for sharing!
                   </Text>
                   <Flex justifyContent="center" alignContent="center">
-                    <Link
-                      isExternal="true"
-                      href="#"
-                    >
+                    <Link isExternal="true" href="#">
                       <Button
                         colorScheme="twitter"
                         leftIcon={<FaTwitter />}
@@ -168,10 +159,7 @@ export default function Configurator(props) {
                         <Text>Tweet</Text>
                       </Button>
                     </Link>
-                    <Link
-                      isExternal="true"
-                      href="#"
-                    >
+                    <Link isExternal="true" href="#">
                       <Button colorScheme="facebook" leftIcon={<FaFacebook />}>
                         <Text>Share</Text>
                       </Button>

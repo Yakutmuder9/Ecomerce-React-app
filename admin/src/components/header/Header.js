@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Button,
   Flex,
@@ -36,6 +37,7 @@ export default function HeaderLinks(props) {
   const { colorMode } = useColorMode();
   let navbarIcon = useColorModeValue("white", "gray.200");
   let menuBg = useColorModeValue("white", "navy.800");
+  const notificationColor = useColorModeValue("gray.700", "white");
 
   if (secondary) {
     navbarIcon = "white";
@@ -115,31 +117,26 @@ export default function HeaderLinks(props) {
         <MenuList p="16px 8px" bg={menuBg}>
           <Flex flexDirection="column">
             <MenuItem borderRadius="8px" mb="10px">
-              <ItemContent
-                time="13 minutes ago"
-                info="from Alicia"
-                boldInfo="New Message"
-                aName="Alicia"
-                aSrc={avatar1}
+              <Avatar
+                name="Alicia"
+                src={avatar1}
+                borderRadius="12px"
+                me="16px"
               />
-            </MenuItem>
-            <MenuItem borderRadius="8px" mb="10px">
-              <ItemContent
-                time="2 days ago"
-                info="by Josh Henry"
-                boldInfo="New Album"
-                aName="Josh Henry"
-                aSrc={avatar2}
-              />
-            </MenuItem>
-            <MenuItem borderRadius="8px">
-              <ItemContent
-                time="3 days ago"
-                info="Payment succesfully completed!"
-                boldInfo=""
-                aName="Kara"
-                aSrc={avatar3}
-              />
+              <Flex flexDirection="column">
+                <Text fontSize="14px" mb="5px" color={notificationColor}>
+                  <Text fontWeight="bold" fontSize="14px" as="span">
+                    New Message
+                  </Text>
+                  from Alicia
+                </Text>
+                <Flex alignItems="center">
+                  <ClockIcon color={navbarIcon} w="13px" h="13px" me="3px" />
+                  <Text fontSize="xs" lineHeight="100%" color={navbarIcon}>
+                    13 minutes ago
+                  </Text>
+                </Flex>
+              </Flex>
             </MenuItem>
           </Flex>
         </MenuList>

@@ -15,7 +15,7 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <ChakraProvider theme={theme} resetCss={false} position="relative">
+          <ChakraProvider  resetCss={false} position="relative">
             <LayoutGroup>
               <AnimatePresence>
                 <App />

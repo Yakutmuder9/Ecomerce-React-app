@@ -52,10 +52,10 @@ const Dashboard = () => {
   const { colorMode } = useColorMode();
 
   return (
-    <Flex flexDirection="column" pt={{ base: "120px", md: "75px" }}>
+    <Flex flexDirection="column" pt={{ base: "120px", md: "30px" }}>
       <Flex
         direction="column"
-        mb="40px"
+        mb="30px"
         p={{ sm: "40px 10px 15px 10px", lg: "40px 10px 15px 30px" }}
         bg={gridBg}
         borderRadius={"12px"}
@@ -270,6 +270,8 @@ const Dashboard = () => {
           bg={colorMode === "dark" ? "navy.800" : greenGradient}
           p="0px"
           maxW={{ sm: "320px", md: "100%" }}
+          borderRadius={"12px"}
+          boxShadow={"0px 5px 14px rgba(0, 0, 0, 0.05)"}
         >
           <Flex direction="column" p="28px 0px 0px 22px">
             <Text color="#fff" fontSize="lg" fontWeight="bold" mb="6px">
@@ -294,6 +296,8 @@ const Dashboard = () => {
           p="0px"
           maxW={{ sm: "320px", md: "100%" }}
           bg={colorMode === "dark" ? "navy.800" : "white"}
+          borderRadius={"12px"}
+          boxShadow={"0px 5px 14px rgba(0, 0, 0, 0.05)"}
         >
           <Flex direction="column" p="28px 0px 0px 22px">
             <Text color="gray.400" fontSize="sm" fontWeight="bold" mb="6px">
@@ -312,6 +316,8 @@ const Dashboard = () => {
           p="0px"
           maxW={{ sm: "320px", md: "100%" }}
           bg={colorMode === "dark" ? "navy.800" : "white"}
+          borderRadius={"12px"}
+          boxShadow={"0px 5px 14px rgba(0, 0, 0, 0.05)"}
         >
           <Flex direction="column" p={"10px"}>
             <Flex align="center" justify="space-between" p="22px">
@@ -390,6 +396,8 @@ const Dashboard = () => {
           p="0px"
           maxW={{ sm: "320px", md: "100%" }}
           bg={colorMode === "dark" ? "navy.800" : "white"}
+          borderRadius={"12px"}
+          boxShadow={"0px 5px 14px rgba(0, 0, 0, 0.05)"}
         >
           <Flex direction="column" p={"5px"}>
             <Flex align="center" justify="space-between" p="22px">
