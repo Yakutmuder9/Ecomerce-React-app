@@ -1,13 +1,25 @@
 import axios from "axios";
-import { baseUrl } from "../assets/baseUrl";
+import { baseUrl } from "./baseUrl";
+
+export const validateEmail = (email) => {
+  return email.match(
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  );
+};
 
 export const login = async (userData) => {
   try {
     const response = await axios.post(`${baseUrl}api/auth/login`, userData);
-    console.log(response.data);
+    if (response.data) {
+      localStorage.setItem("user", JSON.stringify(response.data));
+    }
     return response.data;
   } catch (error) {
-    throw new Error("Login faild");
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    console.log(message);
   }
 };
 
@@ -17,6 +29,11 @@ export const refreshTokens = async () => {
 
   return accessToken;
 };
+
+export const logout = async () => {
+  delete axios.defaults.headers.common["Authorization"];
+};
+
 const authService = {
   login,
 };

@@ -8,7 +8,7 @@ import {
   DocumentIcon,
   RocketIcon,
   SupportIcon,
-} from "../components/Icons/Icons";
+} from "../components/icons/Icons";
 import { FaClipboardList, FaHandPaper, FaUsers } from "react-icons/fa";
 import { GrCompliance } from "react-icons/gr";
 import {

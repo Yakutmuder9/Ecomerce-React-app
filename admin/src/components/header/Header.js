@@ -14,8 +14,6 @@ import {
 } from "@chakra-ui/react";
 import { BellIcon } from "@chakra-ui/icons";
 import avatar1 from "../../assets/img/avatars/avatar1.png";
-import avatar2 from "../../assets/img/avatars/avatar2.png";
-import avatar3 from "../../assets/img/avatars/avatar3.png";
 import {
   ArgonLogoDark,
   ArgonLogoLight,
@@ -23,8 +21,7 @@ import {
   ChakraLogoLight,
   ProfileIcon,
   SettingsIcon,
-} from "../Icons/Icons";
-import { ItemContent } from "./ItemContent";
+} from "../icons/Icons";
 import { SearchBar } from "./SearchBar";
 import { SidebarResponsive } from "../sidebar/Sidebar";
 import React from "react";

@@ -21,7 +21,16 @@ const generateRefreshToken = (id) => {
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
   const user = await User.findOne({ email });
+
+  if (!user) {
+    return res.status(401).json({ message: "User Not Found!" });
+  } else if (user?.isBlocked) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
 
   if (user && (await user.isPasswordMatched(password))) {
     const refreshToken = await generateRefreshToken(user._id);
@@ -32,6 +41,7 @@ const loginUser = asyncHandler(async (req, res) => {
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
       maxAge: 72 * 60 * 60 * 1000, // 72 hours
+      // maxAge: 1000,
     });
 
     res.json({
@@ -39,6 +49,8 @@ const loginUser = asyncHandler(async (req, res) => {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
+      profile_pic: user.profile_pic,
+      isBlocked: user.isBlocked,
       mobile: user.mobile,
       token: generateToken(user._id),
     });
@@ -47,6 +59,7 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error("Invalid Credentials");
   }
 });
+
 const loginAdmin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const findAdmin = await User.findOne({ email });
@@ -102,6 +115,7 @@ const logout = asyncHandler(async (req, res) => {
   });
   res.json({ message: "Cookie cleared" });
 });
+
 const updatePassword = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   const { password } = req.body;
@@ -118,8 +132,14 @@ const updatePassword = asyncHandler(async (req, res) => {
 });
 const forgotPassword = asyncHandler(async (req, res) => {
   const { email } = req.body;
+
+  if (!email)
+    res.status(401).json({ message: "email is required!" });
+
   const user = await User.findOne({ email });
-  if (!user) throw new Error("User not found with this email");
+  if (!user)
+    res.status(401).json({ message: "User not found with this email" });
+
   try {
     const token = await user.createPasswordResetToken();
     await user.save();
@@ -133,8 +153,9 @@ const forgotPassword = asyncHandler(async (req, res) => {
       html: resetURL,
     };
 
+    console.log(msg);
     sendEmail(msg);
-    res.status(201).json(token);
+    res.status(201).json({message: `password reset token  ${token}`});
   } catch (error) {
     throw new Error(error);
   }
@@ -168,22 +189,29 @@ const deleteUser = asyncHandler(async (req, res) => {
   }
 });
 
-// User
+// create User
 const createUser = asyncHandler(async (req, res) => {
+  const { firstName, lastName, email, password } = req.body;
+
   try {
-    const email = req.body.email;
+    if (!firstName || !lastName || !email || !password) {
+      return res
+        .status(401)
+        .json({ message: "PLease fill all the required fileds!" });
+    }
     const findUser = await User.findOne({ email: email });
 
     if (!findUser) {
       const newUser = await User.create(req.body);
       res.status(201).json(newUser);
     } else {
-      throw new Error("User Already Exists");
+      res.status(401).json({ message: "User Already Exists" });
     }
   } catch (error) {
     throw new Error(error);
   }
 });
+
 const getAllUser = asyncHandler(async (req, res) => {
   try {
     const getUsers = await User.find().populate("wishlist");
@@ -294,8 +322,6 @@ const saveAddress = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
-
-
 
 const userCart = asyncHandler(async (req, res) => {
   const { cart } = req.body;

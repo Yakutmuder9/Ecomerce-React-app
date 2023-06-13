@@ -8,15 +8,6 @@ import avatar7 from "../img/avatars/avatar7.png";
 import avatar8 from "../img/avatars/avatar8.png";
 import avatar9 from "../img/avatars/avatar9.png";
 import avatar10 from "../img/avatars/avatar10.png";
-// Custom icons
-import {
-  AdobexdLogo,
-  AtlassianLogo,
-  InvisionLogo,
-  JiraLogo,
-  SlackLogo,
-  SpotifyLogo,
-} from "../../components/Icons/Icons.js";
 import { AiOutlineExclamation } from "react-icons/ai";
 import {
   FaArrowDown,
@@ -27,46 +18,46 @@ import {
   FaHtml5,
   FaShoppingCart,
 } from "react-icons/fa";
-import { SiDropbox } from "react-icons/si";
+import { SiDropbox, SiAdobe, SiAtlassian, SiNvidia, SiJirasoftware,SiSpotify, SiSlack } from "react-icons/si";
 
 export const dashboardTableData = [
   {
-    logo: AdobexdLogo,
+    logo: SiAdobe,
     name: "Argon Dashboard Chakra Version",
     members: [avatar1, avatar2, avatar3, avatar4, avatar5],
     budget: "$14,000",
     progression: 60,
   },
   {
-    logo: AtlassianLogo,
+    logo: SiAtlassian,
     name: "Add Progress Track",
     members: [avatar3, avatar2],
     budget: "$3,000",
     progression: 10,
   },
   {
-    logo: SlackLogo,
+    logo: SiSlack,
     name: "Fix Platform Errors",
     members: [avatar10, avatar4],
     budget: "Not set",
     progression: 100,
   },
   {
-    logo: SpotifyLogo,
+    logo: SiSpotify,
     name: "Launch our Mobile App",
     members: [avatar2, avatar3, avatar7, avatar8],
     budget: "$32,000",
     progression: 100,
   },
   {
-    logo: JiraLogo,
+    logo: SiJirasoftware,
     name: "Add the New Pricing Page",
     members: [avatar10, avatar3, avatar7, avatar2, avatar8],
     budget: "$400",
     progression: 25,
   },
   {
-    logo: InvisionLogo,
+    logo: SiNvidia,
     name: "Redesign New Online Shop",
     members: [avatar9, avatar3, avatar2],
     budget: "$7,600",
@@ -106,49 +97,49 @@ export const timelineData = [
     color: "purple",
   },
   {
-    logo: AdobexdLogo,
+    logo: SiAdobe,
     title: "New order #9851258",
     date: "18 DEC 4:41 PM",
   },
 ];
 export const rtlDashboardTableData = [
   {
-    logo: AdobexdLogo,
+    logo: SiAdobe,
     name: "نسخة Argon Dashboard Chakra",
     members: [avatar1, avatar2, avatar3, avatar4, avatar5],
     budget: "$14,000",
     progression: 60,
   },
   {
-    logo: AtlassianLogo,
+    logo: SiAtlassian,
     name: "إضافة مسار التقدم",
     members: [avatar3, avatar2],
     budget: "$3,000",
     progression: 10,
   },
   {
-    logo: SlackLogo,
+    logo: SiSlack,
     name: "إصلاح أخطاء النظام الأساسي",
     members: [avatar10, avatar4],
     budget: "غير مضبوط",
     progression: 100,
   },
   {
-    logo: SpotifyLogo,
+    logo: SiSpotify,
     name: "إطلاق تطبيق الهاتف المحمول الخاص بنا",
     members: [avatar2, avatar3, avatar7, avatar8],
     budget: "$32,000",
     progression: 100,
   },
   {
-    logo: JiraLogo,
+    logo: SiJirasoftware,
     name: "أضف صفحة التسعير الجديدة",
     members: [avatar10, avatar3, avatar7, avatar2, avatar8],
     budget: "$400",
     progression: 25,
   },
   {
-    logo: InvisionLogo,
+    logo: SiNvidia,
     name: "إعادة تصميم متجر جديد على الإنترنت",
     members: [avatar9, avatar3, avatar2],
     budget: "$7,600",
@@ -188,7 +179,7 @@ export const rtlTimelineData = [
     color: "purple",
   },
   {
-    logo: AdobexdLogo,
+    logo: SiAdobe,
     title: "طلب جديد #9851258",
     date: "18 DEC 4:41 PM",
   },
@@ -253,35 +244,35 @@ export const tablesTableData = [
 
 export const tablesProjectData = [
   {
-    logo: AdobexdLogo,
+    logo: SiAdobe,
     name: "Chakra UI Version",
     budget: "$14,000",
     status: "Working",
     progression: 60,
   },
   {
-    logo: AtlassianLogo,
+    logo: SiAtlassian,
     name: "Add Progress Track",
     budget: "$3,000",
     status: "Canceled",
     progression: 10,
   },
   {
-    logo: SlackLogo,
+    logo: SiSlack,
     name: "Fix Platform Errors",
     budget: "Not set",
     status: "Done",
     progression: 100,
   },
   {
-    logo: SpotifyLogo,
+    logo: SiSpotify,
     name: "Launch our Mobile App",
     budget: "$32,000",
     status: "Done",
     progression: 100,
   },
   {
-    logo: JiraLogo,
+    logo: SiJirasoftware,
     name: "Add the New Pricing Page",
     budget: "$400",
     status: "Working",

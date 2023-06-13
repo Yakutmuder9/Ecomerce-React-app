@@ -9,15 +9,15 @@ const persistConfig = {
   whitelist: ["user"],
 };
 
-const persistedReducer = persistReducer(persistConfig, authReducer);
+// const persistedReducer = persistReducer(persistConfig, authReducer);
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
-    auth: persistedReducer,
+    auth: authReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),
 });
 
-const persistor = persistStore(store);
-export { store, persistor };
+// const persistor = persistStore(store);
+// export { store, persistor };

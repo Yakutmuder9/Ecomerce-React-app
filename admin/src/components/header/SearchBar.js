@@ -34,8 +34,8 @@ export const SearchBar= (props) => {
         }
       />
       <Input
-        fontSize='xs'
-        py='11px'
+        fontSize="medium"
+        py='14px'
         placeholder='Type here...'
         borderRadius='inherit'
       />

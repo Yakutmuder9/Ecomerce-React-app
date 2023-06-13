@@ -21,21 +21,19 @@ import {
 import Card from "../../components/card/Card.js";
 import BarChart from "../../components/charts/BarChart";
 import LineChart from "../../components/charts/LineChart";
-import IconBox from "../../components/Icons/IconBox";
-import {
-  CartIcon,
-  DocumentIcon,
-  GlobeIcon,
-  WalletIcon,
-} from "../../components/Icons/Icons.js";
-import React from "react";
-// Variables
+import IconBox from "../../components/icons/IconBox.js";
 import {
   barChartData,
   barChartOptions,
   lineChartData,
   lineChartOptions,
 } from "../../assets/data/charts";
+import {
+  HiShoppingCart,
+  HiDocument,
+  HiGlobeAlt,
+  HiArchive,
+} from "react-icons/hi";
 import { pageVisits, socialTraffic } from "../../assets/data/general";
 
 const Dashboard = () => {
@@ -108,7 +106,7 @@ const Dashboard = () => {
                   w={"45px"}
                   bg={iconBlue}
                 >
-                  <CartIcon h={"24px"} w={"24px"} color={iconBoxInside} />
+                  <HiShoppingCart h={"24px"} w={"24px"} color={iconBoxInside} />
                 </IconBox>
               </Flex>
 
@@ -155,7 +153,7 @@ const Dashboard = () => {
                   w={"45px"}
                   bg={iconBlue}
                 >
-                  <DocumentIcon h={"24px"} w={"24px"} color={iconBoxInside} />
+                  <HiDocument h={"24px"} w={"24px"} color={iconBoxInside} />
                 </IconBox>
               </Flex>
               <Text color="gray.400" fontSize="sm">
@@ -201,7 +199,7 @@ const Dashboard = () => {
                   w={"45px"}
                   bg={iconBlue}
                 >
-                  <WalletIcon h={"24px"} w={"24px"} color={iconBoxInside} />
+                  <HiArchive h={"24px"} w={"24px"} color={iconBoxInside} />
                 </IconBox>
               </Flex>
               <Text color="gray.400" fontSize="sm">
@@ -247,7 +245,7 @@ const Dashboard = () => {
                   w={"45px"}
                   bg={iconBlue}
                 >
-                  <GlobeIcon h={"24px"} w={"24px"} color={iconBoxInside} />
+                  <HiGlobeAlt h={"24px"} w={"24px"} color={iconBoxInside} />
                 </IconBox>
               </Flex>
               <Text color="gray.400" fontSize="sm">

@@ -2,21 +2,30 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import ProtectedRoutes from "./routes/ProtectedRoutes";
 import * as Pages from "./pages";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function loginStatus() {
+      // const status = await getLoginStatus();
+      // dispatch(SET_LOGIN(status));
+    }
+    loginStatus();
+  }, [dispatch]);
   return (
     <Routes>
       <Route path="/" element={<Pages.Login />} />
-      <Route path="/login" element={<Navigate to="/" />} />
       <Route path="/forgot-password" element={<Pages.ForgotPassword />} />
       <Route
         path="/reset-password/:resetToken"
         element={<Pages.ResetPassword />}
       />
-
       <Route element={<ProtectedRoutes />}>
-        <Route path="admin" element={<Layout />}>
-          <Route index element={<Navigate to="/admin/dashboard" />} />
+        <Route path="/admin" element={<Layout />}>
+          {/* <Route index element={<Navigate to="/admin/dashboard" />} /> */}
           <Route path="dashboard" element={<Pages.Dashboard />} />
 
           <Route path="orders">

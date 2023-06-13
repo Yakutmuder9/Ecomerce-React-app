@@ -1,19 +1,10 @@
 import Footer from "./footer/Footer.js";
-import { Outlet, Route } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar.js";
-import {
-  Portal,
-  useDisclosure,
-  Stack,
-  Box,
-  useColorMode,
-} from "@chakra-ui/react";
-import { ArgonLogoDark, ArgonLogoLight } from "./Icons/Icons.js";
+import { useDisclosure, Box, useColorMode } from "@chakra-ui/react";
 import routes from "../routes/routes.js";
 import { useState } from "react";
 import Header from "./Header.js";
-import FixedPlugin from "./FixedPlugin/FixedPlugin.js";
-import Configurator from "./Configurator/Configurator.js";
 
 const Layout = (props) => {
   const { ...rest } = props;
@@ -21,15 +12,19 @@ const Layout = (props) => {
   const { colorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  
+  const [isHovered, setIsHovered] = useState(false);
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  const sidebarWidth = isHovered ? "275px" : "75px";
+
   return (
-    <Box
-      display={"flex"}
-      alignItems={"center"}
-      justifyContent={"center"}
-    >
+    <Box display={"flex"} alignItems={"center"} justifyContent={"center"}>
       <Box
-        // maxWidth={1600}
         width={"100%"}
         overflow={"auto"}
         position={"relative"}
@@ -56,25 +51,24 @@ const Layout = (props) => {
 
         <Sidebar
           routes={routes}
-          logo={
-            <Stack direction="row" ml="12px">
-              {colorMode === "dark" ? (
-                <ArgonLogoLight w="74px" h="27px" />
-              ) : (
-                <ArgonLogoDark w="74px" h="27px" />
-              )}
-            </Stack>
-          }
+          handleMouseEnter={handleMouseEnter}
+          handleMouseLeave={handleMouseLeave}
+          sidebarWidth={sidebarWidth}
+          isHovered={isHovered}
           display="none"
           {...rest}
         />
         <Box
           p={{ sm: "15px", lg: "20px 0px" }}
+          pl={{ lg: sidebarWidth }}
           minHeight={"100vh"}
           zIndex={2}
           w={"100%"}
           mx={{ lg: 25 }}
-          float={{ lg: "right" }}
+          transitionDelay="0s, 0s, 0s, 0s"
+          transitionDuration=" 0.25s, 0.25s, 0.25s, 0s"
+          transition-property="box-shadow, background-color, filter, border"
+          transitionTimingFunction="linear, linear, linear, linear"
         >
           <Header onOpen={onOpen} fixed={fixed} {...rest} />
           <Outlet />
