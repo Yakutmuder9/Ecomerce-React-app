@@ -6,7 +6,7 @@
 ; Description: eCommerce API
 ;===========================================
 */
-import * as dotenv from "dotenv";
+import dotenv from "dotenv";
 import cors from "cors";
 import express from "express";
 import cookieParser from "cookie-parser";
@@ -22,7 +22,13 @@ dbConnect();
 
 // Constant
 const app = express();
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 const port = process.env.PORT || 5000;
 
 app.use(cookieParser());

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
-import { lineChartData, lineChartOptions } from "../../assets/data/charts";
+import { lineChartData, lineChartOptions } from "../../app/assets/data/charts";
 
 class LineChart extends React.Component {
   constructor(props) {

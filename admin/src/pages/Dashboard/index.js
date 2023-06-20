@@ -27,14 +27,14 @@ import {
   barChartOptions,
   lineChartData,
   lineChartOptions,
-} from "../../assets/data/charts";
+} from "../../app/assets/data/charts";
 import {
   HiShoppingCart,
   HiDocument,
   HiGlobeAlt,
   HiArchive,
 } from "react-icons/hi";
-import { pageVisits, socialTraffic } from "../../assets/data/general";
+import { pageVisits, socialTraffic } from "../../app/assets/data/general";
 
 const Dashboard = () => {
   let greenGradient =

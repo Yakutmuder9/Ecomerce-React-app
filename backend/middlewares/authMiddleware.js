@@ -15,18 +15,19 @@ const authMiddleware = asyncHandler(async (req, res, next) => {
         next();
       }
     } catch (error) {
-      throw new Error("Authorirization expire, Pleae login!");
+      res.status(401).json({ message: "Authorirization expire, Pleae login!" });
     }
   } else {
-    throw new Error("There is no token attacked to header!");
+    res.status(500).json({ message: "There is no token attacked to header!" });
   }
 });
+
 const isAdmin = asyncHandler(async (req, res, next) => {
   const { email } = req.user;
   const adminuser = await User.findOne({ email });
- 
+
   if (adminuser.role !== "admin") {
-    throw new Error("You are not an admin");
+    res.status(401).json({ message: "You are not an admin"});
   } else {
     next();
   }

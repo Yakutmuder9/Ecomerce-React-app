@@ -19,122 +19,168 @@ const generateRefreshToken = (id) => {
 
 // Password
 const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
 
-  if (!email || !password) {
-    return res.status(400).json({ message: "All fields are required" });
-  }
-  const user = await User.findOne({ email });
+    if (!email || !password) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+    const user = await User.findOne({ email });
 
-  if (!user) {
-    return res.status(401).json({ message: "User Not Found!" });
-  } else if (user?.isBlocked) {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
+    if (!user) {
+      return res.status(401).json({ message: "User Not Found!" });
+    } else if (user?.isBlocked) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
 
-  if (user && (await user.isPasswordMatched(password))) {
-    const refreshToken = await generateRefreshToken(user._id);
+    if (user && (await user.isPasswordMatched(password))) {
+      const refreshToken = await generateRefreshToken(user._id);
 
-    user.refreshToken = refreshToken;
-    await user.save();
+      user.refreshToken = refreshToken;
+      await user.save();
 
-    res.cookie("refreshToken", refreshToken, {
-      httpOnly: true,
-      maxAge: 72 * 60 * 60 * 1000, // 72 hours
-      // maxAge: 1000,
-    });
+      res.cookie("refreshToken", refreshToken, {
+        httpOnly: true,
+        maxAge: 72 * 60 * 60 * 1000, // 72 hours
+        // maxAge: 1000,
+      });
 
-    res.json({
-      _id: user._id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      profile_pic: user.profile_pic,
-      isBlocked: user.isBlocked,
-      mobile: user.mobile,
-      token: generateToken(user._id),
-    });
-  } else {
-    res.status(401);
-    throw new Error("Invalid Credentials");
+      res.json({
+        _id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        profile_pic: user.profile_pic,
+        isBlocked: user.isBlocked,
+        mobile: user.mobile,
+        token: generateToken(user._id),
+      });
+    } else {
+      res.status(401).json({ message: "Invalid username or password" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Exception" });
   }
 });
 
 const loginAdmin = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
-  const findAdmin = await User.findOne({ email });
-  if (findAdmin.role !== "admin") throw new Error("Not Authorised");
-  if (findAdmin && (await findAdmin.isPasswordMatched(password))) {
-    const refreshToken = await generateRefreshToken(findAdmin?._id);
-    const updateuser = await User.findByIdAndUpdate(
-      findAdmin.id,
-      {
-        refreshToken: refreshToken,
-      },
-      { new: true }
-    );
-    res.cookie("refreshToken", refreshToken, {
-      httpOnly: true,
-      maxAge: 72 * 60 * 60 * 1000,
-    });
-    res.status(201).json({
-      _id: findAdmin?._id,
-      firstname: findAdmin?.firstname,
-      lastname: findAdmin?.lastname,
-      email: findAdmin?.email,
-      mobile: findAdmin?.mobile,
-      token: generateToken(findAdmin?._id),
-    });
-  } else {
-    throw new Error("Invalid Credentials");
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+    const admin = await User.findOne({ email });
+
+    if (!admin) {
+      return res.status(401).json({ message: "User Not Found!" });
+    } else if (admin?.role !== "admin") {
+      return res.status(401).json({ message: "You are not an admin!" });
+    }
+
+    if (admin && (await admin.isPasswordMatched(password))) {
+      const refreshToken = await generateRefreshToken(admin?._id);
+
+      const updateuser = await User.findByIdAndUpdate(
+        admin.id,
+        {
+          refreshToken: refreshToken,
+        },
+        { new: true }
+      );
+      res.cookie("refreshToken", refreshToken, {
+        httpOnly: true,
+        maxAge: 72 * 60 * 60 * 1000,
+      });
+
+      res.status(201).json({
+        _id: admin?._id,
+        firstname: admin?.firstName,
+        lastname: admin?.lastName,
+        email: admin?.email,
+        mobile: admin?.mobile,
+        token: generateToken(admin?._id),
+      });
+    } else {
+      return res.status(401).json({ message: "Invalid email or password" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Exception" });
   }
 });
-const handleRefreshToken = asyncHandler(async (req, res) => {
-  const cookie = req.cookies;
-  if (!cookie?.refreshToken) throw new Error("No Refresh Token in Cookies");
-  const refreshToken = cookie.refreshToken;
-  const user = await User.findOne({ refreshToken });
-  if (!user) throw new Error(" No Refresh token present in db or not matched");
 
-  jwt.verify(refreshToken, process.env.JWT_SECRET, (err, decoded) => {
-    if (err || user.id !== decoded.id) {
-      throw new Error("There is something wrong with refresh token");
-    }
-    const accessToken = generateToken(user?._id);
-    res.status(201).json({ accessToken });
-  });
+const handleRefreshToken = asyncHandler(async (req, res) => {
+  try {
+    const cookie = req.cookies;
+    if (!cookie?.refreshToken)
+      es.status(201).json({ message: "No Refresh Token in Cookies" });
+    const refreshToken = cookie.refreshToken;
+
+    const user = await User.findOne({ refreshToken });
+
+    if (!user)
+      es.status(401).json({
+        message: "No Refresh token present in db or not matched",
+      });
+
+    jwt.verify(refreshToken, process.env.JWT_SECRET, (err, decoded) => {
+      if (err || user.id !== decoded.id) {
+        es.status(401).json({
+          message: "There is something wrong with refresh token",
+        });
+      }
+      const accessToken = generateToken(user?._id);
+      res.status(201).json({ message: accessToken });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Exception" });
+  }
 });
 
 const logout = asyncHandler(async (req, res) => {
   const cookies = req.cookies;
-  if (!cookies?.refreshToken) return res.sendStatus(204); //No content
+  if (!cookies?.refreshToken)
+    return res.status(401).json({ message: "No cookies found" }); //No content
+
+  console.log("logout");
   res.clearCookie("refreshToken", {
     httpOnly: true,
     sameSite: "None",
     secure: true,
   });
-  res.json({ message: "Cookie cleared" });
+  res.json({ message: "Cookie cleared!" });
 });
 
 const updatePassword = asyncHandler(async (req, res) => {
-  const { _id } = req.user;
-  const { password } = req.body;
-
-  validateMongoDbId(_id);
-  const user = await User.findById(_id);
-  if (password) {
-    user.password = password;
-    const updatedPassword = await user.save();
-    res.status(201).json(updatedPassword);
-  } else {
-    res.status(401).json(user);
+  try {
+    const { _id } = req.user;
+    const { password } = req.body;
+    if (password?.length < 6)
+      return res
+        .status(401)
+        .json({ message: "passwrod must be atleas 6 characters" });
+    validateMongoDbId(_id);
+    const user = await User.findById(_id);
+    if (password) {
+      user.password = password;
+      const updatedPassword = await user.save();
+      res.status(201).json(updatedPassword);
+    } else {
+      res.status(401).json({ message: "Invalid username or password" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Exception" });
   }
 });
+
 const forgotPassword = asyncHandler(async (req, res) => {
   const { email } = req.body;
 
-  if (!email)
-    res.status(401).json({ message: "email is required!" });
+  if (!email) res.status(401).json({ message: "email is required!" });
 
   const user = await User.findOne({ email });
   if (!user)
@@ -153,39 +199,61 @@ const forgotPassword = asyncHandler(async (req, res) => {
       html: resetURL,
     };
 
-    console.log(msg);
     sendEmail(msg);
-    res.status(201).json({message: `password reset token  ${token}`});
+    res.status(201).json({ message: `password reset token  ${token}` });
   } catch (error) {
     throw new Error(error);
   }
 });
 const resetPassword = asyncHandler(async (req, res) => {
-  const { password } = req.body;
-  const { token } = req.params;
-  const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
-  const user = await User.findOne({
-    passwordResetToken: hashedToken,
-    passwordResetExpires: { $gt: Date.now() },
-  });
-  if (!user) throw new Error(" Token Expired, Please try again later");
-  user.password = password;
-  user.passwordResetToken = undefined;
-  user.passwordResetExpires = undefined;
-  await user.save();
-  res.status(201).json(user);
-});
-const deleteUser = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  validateMongoDbId(id);
-
   try {
-    const deleteaUser = await User.findByIdAndDelete(id);
-    res.status(201).json({
-      deleteaUser,
+    const { password } = req.body;
+    const { token } = req.params;
+    if (!password || !token)
+      return res.status(201).json({ message: "All fileds are required" });
+
+    const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
+    const user = await User.findOne({
+      passwordResetToken: hashedToken,
+      passwordResetExpires: { $gt: Date.now() },
     });
+
+    if (!user)
+      return res
+        .status(401)
+        .json({ message: " Token Expired, Please try again later" });
+
+    user.password = password;
+    user.passwordResetToken = undefined;
+    user.passwordResetExpires = undefined;
+    await user.save();
+    res.status(201).json(user);
   } catch (error) {
-    throw new Error(error);
+    console.error(error);
+    res.status(500).send("Server Exception");
+  }
+});
+
+const deleteUser = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!req.user) return res.status(401).json({ messgae: "User not found!" });
+    const { _id } = req.user;
+    validateMongoDbId(id);
+
+    const user = await User.findById(_id);
+    const userTobeDelete = await User.findById(id);
+    console.log(user.email, "||", userTobeDelete.email);
+
+    const deletedUser = await User.findByIdAndDelete(id);
+    if (!deletedUser)
+      return res.status(401).json({ message: "User not found" });
+
+    if (user?.email == userTobeDelete?.email)
+      res.status(201).json({ message: deletedUser });
+    else return res.status(401).json({ message: "User not matched" });
+  } catch (error) {
+    res.status(500).json({ message: "Server Exceptions!" });
   }
 });
 
@@ -247,7 +315,7 @@ const updatedUser = asyncHandler(async (req, res) => {
         new: true,
       }
     );
-    res.status(201).json(updatedUser);
+    res.status(201).json({ message: updatedUser });
   } catch (error) {
     throw new Error(error);
   }
@@ -271,6 +339,7 @@ const blockUser = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
 const unblockUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongoDbId(id);

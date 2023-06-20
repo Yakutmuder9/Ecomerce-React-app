@@ -31,11 +31,14 @@ export const refreshTokens = async () => {
 };
 
 export const logout = async () => {
-  delete axios.defaults.headers.common["Authorization"];
+  const response = await axios.post("/logout");
+  console.log(response);
+  return response.data;
 };
 
 const authService = {
   login,
+  logout,
 };
 
 export default authService;

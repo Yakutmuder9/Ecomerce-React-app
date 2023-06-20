@@ -20,6 +20,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 import { MdCheckCircle } from "react-icons/md";
 import sideNavitems from "../routes/routes";
+import { logout } from "../services/authServices";
 
 const Sidebar = ({
   isHovered,
@@ -62,7 +63,7 @@ const Sidebar = ({
       top={0}
       filter="drop-shadow(0px 5px 14px rgba(0, 0, 0, 0.2))"
     >
-      <Box display={{ sm: "none", lg: "block" }}>
+      <Box display={{ base: "none", lg: "block" }}>
         <Box
           bg={sidebarBg}
           transition={variantChange}
@@ -253,13 +254,13 @@ const Sidebar = ({
             mx="10px"
             bottom={1}
           >
-            <Link href="/login" minW="100%">
+            {/* <Link href="/" minW="100%"> */}
               <Button
                 bg={"rgba(255, 255, 255, 0.16)"}
                 backdropFilter={"blur(28.6667px)"}
                 boxShadow={"0px 14.3333px 28.6667px rgba(27, 27, 27, 0.16)"}
                 color={"black"}
-                // _hover={"red"}
+                onClick={logout}
                 border={"1px solid green"}
               >
                 {isHovered ? (
@@ -270,7 +271,7 @@ const Sidebar = ({
                   <FiLogOut fontSize={"xl"} />
                 )}
               </Button>
-            </Link>
+            {/* </Link> */}
           </Box>
         </Box>
       </Box>

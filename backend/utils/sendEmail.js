@@ -1,4 +1,4 @@
-import * as dotenv from "dotenv";
+import dotenv from "dotenv";
 import sgMail from "@sendgrid/mail";
 
 // Middleware
@@ -7,7 +7,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const sendEmail = async (msg) => {
   try {
-    console.log(msg)
+    console.log(msg);
     await sgMail.send(msg);
     console.log("Email sent successfully");
   } catch (error) {
