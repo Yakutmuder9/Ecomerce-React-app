@@ -7,6 +7,7 @@ import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
 import validateMongoDbId from "../utils/validateDBId.js";
 import crypto from "crypto";
+import bcrypt from "bcrypt";
 import sendEmail from "../utils/sendEmail.js";
 
 const generateToken = (id) => {
@@ -17,7 +18,7 @@ const generateRefreshToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "3d" });
 };
 
-// Password
+// login
 const loginUser = asyncHandler(async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -25,44 +26,95 @@ const loginUser = asyncHandler(async (req, res) => {
     if (!email || !password) {
       return res.status(400).json({ message: "All fields are required" });
     }
-    const user = await User.findOne({ email });
 
-    if (!user) {
+    const foundUser = await User.findOne({ email });
+
+    if (!foundUser) {
       return res.status(401).json({ message: "User Not Found!" });
-    } else if (user?.isBlocked) {
+    } else if (foundUser?.isBlocked) {
       return res.status(401).json({ message: "Unauthorized" });
     }
 
-    if (user && (await user.isPasswordMatched(password))) {
-      const refreshToken = await generateRefreshToken(user._id);
+    const match = await bcrypt.compare(password, foundUser.password);
 
-      user.refreshToken = refreshToken;
-      await user.save();
+    if (!match) return res.status(401).json({ message: "Unauthorized" });
 
-      res.cookie("refreshToken", refreshToken, {
-        httpOnly: true,
-        maxAge: 72 * 60 * 60 * 1000, // 72 hours
-        // maxAge: 1000,
-      });
+    const accessToken = jwt.sign(
+      {
+        UserInfo: {
+          email: foundUser.email,
+          role: foundUser.role,
+        },
+      },
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: "15m" }
+    );
 
-      res.json({
-        _id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        profile_pic: user.profile_pic,
-        isBlocked: user.isBlocked,
-        mobile: user.mobile,
-        token: generateToken(user._id),
-      });
-    } else {
-      res.status(401).json({ message: "Invalid username or password" });
-    }
+    const refreshToken = jwt.sign(
+      { email: foundUser.email },
+      process.env.REFRESH_TOKEN_SECRET,
+      { expiresIn: "7d" }
+    );
+
+    res.cookie("jwt", refreshToken, {
+      httpOnly: true,
+      // secure: true,
+      // sameSite: "None",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
+    res.json({ accessToken });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Exception" });
   }
 });
+
+// const loginUser = asyncHandler(async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
+
+//     if (!email || !password) {
+//       return res.status(400).json({ message: "All fields are required" });
+//     }
+//     const user = await User.findOne({ email });
+
+//     if (!user) {
+//       return res.status(401).json({ message: "User Not Found!" });
+//     } else if (user?.isBlocked) {
+//       return res.status(401).json({ message: "Unauthorized" });
+//     }
+
+//     if (user && (await user.isPasswordMatched(password))) {
+//       const refreshToken = await generateRefreshToken(user._id);
+
+//       user.refreshToken = refreshToken;
+//       await user.save();
+
+//       res.cookie("refreshToken", refreshToken, {
+//         httpOnly: true,
+//         maxAge: 72 * 60 * 60 * 1000, // 72 hours
+//         // maxAge: 1000,
+//       });
+
+//       res.json({
+//         _id: user._id,
+//         firstName: user.firstName,
+//         lastName: user.lastName,
+//         email: user.email,
+//         profile_pic: user.profile_pic,
+//         isBlocked: user.isBlocked,
+//         mobile: user.mobile,
+//         token: generateToken(user._id),
+//       });
+//     } else {
+//       res.status(401).json({ message: "Invalid email or password" });
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Server Exception" });
+//   }
+// });
 
 const loginAdmin = asyncHandler(async (req, res) => {
   try {
@@ -113,46 +165,92 @@ const loginAdmin = asyncHandler(async (req, res) => {
 
 const handleRefreshToken = asyncHandler(async (req, res) => {
   try {
-    const cookie = req.cookies;
-    if (!cookie?.refreshToken)
-      es.status(201).json({ message: "No Refresh Token in Cookies" });
-    const refreshToken = cookie.refreshToken;
+    const cookies = req.cookies;
+    if (!cookies?.jwt) return res.status(401).json({ message: "Unauthorized" });
 
-    const user = await User.findOne({ refreshToken });
+    const refreshToken = cookies.jwt;
 
-    if (!user)
-      es.status(401).json({
-        message: "No Refresh token present in db or not matched",
-      });
+    jwt.verify(
+      refreshToken,
+      process.env.REFRESH_TOKEN_SECRET,
+      async (err, decoded) => {
+        if (err) return res.status(403).json({ message: "Forbidden" });
 
-    jwt.verify(refreshToken, process.env.JWT_SECRET, (err, decoded) => {
-      if (err || user.id !== decoded.id) {
-        es.status(401).json({
-          message: "There is something wrong with refresh token",
-        });
+        const foundUser = await User.findOne({
+          email: decoded.email,
+        }).exec();
+
+        if (!foundUser)
+          return res.status(401).json({ message: "Unauthorized" });
+
+        const accessToken = jwt.sign(
+          {
+            UserInfo: {
+              email: foundUser.email,
+              role: foundUser.role,
+            },
+          },
+          process.env.ACCESS_TOKEN_SECRET,
+          { expiresIn: "15m" }
+        );
+
+        res.json({ accessToken });
       }
-      const accessToken = generateToken(user?._id);
-      res.status(201).json({ message: accessToken });
-    });
+    );
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Exception" });
   }
 });
 
+// const handleRefreshToken = asyncHandler(async (req, res) => {
+//   try {
+//     const cookie = req.cookies;
+//     if (!cookie?.refreshToken)
+//       es.status(201).json({ message: "No Refresh Token in Cookies" });
+//     const refreshToken = cookie.refreshToken;
+
+//     const user = await User.findOne({ refreshToken });
+
+//     if (!user)
+//       es.status(401).json({
+//         message: "No Refresh token present in db or not matched",
+//       });
+
+//     jwt.verify(refreshToken, process.env.JWT_SECRET, (err, decoded) => {
+//       if (err || user.id !== decoded.id) {
+//         es.status(401).json({
+//           message: "There is something wrong with refresh token",
+//         });
+//       }
+//       const accessToken = generateToken(user?._id);
+//       res.status(201).json({ message: accessToken });
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Server Exception" });
+//   }
+// });
+
 const logout = asyncHandler(async (req, res) => {
   const cookies = req.cookies;
-  if (!cookies?.refreshToken)
-    return res.status(401).json({ message: "No cookies found" }); //No content
-
-  console.log("logout");
-  res.clearCookie("refreshToken", {
-    httpOnly: true,
-    sameSite: "None",
-    secure: true,
-  });
-  res.json({ message: "Cookie cleared!" });
+  if (!cookies?.jwt) return res.sendStatus(204);
+  res.clearCookie("jwt", { httpOnly: true, sameSite: "None", secure: true });
+  res.json({ message: "Cookie cleared" });
 });
+// const logout = asyncHandler(async (req, res) => {
+//   const cookies = req.cookies;
+//   if (!cookies?.refreshToken)
+//     return res.status(401).json({ message: "No cookies found" }); //No content
+
+//   console.log("logout");
+//   res.clearCookie("refreshToken", {
+//     httpOnly: true,
+//     sameSite: "None",
+//     secure: true,
+//   });
+//   res.json({ message: "Cookie cleared!" });
+// });
 
 const updatePassword = asyncHandler(async (req, res) => {
   try {
@@ -169,7 +267,7 @@ const updatePassword = asyncHandler(async (req, res) => {
       const updatedPassword = await user.save();
       res.status(201).json(updatedPassword);
     } else {
-      res.status(401).json({ message: "Invalid username or password" });
+      res.status(401).json({ message: "Invalid email or password" });
     }
   } catch (error) {
     console.error(error);

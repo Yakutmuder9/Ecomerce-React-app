@@ -66,13 +66,14 @@ import {
   productImgResize,
   blogImgResize,
 } from "../utils/uploadImage.js";
+import verifyJWT from "../middlewares/verifyJWT.js";
 
 const router = express.Router();
 
 // Product Routes
 router.post("/product", authMiddleware, isAdmin, createProduct);
 router.get("/product/:id", getaProduct);
-router.get("/product", getAllProduct);
+router.get("/products", verifyJWT, getAllProduct);
 router.put("/product/:id", authMiddleware, isAdmin, updateProduct);
 router.put("/product/wishlist", authMiddleware, addToWishlist);
 router.delete("/product/:id", authMiddleware, isAdmin, deleteProduct);
