@@ -257,7 +257,7 @@ const Dashboard = () => {
                     textAlign={"end"}
                     w={"100%"}
                   >
-                  12
+                    12
                   </Text>
                 </Flex>
               </Box>
@@ -265,7 +265,7 @@ const Dashboard = () => {
 
             <Text color="gray.500" fontSize="md">
               <Text as="span" color="green.400" fontWeight="bold">
-                 +8.12%{" "}
+                +8.12%{" "}
               </Text>
               Since last month
             </Text>

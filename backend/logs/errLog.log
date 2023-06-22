@@ -9,3 +9,4 @@
 20230621	11:51:28	96a7044c-ff98-40d2-952a-d3006636503f	Error: Not allowed by CORS	OPTIONS	/api/auth/login	http://localhost:3001
 20230621	13:40:42	899e8f05-b26f-40fd-b91c-8f481f825e7b	Too Many Requests: Too many login attempts from this IP, please try again after a 60 second pause	POST	/	http://localhost:3000
 20230621	13:40:44	ed62dc45-f468-43dc-bfab-b46fd6cfe4db	Too Many Requests: Too many login attempts from this IP, please try again after a 60 second pause	POST	/	http://localhost:3000
+20230622	00:29:42	75bb8b4b-0016-40cf-ac82-3c13e3ee1e44	Error: Not allowed by CORS	OPTIONS	/auth	https://stellar-lolly-5fec33.netlify.app
