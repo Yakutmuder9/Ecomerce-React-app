@@ -270,7 +270,7 @@ const Dashboard = () => {
               Since last month
             </Text>
           </Flex>
-          {/* <Flex direction="column"  p={3}  boxShadow={"0px 5px 14px rgba(0, 0, 0, 0.05)"} borderRadius={6}>
+          {/* <Flex direction="column"  p={3}  boxShadow={"0px 5px 14px rgba(0, 0, 0t , 0.05)"} borderRadius={6}>
             <Flex
               flexDirection="row"
               align="center"

@@ -19,7 +19,7 @@ import avatar1 from "../../app/assets/img/avatars/avatar1.png";
 import { SearchBar } from "./SearchBar";
 // import { SidebarResponsive } from "../../components/Sidebar";
 import { NavLink } from "react-router-dom";
-import routes from "../../config/routes";
+// import routes from "../../config/routes";
 
 export default function HeaderLinks(props) {
   const { variant, children, fixed, scrolled, secondary, onOpen, ...rest } =
