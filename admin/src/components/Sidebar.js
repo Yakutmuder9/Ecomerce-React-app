@@ -15,12 +15,12 @@ import {
   List,
   ListItem,
 } from "@chakra-ui/react";
-import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 import { MdCheckCircle } from "react-icons/md";
-import sideNavitems from "../routes/routes";
-import { logout } from "../services/authServices";
+import sideNavitems from "../config/routes";
+import { useSendLogoutMutation } from "../features/auth/authApiSlice";
 
 const Sidebar = ({
   isHovered,
@@ -33,6 +33,7 @@ const Sidebar = ({
 
   const mainPanel = React.useRef();
   const location = useLocation();
+  const navigate = useNavigate();
   const path = location.pathname;
 
   let variantChange = "0.2s linear";
@@ -46,6 +47,13 @@ const Sidebar = ({
     const firstTwoSegments = segments.slice(0, 2).join("/");
     return `/${firstTwoSegments}` === listPath ? true : false;
   }
+
+  const [sendLogout, { isLoading, isSuccess, isError, error }] =
+    useSendLogoutMutation();
+
+  useEffect(() => {
+    if (isSuccess) navigate("/");
+  }, [isSuccess, navigate]);
 
   return (
     <Box
@@ -139,7 +147,7 @@ const Sidebar = ({
                     <Flex w={"100%"} fontSize="4xl">
                       <AccordionButton w="100%" _hover={{ background: "none" }}>
                         {item.name == "Dashboard" ? (
-                          <NavLink to={"/admin/dashboard"}>
+                          <NavLink to={"/dash"}>
                             <Box
                               as="span"
                               flex="1"
@@ -152,8 +160,8 @@ const Sidebar = ({
                                   as={item.icon}
                                   fontSize={"4xl"}
                                   me={2}
-                                  bg={checkPath(item.layout) && activeBg}
-                                  color={checkPath(item.layout) && "white"}
+                                  bg={checkPath("/dash") && activeBg}
+                                  color={checkPath("/dash") && "white"}
                                   p={2}
                                   boxShadow={"0px 7px 11px #0000001a"}
                                   borderRadius={8}
@@ -255,22 +263,22 @@ const Sidebar = ({
             bottom={1}
           >
             {/* <Link href="/" minW="100%"> */}
-              <Button
-                bg={"rgba(255, 255, 255, 0.16)"}
-                backdropFilter={"blur(28.6667px)"}
-                boxShadow={"0px 14.3333px 28.6667px rgba(27, 27, 27, 0.16)"}
-                color={"black"}
-                onClick={logout}
-                border={"1px solid green"}
-              >
-                {isHovered ? (
-                  <Flex w={205} alignItems={"Center"} justifyContent={"center"}>
-                    <FiLogOut fontSize={"xl"} fontWeight={"bolder"} /> Log Out
-                  </Flex>
-                ) : (
-                  <FiLogOut fontSize={"xl"} />
-                )}
-              </Button>
+            <Button
+              bg={"rgba(255, 255, 255, 0.16)"}
+              backdropFilter={"blur(28.6667px)"}
+              boxShadow={"0px 14.3333px 28.6667px rgba(27, 27, 27, 0.16)"}
+              color={"black"}
+              onClick={sendLogout}
+              border={"1px solid green"}
+            >
+              {isHovered ? (
+                <Flex w={205} alignItems={"Center"} justifyContent={"center"}>
+                  <FiLogOut fontSize={"xl"} fontWeight={"bolder"} /> Log Out
+                </Flex>
+              ) : (
+                <FiLogOut fontSize={"xl"} />
+              )}
+            </Button>
             {/* </Link> */}
           </Box>
         </Box>

@@ -1,12 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-
-import { useSelector } from "react-redux";
-import { selectProductById } from "./productsApiSlice";
+import { useGetProductsQuery } from "./productsApiSlice";
+import { memo } from "react";
 
 const Product = ({ productId }) => {
-  const product = useSelector((state) => selectProductById(state, productId));
+  const { product } = useGetProductsQuery("productsList", {
+    selectFromResult: ({ data }) => ({
+      product: data?.entities[productId],
+    }),
+  });
 
   const navigate = useNavigate();
 
@@ -25,17 +28,17 @@ const Product = ({ productId }) => {
 
     return (
       <tr className="table__row">
-        <td className="table__cell product__status">
+        <td className="table__cell note__status">
           {product.completed ? (
-            <span className="product__status--completed">Completed</span>
+            <span className="note__status--completed">Completed</span>
           ) : (
-            <span className="product__status--open">Open</span>
+            <span className="note__status--open">Open</span>
           )}
         </td>
-        <td className="table__cell product__created">{created}</td>
-        <td className="table__cell product__updated">{updated}</td>
-        <td className="table__cell product__title">{product.title}</td>
-        <td className="table__cell product__username">{product.username}</td>
+        <td className="table__cell note__created">{created}</td>
+        <td className="table__cell note__updated">{updated}</td>
+        <td className="table__cell note__title">{product.title}</td>
+        <td className="table__cell note__username">{product.username}</td>
 
         <td className="table__cell">
           <button className="icon-button table__button" onClick={handleEdit}>
@@ -46,4 +49,7 @@ const Product = ({ productId }) => {
     );
   } else return null;
 };
-export default Product;
+
+const memoizedProduct = memo(Product);
+
+export default memoizedProduct;

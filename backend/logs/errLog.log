@@ -1,2 +1,11 @@
-20230614	19:16:20	77bf2ce9-12a2-49bc-ba9c-75cb13a381b4	Error: secretOrPrivateKey must have a value	POST	/auth	undefined
-20230614	19:41:14	7103fd00-5d6a-40bf-a4f1-99088d4b2b24	TypeError: Cannot read property 'active' of null	POST	/auth	http://localhost:3000
+20230621	11:06:41	142d61f4-6cbb-4da8-b599-58a1a64006b5	Too Many Requests: Too many login attempts from this IP, please try again after a 60 second pause	POST	/	http://localhost:3000
+20230621	11:15:55	26005da8-7e06-4b18-9891-237901317e65	Too Many Requests: Too many login attempts from this IP, please try again after a 60 second pause	POST	/	http://localhost:3000
+20230621	11:15:56	bfeab628-68b3-4167-9606-cfee379ed8b2	Too Many Requests: Too many login attempts from this IP, please try again after a 60 second pause	POST	/	http://localhost:3000
+20230621	11:15:56	b139307e-15cd-49e3-af8e-c680111e6408	Too Many Requests: Too many login attempts from this IP, please try again after a 60 second pause	POST	/	http://localhost:3000
+20230621	11:16:12	f9ce720a-78fd-48c8-9673-424d3eeb6bc6	Too Many Requests: Too many login attempts from this IP, please try again after a 60 second pause	POST	/	http://localhost:3000
+20230621	11:50:59	50f87ae8-de73-4fc8-9342-4f2aadd0525b	Error: Not allowed by CORS	OPTIONS	/api/auth/login	http://localhost:3001
+20230621	11:51:24	48db19df-c821-4514-a2f2-ae236b796fce	Error: Not allowed by CORS	OPTIONS	/api/auth/login	http://localhost:3001
+20230621	11:51:26	ea696d86-b98b-4a71-8438-dd60fa8fccda	Error: Not allowed by CORS	OPTIONS	/api/auth/login	http://localhost:3001
+20230621	11:51:28	96a7044c-ff98-40d2-952a-d3006636503f	Error: Not allowed by CORS	OPTIONS	/api/auth/login	http://localhost:3001
+20230621	13:40:42	899e8f05-b26f-40fd-b91c-8f481f825e7b	Too Many Requests: Too many login attempts from this IP, please try again after a 60 second pause	POST	/	http://localhost:3000
+20230621	13:40:44	ed62dc45-f468-43dc-bfab-b46fd6cfe4db	Too Many Requests: Too many login attempts from this IP, please try again after a 60 second pause	POST	/	http://localhost:3000

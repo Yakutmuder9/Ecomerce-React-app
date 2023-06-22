@@ -13,10 +13,12 @@ const initialState = productsAdapter.getInitialState()
 export const productsApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         getProducts: builder.query({
-            query: () => '/products',
-            validateStatus: (response, result) => {
-                return response.status === 200 && !result.isError
-            },
+            query: () => ({
+                url: '/products',
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError
+                },
+            }),
             transformResponse: responseData => {
                 const loadedProducts = responseData.map(product => {
                     product.id = product._id

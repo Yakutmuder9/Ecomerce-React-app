@@ -4,17 +4,17 @@ import App from "./App";
 import { store } from "./app/store";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { LayoutGroup, AnimatePresence } from "framer-motion";
 import { ChakraProvider } from "@chakra-ui/react";
+import { LayoutGroup, AnimatePresence } from "framer-motion";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+     <Provider store={store}>
       <BrowserRouter>
         <ChakraProvider resetCss={false} position="relative">
           <LayoutGroup>
-            <AnimatePresence>
+            <AnimatePresence >
               <App />
             </AnimatePresence>
           </LayoutGroup>

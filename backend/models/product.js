@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import mongooseSequence from "mongoose-sequence";
+
+const AutoIncrement = mongooseSequence(mongoose);
 
 const productSchema = new mongoose.Schema(
   {
@@ -9,60 +12,15 @@ const productSchema = new mongoose.Schema(
     },
     title: {
       type: String,
-      require: true,
-      trim: true,
-    },
-    slug: {
-      type: String,
       required: true,
-      unique: true,
-      lowercase: true,
     },
-    description: {
+    text: {
       type: String,
       required: true,
     },
-    price: {
-      type: Number,
-      required: true,
-    },
-    category: {
-      type: String,
-      required: true,
-    },
-    brand: {
-      type: String,
-      required: true,
-    },
-    quantity: {
-      type: Number,
-      required: true,
-    },
-    sold: {
-      type: Number,
-      default: 0,
-    },
-    image: [
-      {
-        public_id: String,
-        url: String,
-      },
-    ],
-    color: [],
-    tags: String,
-    ratings: [
-      {
-        star: Number,
-        comment: String,
-        postedby: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "User",
-        },
-      },
-    ],
-    totalrating: {
-      type: String,
-      default: 0,
+    completed: {
+      type: Boolean,
+      default: false,
     },
   },
   {
@@ -70,5 +28,10 @@ const productSchema = new mongoose.Schema(
   }
 );
 
-const Product = mongoose.model("Product", productSchema);
-export default Product;
+productSchema.plugin(AutoIncrement, {
+  inc_field: "ticket",
+  id: "ticketNums",
+  start_seq: 500,
+});
+
+export default mongoose.model("Product", productSchema);

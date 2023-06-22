@@ -1,7 +1,0 @@
-20230614	19:16:20	77bf2ce9-12a2-49bc-ba9c-75cb13a381b4	Error: secretOrPrivateKey must have a value	POST	/auth	undefined
-20230614	19:41:14	7103fd00-5d6a-40bf-a4f1-99088d4b2b24	TypeError: Cannot read property 'active' of null	POST	/auth	http://localhost:3000
-20230620	14:47:12	8cd10aff-777d-4634-a5fb-45a18a180436	Error: ENOENT: no such file or directory, stat 'C:\Users\yakut\Desktop\Portfolio\MERN-eCommerce-App\new\views\404.html'	POST	/api/auth/login	http://localhost:3000
-20230620	14:47:56	bfb4921e-38f3-46eb-bd4e-ca03259c9ec3	Error: ENOENT: no such file or directory, stat 'C:\Users\yakut\Desktop\Portfolio\MERN-eCommerce-App\new\views\404.html'	POST	/api/auth/login	http://localhost:3000
-20230620	14:48:02	9efe87e4-2b2a-49e4-b5ed-185af4677e8b	Error: ENOENT: no such file or directory, stat 'C:\Users\yakut\Desktop\Portfolio\MERN-eCommerce-App\new\views\404.html'	POST	/api/auth/login	http://localhost:3000
-20230620	14:49:15	1135a39a-f3ae-4e52-b22c-03acb694c631	Error: ENOENT: no such file or directory, stat 'C:\Users\yakut\Desktop\Portfolio\MERN-eCommerce-App\new\views\404.html'	POST	/api/auth/login	http://localhost:3000
-20230620	14:51:09	906dc0a4-d344-4d2e-a538-269569f0e368	Error: ENOENT: no such file or directory, stat 'C:\Users\yakut\Desktop\Portfolio\MERN-eCommerce-App\new\views\404.html'	POST	/api/auth/login	http://localhost:3000

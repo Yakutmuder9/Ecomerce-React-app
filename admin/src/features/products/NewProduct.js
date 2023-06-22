@@ -1,14 +1,21 @@
-import { useSelector } from 'react-redux'
-import { selectAllUsers } from '../users/usersApiSlice'
-import NewproductForm from './NewproductForm'
+import NewProductForm from "./NewProductForm";
+import { useGetUsersQuery } from "../users/usersApiSlice";
+import PulseLoader from "react-spinners/PulseLoader";
+import useTitle from "../../hooks/useTitle";
 
-const Newproduct = () => {
-    const users = useSelector(selectAllUsers)
+const NewProduct = () => {
+  useTitle("techProducts: New Product");
 
-    if (!users?.length) return <p>Not Currently Available</p>
+  const { users } = useGetUsersQuery("usersList", {
+    selectFromResult: ({ data }) => ({
+      users: data?.ids.map((id) => data?.entities[id]),
+    }),
+  });
 
-    const content = <NewproductForm users={users} />
+  if (!users?.length) return <PulseLoader color={"#FFF"} />;
 
-    return content
-}
-export default Newproduct
+  const content = <NewProductForm users={users} />;
+
+  return content;
+};
+export default NewProduct;

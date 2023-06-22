@@ -18,10 +18,10 @@ import {
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
-import Card from "../../components/card/Card.js";
-import BarChart from "../../components/charts/BarChart";
-import LineChart from "../../components/charts/LineChart";
-import IconBox from "../../components/icons/IconBox.js";
+// import Card from "../../components/card/Card.js";
+// import BarChart from "../../components/charts/BarChart";
+// import LineChart from "../../components/charts/LineChart";
+// import IconBox from "../../components/icons/IconBox.js";
 import {
   barChartData,
   barChartOptions,
@@ -63,199 +63,336 @@ const Dashboard = () => {
           <Text color={textColor} fontSize="xl" fontWeight="bold" pb={"5px"}>
             Order Activity
           </Text>
-          <Text color="gray.400" fontSize="sm" fontWeight="bold" mb="6px">
+          <Text color="gray.400" fontSize="md" fontWeight="bold" mb={4}>
             Activities that you need to monitor to maintain your order
           </Text>
         </Box>
 
         <SimpleGrid columns={{ sm: 1, md: 2, xl: 4 }} spacing="24px">
-          <Card minH="80px">
-            <Flex direction="column">
+          <Flex
+            direction="column"
+            p={3}
+            boxShadow={"0px 5px 14px rgba(0, 0, 0, 0.05)"}
+            borderRadius={6}
+          >
+            <Flex align="center" justify="space-between" w="100%" mb="20px">
               <Flex
-                flexDirection="row"
-                align="center"
-                justify="space-between"
-                w="100%"
-                mb="20px"
+                alignItems={"center"}
+                justifyContent={"center"}
+                borderRadius={"8px"}
+                h={"45px"}
+                w={"45px"}
+                bg={iconBlue}
               >
-                <Stat>
-                  <StatLabel
-                    fontSize="xs"
-                    color="gray.400"
-                    fontWeight="bold"
-                    textTransform="uppercase"
-                  >
-                    New Orders
-                  </StatLabel>
-
-                  <Flex>
-                    <StatNumber
-                      fontSize="xl"
-                      color={textColor}
-                      fontWeight="bold"
-                      w={"auto"}
-                    >
-                      3450
-                    </StatNumber>
-                  </Flex>
-                </Stat>
-                <IconBox
-                  borderRadius="50%"
-                  // as="box"
-                  h={"45px"}
-                  w={"45px"}
-                  bg={iconBlue}
-                >
-                  <HiShoppingCart h={"24px"} w={"24px"} color={iconBoxInside} />
-                </IconBox>
+                <HiShoppingCart h={"24px"} w={"24px"} color={iconBoxInside} />
               </Flex>
 
-              <Text color="gray.400" fontSize="sm">
-                <Text as="span" color="green.400" fontWeight="bold">
-                  +3.48%{" "}
-                </Text>
-                Since last month
-              </Text>
-            </Flex>
-          </Card>
-          <Card minH="80px">
-            <Flex direction="column">
-              <Flex
-                flexDirection="row"
-                align="center"
-                justify="center"
-                w="100%"
-                mb="25px"
-              >
-                <Stat me="auto">
-                  <StatLabel
-                    fontSize="xs"
-                    color="gray.400"
-                    fontWeight="bold"
-                    textTransform="uppercase"
-                  >
-                    Ready to ship
-                  </StatLabel>
-                  <Flex>
-                    <StatNumber
-                      fontSize="lg"
-                      color={textColor}
-                      fontWeight="bold"
-                    >
-                      +2,503
-                    </StatNumber>
-                  </Flex>
-                </Stat>
-                <IconBox
-                  borderRadius="50%"
-                  // as="box"
-                  h={"45px"}
-                  w={"45px"}
-                  bg={iconBlue}
+              <Box>
+                <Box
+                  fontSize="sm"
+                  color="gray.500"
+                  fontWeight="bold"
+                  textTransform="uppercase"
                 >
-                  <HiDocument h={"24px"} w={"24px"} color={iconBoxInside} />
-                </IconBox>
-              </Flex>
-              <Text color="gray.400" fontSize="sm">
-                <Text as="span" color="red.500" fontWeight="bold">
-                  -2.82%{" "}
-                </Text>
-                Since last month
-              </Text>
-            </Flex>
-          </Card>
-          <Card minH="80px">
-            <Flex direction="column">
-              <Flex
-                flexDirection="row"
-                align="center"
-                justify="center"
-                w="100%"
-                mb="25px"
-              >
-                <Stat me="auto">
-                  <StatLabel
-                    fontSize="xs"
-                    color="gray.400"
+                  New Orders
+                </Box>
+
+                <Flex>
+                  <Text
+                    fontSize="xl"
+                    color={textColor}
                     fontWeight="bold"
-                    textTransform="uppercase"
+                    textAlign={"end"}
+                    w={"100%"}
                   >
-                    Order shipped
-                  </StatLabel>
-                  <Flex>
-                    <StatNumber
-                      fontSize="lg"
-                      color={textColor}
-                      fontWeight="bold"
-                    >
-                      173
-                    </StatNumber>
-                  </Flex>
-                </Stat>
-                <IconBox
-                  borderRadius="50%"
-                  // as="box"
-                  h={"45px"}
-                  w={"45px"}
-                  bg={iconBlue}
-                >
-                  <HiArchive h={"24px"} w={"24px"} color={iconBoxInside} />
-                </IconBox>
-              </Flex>
-              <Text color="gray.400" fontSize="sm">
-                <Text as="span" color="green.400" fontWeight="bold">
-                  +8.12%{" "}
-                </Text>
-                Since last month
-              </Text>
+                    3450
+                  </Text>
+                </Flex>
+              </Box>
             </Flex>
-          </Card>
-          <Card minH="80px">
-            <Flex direction="column">
+
+            <Text color="gray.500" fontSize="md">
+              <Text as="span" color="green.400" fontWeight="bold">
+                +3.48%{" "}
+              </Text>
+              Since last month
+            </Text>
+          </Flex>
+          <Flex
+            direction="column"
+            p={3}
+            boxShadow={"0px 5px 14px rgba(0, 0, 0, 0.05)"}
+            borderRadius={6}
+          >
+            <Flex align="center" justify="space-between" w="100%" mb="20px">
               <Flex
-                flexDirection="row"
-                align="center"
-                justify="center"
-                w="100%"
-                mb="25px"
+                alignItems={"center"}
+                justifyContent={"center"}
+                borderRadius={"8px"}
+                h={"45px"}
+                w={"45px"}
+                bg={iconBlue}
               >
-                <Stat me="auto">
-                  <StatLabel
-                    fontSize="xs"
-                    color="gray.400"
-                    fontWeight="bold"
-                    textTransform="uppercase"
-                  >
-                    Order Complaint
-                  </StatLabel>
-                  <Flex>
-                    <StatNumber
-                      fontSize="lg"
-                      color={textColor}
-                      fontWeight="bold"
-                    >
-                      12
-                    </StatNumber>
-                  </Flex>
-                </Stat>
-                <IconBox
-                  borderRadius="50%"
-                  // as="box"
-                  h={"45px"}
-                  w={"45px"}
-                  bg={iconBlue}
-                >
-                  <HiGlobeAlt h={"24px"} w={"24px"} color={iconBoxInside} />
-                </IconBox>
+                <HiShoppingCart h={"24px"} w={"24px"} color={iconBoxInside} />
               </Flex>
-              <Text color="gray.400" fontSize="sm">
-                <Text as="span" color="green.400" fontWeight="bold">
-                  +8.12%{" "}
-                </Text>
-                Since last month
-              </Text>
+
+              <Box>
+                <Box
+                  fontSize="sm"
+                  color="gray.500"
+                  fontWeight="bold"
+                  textTransform="uppercase"
+                >
+                  Ready to ship
+                </Box>
+
+                <Flex>
+                  <Text
+                    fontSize="xl"
+                    color={textColor}
+                    fontWeight="bold"
+                    textAlign={"end"}
+                    w={"100%"}
+                  >
+                    +2,503
+                  </Text>
+                </Flex>
+              </Box>
             </Flex>
-          </Card>
+
+            <Text color="gray.500" fontSize="md">
+              <Text as="span" color="green.400" fontWeight="bold">
+                -2.82%{" "}
+              </Text>
+              Since last month
+            </Text>
+          </Flex>
+          <Flex
+            direction="column"
+            p={3}
+            boxShadow={"0px 5px 14px rgba(0, 0, 0, 0.05)"}
+            borderRadius={6}
+          >
+            <Flex align="center" justify="space-between" w="100%" mb="20px">
+              <Flex
+                alignItems={"center"}
+                justifyContent={"center"}
+                borderRadius={"8px"}
+                h={"45px"}
+                w={"45px"}
+                bg={iconBlue}
+              >
+                <HiArchive
+                  shipped
+                  h={"24px"}
+                  w={"24px"}
+                  color={iconBoxInside}
+                />
+              </Flex>
+
+              <Box>
+                <Box
+                  fontSize="sm"
+                  color="gray.500"
+                  fontWeight="bold"
+                  textTransform="uppercase"
+                >
+                  Order shipped
+                </Box>
+
+                <Flex>
+                  <Text
+                    fontSize="xl"
+                    color={textColor}
+                    fontWeight="bold"
+                    textAlign={"end"}
+                    w={"100%"}
+                  >
+                    173
+                  </Text>
+                </Flex>
+              </Box>
+            </Flex>
+
+            <Text color="gray.500" fontSize="md">
+              <Text as="span" color="green.400" fontWeight="bold">
+                +8.12%{" "}
+              </Text>
+              Since last month
+            </Text>
+          </Flex>
+          <Flex
+            direction="column"
+            p={3}
+            boxShadow={"0px 5px 14px rgba(0, 0, 0, 0.05)"}
+            borderRadius={6}
+          >
+            <Flex align="center" justify="space-between" w="100%" mb="20px">
+              <Flex
+                alignItems={"center"}
+                justifyContent={"center"}
+                borderRadius={"8px"}
+                h={"45px"}
+                w={"45px"}
+                bg={iconBlue}
+              >
+                <HiGlobeAlt h={"24px"} w={"24px"} color={iconBoxInside} />
+              </Flex>
+
+              <Box>
+                <Box
+                  fontSize="sm"
+                  color="gray.500"
+                  fontWeight="bold"
+                  textTransform="uppercase"
+                >
+                  Order Complaint
+                </Box>
+
+                <Flex>
+                  <Text
+                    fontSize="xl"
+                    color={textColor}
+                    fontWeight="bold"
+                    textAlign={"end"}
+                    w={"100%"}
+                  >
+                  12
+                  </Text>
+                </Flex>
+              </Box>
+            </Flex>
+
+            <Text color="gray.500" fontSize="md">
+              <Text as="span" color="green.400" fontWeight="bold">
+                 +8.12%{" "}
+              </Text>
+              Since last month
+            </Text>
+          </Flex>
+          {/* <Flex direction="column"  p={3}  boxShadow={"0px 5px 14px rgba(0, 0, 0, 0.05)"} borderRadius={6}>
+            <Flex
+              flexDirection="row"
+              align="center"
+              justify="center"
+              w="100%"
+              mb="25px"
+            >
+              <Stat me="auto">
+                <StatLabel
+                  fontSize="xs"
+                  color="gray.400"
+                  fontWeight="bold"
+                  textTransform="uppercase"
+                >
+                  Ready to ship
+                </StatLabel>
+                <Flex>
+                  <StatNumber fontSize="lg" color={textColor} fontWeight="bold">
+                    +2,503
+                  </StatNumber>
+                </Flex>
+              </Stat>
+              <Flex
+                alignItems={"center"}
+                justifyContent={"center"}
+                borderRadius={"8px"}
+                h={"45px"}
+                w={"45px"}
+                bg={iconBlue}
+              >
+                <HiDocument h={"24px"} w={"24px"} color={iconBoxInside} />
+              </Flex>
+            </Flex>
+            <Text color="gray.500" fontSize="sm">
+              <Text as="span" color="red.500" fontWeight="bold">
+                -2.82%{" "}
+              </Text>
+              Since last month
+            </Text>
+          </Flex>
+          <Flex direction="column"  p={3}  boxShadow={"0px 5px 14px rgba(0, 0, 0, 0.05)"} borderRadius={6}>
+            <Flex
+              flexDirection="row"
+              align="center"
+              justify="center"
+              w="100%"
+              mb="25px"
+            >
+              <Stat me="auto">
+                <StatLabel
+                  fontSize="xs"
+                  color="gray.600"
+                  fontWeight="bold"
+                  textTransform="uppercase"
+                >
+                  Order shipped
+                </StatLabel>
+                <Flex>
+                  <StatNumber fontSize="lg" color={textColor} fontWeight="bold">
+                    173
+                  </StatNumber>
+                </Flex>
+              </Stat>
+              <Flex
+                alignItems={"center"}
+                justifyContent={"center"}
+                borderRadius={"8px"}
+                h={"45px"}
+                w={"45px"}
+                bg={iconBlue}
+              >
+                <HiArchive h={"24px"} w={"24px"} color={iconBoxInside} />
+              </Flex>
+            </Flex>
+            <Text color="gray.400" fontSize="sm">
+              <Text as="span" color="green.400" fontWeight="bold">
+                +8.12%{" "}
+              </Text>
+              Since last month
+            </Text>
+          </Flex>
+          <Flex direction="column" p={3}  boxShadow={"0px 5px 14px rgba(0, 0, 0, 0.05)"} borderRadius={6}>
+            <Flex
+              flexDirection="row"
+              align="center"
+              justify="center"
+              w="100%"
+              mb="25px"
+            >
+              <Stat me="auto">
+                <StatLabel
+                  fontSize="xs"
+                  color="gray.400"
+                  fontWeight="bold"
+                  textTransform="uppercase"
+                >
+                  Order Complaint
+                </StatLabel>
+                <Flex>
+                  <StatNumber fontSize="lg" color={textColor} fontWeight="bold">
+                    12
+                  </StatNumber>
+                </Flex>
+              </Stat>
+              <Flex
+                alignItems={"center"}
+                justifyContent={"center"}
+                borderRadius={"8px"}
+                h={"45px"}
+                w={"45px"}
+                bg={iconBlue}
+              >
+                <HiGlobeAlt h={"24px"} w={"24px"} color={iconBoxInside} />
+              </Flex>
+            </Flex>
+            <Text color="gray.400" fontSize="sm">
+              <Text as="span" color="green.400" fontWeight="bold">
+                +8.12%{" "}
+              </Text>
+              Since last month
+            </Text>
+          </Flex> */}
         </SimpleGrid>
       </Flex>
 
@@ -264,7 +401,7 @@ const Dashboard = () => {
         templateRows={{ lg: "repeat(2, auto)" }}
         gap="20px"
       >
-        <Card
+        {/* <Card
           bg={colorMode === "dark" ? "navy.800" : greenGradient}
           p="0px"
           maxW={{ sm: "320px", md: "100%" }}
@@ -469,7 +606,7 @@ const Dashboard = () => {
               </Tbody>
             </Table>
           </Box>
-        </Card>
+        </Card> */}
       </Grid>
     </Flex>
   );

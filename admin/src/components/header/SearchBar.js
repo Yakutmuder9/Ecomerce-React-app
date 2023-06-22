@@ -5,21 +5,21 @@ import {
   InputLeftElement,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { SearchIcon } from "@chakra-ui/icons";
+import { BiSearch } from "react-icons/bi";
 
-export const SearchBar= (props) => {
+export const SearchBar = (props) => {
   const { variant, children, ...rest } = props;
   const searchIconColor = "gray.700";
   const inputBg = "gray.800";
 
   return (
-    <InputGroup bg={"white"} borderRadius='15px' w='200px'>
+    <InputGroup bg={"white"} borderRadius="15px" w="200px">
       <InputLeftElement
         children={
           <IconButton
-            bg='inherit'
-            borderRadius='inherit'
-            _hover='none'
+            bg="inherit"
+            borderRadius="inherit"
+            _hover="none"
             _active={{
               bg: "inherit",
               transform: "none",
@@ -28,17 +28,16 @@ export const SearchBar= (props) => {
             _focus={{
               boxShadow: "none",
             }}
-            icon={
-              <SearchIcon color={searchIconColor} w='15px' h='15px' />
-            }></IconButton>
+            icon={<BiSearch color={searchIconColor} w="15px" h="15px" />}
+          ></IconButton>
         }
       />
       <Input
         fontSize="medium"
-        py='14px'
-        placeholder='Type here...'
-        borderRadius='inherit'
+        py="14px"
+        placeholder="Type here..."
+        borderRadius="inherit"
       />
     </InputGroup>
   );
-}
+};

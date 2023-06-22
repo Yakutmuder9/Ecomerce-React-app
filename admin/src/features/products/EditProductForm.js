@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import {
-  useUpdateProductMutation,
-  useDeleteProductMutation,
-} from "./productsApiSlice";
+import { useUpdateProductMutation, useDeleteProductMutation } from "./productsApiSlice";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import useAuth from "../../hooks/useAuth";
 
 const EditProductForm = ({ product, users }) => {
+  const { isManager, isAdmin } = useAuth();
+
   const [updateProduct, { isLoading, isSuccess, isError, error }] =
     useUpdateProductMutation();
 
@@ -28,7 +28,7 @@ const EditProductForm = ({ product, users }) => {
       setTitle("");
       setText("");
       setUserId("");
-      navigate("/admin/products");
+      navigate("/dash/products");
     }
   }, [isSuccess, isDelSuccess, navigate]);
 
@@ -81,6 +81,19 @@ const EditProductForm = ({ product, users }) => {
 
   const errContent = (error?.data?.message || delerror?.data?.message) ?? "";
 
+  let deleteButton = null;
+  if (isManager || isAdmin) {
+    deleteButton = (
+      <button
+        className="icon-button"
+        title="Delete"
+        onClick={onDeleteProductClicked}
+      >
+        <FontAwesomeIcon icon={faTrashCan} />
+      </button>
+    );
+  }
+
   const content = (
     <>
       <p className={errClass}>{errContent}</p>
@@ -97,13 +110,7 @@ const EditProductForm = ({ product, users }) => {
             >
               <FontAwesomeIcon icon={faSave} />
             </button>
-            <button
-              className="icon-button"
-              title="Delete"
-              onClick={onDeleteProductClicked}
-            >
-              <FontAwesomeIcon icon={faTrashCan} />
-            </button>
+            {deleteButton}
           </div>
         </div>
         <label className="form__label" htmlFor="product-title">
@@ -111,7 +118,7 @@ const EditProductForm = ({ product, users }) => {
         </label>
         <input
           className={`form__input ${validTitleClass}`}
-          id="product-title"
+          id="note-title"
           name="title"
           type="text"
           autoComplete="off"
@@ -124,7 +131,7 @@ const EditProductForm = ({ product, users }) => {
         </label>
         <textarea
           className={`form__input form__input--text ${validTextClass}`}
-          id="product-text"
+          id="note-text"
           name="text"
           value={text}
           onChange={onTextChanged}
@@ -133,12 +140,12 @@ const EditProductForm = ({ product, users }) => {
           <div className="form__divider">
             <label
               className="form__label form__checkbox-container"
-              htmlFor="product-completed"
+              htmlFor="note-completed"
             >
               WORK COMPLETE:
               <input
                 className="form__checkbox"
-                id="product-completed"
+                id="note-completed"
                 name="completed"
                 type="checkbox"
                 checked={completed}
@@ -153,7 +160,7 @@ const EditProductForm = ({ product, users }) => {
               ASSIGNED TO:
             </label>
             <select
-              id="product-username"
+              id="note-username"
               name="username"
               className="form__select"
               value={userId}

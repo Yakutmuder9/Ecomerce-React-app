@@ -1,0 +1,2 @@
+20230614	19:16:20	77bf2ce9-12a2-49bc-ba9c-75cb13a381b4	Error: secretOrPrivateKey must have a value	POST	/auth	undefined
+20230614	19:41:14	7103fd00-5d6a-40bf-a4f1-99088d4b2b24	TypeError: Cannot read property 'active' of null	POST	/auth	http://localhost:3000
