@@ -23,7 +23,7 @@ import {
   Icon,
 } from "@chakra-ui/react";
 import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs";
-import DashFooter from "./Footer/HomeFooter";
+import DashFooter from "./footer/HomeFooter";
 import { GoChevronRight } from "react-icons/go";
 import { MdBolt } from "react-icons/md";
 import { motion } from "framer-motion";

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import DashHeader from "./Header/DashHeader";
-import DashFooter from "./Footer/DashFooter";
+import DashHeader from "./header/DashHeader";
+import DashFooter from "./footer/DashFooter";
 import Sidebar from "./Sidebar.js";
 import { useDisclosure, Box, useColorMode } from "@chakra-ui/react";
 import routes from "../config/routes.js";

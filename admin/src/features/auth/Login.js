@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 import { setCredentials } from "../../features/auth/authSlice";
 import { useLoginMutation } from "../../features/auth/authApiSlice";
 import usePersist from "../../hooks/usePersist";
-import DashFooter from "../../components/Footer/HomeFooter";
+import DashFooter from "../../components/footer/HomeFooter";
 import { motion } from "framer-motion";
 
 const Login = () => {

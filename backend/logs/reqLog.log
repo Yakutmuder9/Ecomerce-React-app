@@ -722,3 +722,5 @@
 20230621	20:14:49	211e3fc6-f0c7-4964-8713-a3f5bf2e6624	OPTIONS	/auth/refresh	http://localhost:3000
 20230621	20:14:49	4c4f6a2c-de17-4fd7-b191-9a07b022e9e4	GET	/auth/refresh	http://localhost:3000
 20230621	20:14:49	761111dc-ef93-4d2b-ac81-512001fbd183	GET	/auth/refresh	http://localhost:3000
+20230622	00:22:47	dd0ec0f1-3c03-4908-aa90-02613e25761a	GET	/auth/refresh	http://localhost:3000
+20230622	00:22:47	cf69d47f-0e12-4ed3-a4d6-b4b75f31e65e	GET	/auth/refresh	http://localhost:3000
