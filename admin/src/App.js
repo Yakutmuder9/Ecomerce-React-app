@@ -19,7 +19,7 @@ import { Dashboard } from "./pages";
 import * as Pages from "./pages";
 
 const App = () => {
-  useTitle("Dan D. Repairs");
+  useTitle("Zilla Shopping");
   const location = useLocation();
 
   return (

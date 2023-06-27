@@ -10,3 +10,6 @@
 20230621	13:40:42	899e8f05-b26f-40fd-b91c-8f481f825e7b	Too Many Requests: Too many login attempts from this IP, please try again after a 60 second pause	POST	/	http://localhost:3000
 20230621	13:40:44	ed62dc45-f468-43dc-bfab-b46fd6cfe4db	Too Many Requests: Too many login attempts from this IP, please try again after a 60 second pause	POST	/	http://localhost:3000
 20230622	00:29:42	75bb8b4b-0016-40cf-ac82-3c13e3ee1e44	Error: Not allowed by CORS	OPTIONS	/auth	https://stellar-lolly-5fec33.netlify.app
+20230622	00:38:17	aff8d4c0-809a-4c95-a9a8-abee27ee5d2a	Error: Not allowed by CORS	OPTIONS	/auth	https://zilla-admin.netlify.app
+20230622	00:38:18	ffb7ad5d-c995-4321-a28c-a090055262f1	Error: Not allowed by CORS	OPTIONS	/auth	https://zilla-admin.netlify.app
+20230622	00:38:27	3dc412f3-e4a1-4012-9564-33ece68c09e0	Error: Not allowed by CORS	OPTIONS	/auth	https://zilla-admin.netlify.app

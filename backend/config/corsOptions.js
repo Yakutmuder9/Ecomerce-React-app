@@ -1,4 +1,7 @@
-const allowedOrigins = ["http://localhost:3000", "https://zilla-admin.netlify.app/"];
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://zilla-admin.netlify.app",
+];
 
 const corsOptions = {
   origin: (origin, callback) => {

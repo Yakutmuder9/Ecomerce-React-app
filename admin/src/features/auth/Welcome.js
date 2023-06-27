@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const Welcome = () => {
   const { username, isManager, isAdmin } = useAuth();
 
-  useTitle(`techProducts: ${username}`);
+  useTitle(`Zilla: ${username}`);
 
   const date = new Date();
   const today = new Intl.DateTimeFormat("en-US", {
